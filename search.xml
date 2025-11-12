@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/archives/post/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+]]></content>
+      <tags>
+        <tag>hidden tips</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Write-up Stolen Mount TryHackMe</title>
+    <url>/archives/post/stolenMount/</url>
+    <content><![CDATA[<p><span style="color:black;font-weight:bold;">Description:</span> An intruder has infiltrated our network and targeted the NFS server where the backup files are stored. A classified secret was accessed and stolen. The only trace left behind is a packet capture (PCAP) file recorded during the incident. Your mission, should you accept it, is to discover the contents of the stolen data.</p>
+<p><span style="font-weight:bold;">First</span>, when we click ‘Start Machine’ we will see a <span style="font-weight:bold;">challenge.pcapng</span> file in the Desktop directory<br><span style="font-weight:bold;">Open with Wireshark </span>and we will see the following: </p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="wireshark.png"
+                      alt="Wireshark Capture" style="width:100%; border-radius:10px;"
+                >
+
+<p>Since the description mentioned NFS, we will filter this protocol. After filtering, I noticed that the info column contains the names of the <span style="color:black;font-weight:bold;">“procedures”</span> in the RPC protocol that NFS uses.</p>
+<p>Searching on google, I found out that the procedure ‘READ’ is used to read the file, which may contain the file content or flag, so I searched for the keyword ‘READ’<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="filterpackage.png"
+                      alt="Filter Package" style="width:100%; border-radius:10px;"
+                ></p>
+<p>After reading through the packets, I found that there are 2 important packets, packet 214 (containing archive password) and 286 (containing 1 secret.png image file in the .zip file because hex starts with &#x3D; 50 4b 03 04)</p>
+<div style="text-align: center;">
+  <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="package214.png"
+                      alt="No. 214" style="width: 45%; display: inline-block; margin: 5px;"
+                >
+  <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="package286.png"
+                      alt="No. 286" style="width: 47%; display: inline-block; margin: 5px;"
+                >
+</div>
+Proceed to extract the zip file:
+Right click on the packet -> Follow -> TCP Stream -> In the Show data as box -> Select Raw -> Save as... (secret.raw)
+
+<p>Open terminal </p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mv</span> secret.raw secret.zip</span><br><span class="line">$ unzip -l secret.zip</span><br><span class="line">$ unzip secret.zip</span><br></pre></td></tr></table></figure></div>
+<p>If successful, you will see a QR Code</p>
+<blockquote>
+<p><span style="color:red;font-style:italic;font-weight:bold;">Good Luck!!</span></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>tryhackme</category>
+      </categories>
+      <tags>
+        <tag>writeup</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>About Me!</title>
+    <url>/archives/post/AboutMe/</url>
+    <content><![CDATA[<h2 id="Xin-chao-👋"><a href="#Xin-chao-👋" class="headerlink" title="Xin chào 👋"></a>Xin chào 👋</h2><p>Mình là <strong>sinh viên năm 3 ngành An toàn thông tin</strong> tại <strong>Đại học FPT</strong>.<br>Hiện mình đang theo đuổi mục tiêu trở thành một <strong>chuyên viên phân tích bảo mật (SOC Analyst)</strong> và <strong>Threat Hunter</strong>,<br>với niềm đam mê trong việc phát hiện, phân tích và ứng phó các mối đe dọa an ninh mạng.</p>
+<p>🎵 <strong>Đây là trang web cá nhân</strong> của mình — nơi mình chia sẻ những sở thích của bản thân,<br>cùng các trải nghiệm thú vị trong học tập và cuộc sống.  </p>
+<p>Cảm ơn bạn đã ghé thăm! 💫</p>
+]]></content>
+      <tags>
+        <tag>AboutMe</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Thanh Niên 16/11/2025</title>
+    <url>/archives/post/list/ThanhNien/</url>
+    <content><![CDATA[<p><span style="color:red;font-weight:bold;font-size:20px;">HÁT KHEN GIÊ-XU</span><br>[<span style="color:red;font-weight:bold;">Bm</span>] Lạy vua chí cao [<span style="color:red;font-weight:bold;">A</span>] thật tốt [<span style="color:red;font-weight:bold;">Em</span>] đẹp biết bao [<span style="color:red;font-weight:bold;">Bm</span>] khi ca ngợi Ngài [<span style="color:red;font-weight:bold;">G</span>] và chúc tán [<span style="color:red;font-weight:bold;">A</span>] danh Ngài thôi [<span style="color:red;font-weight:bold;">Bm</span>]. (x2)</p>
+<p>Vào buổi sáng [<span style="color:red;font-weight:bold;">D</span>] hãy rao ra [<span style="color:red;font-weight:bold;">A</span>] sự nhân [<span style="color:red;font-weight:bold;">Em</span>] từ Chúa cho muôn người [<span style="color:red;font-weight:bold;">Bm</span>].<br>Vào mỗi tối [<span style="color:red;font-weight:bold;">D</span>] hãy hoan ca [<span style="color:red;font-weight:bold;">A</span>] vì sự thành tín [<span style="color:red;font-weight:bold;">Em</span>] Chúa còn muôn thu [<span style="color:red;font-weight:bold;">F#</span>]</p>
+<p><span style="color:black;font-weight:bold;">DK:</span> Dùng cả sức [<span style="color:red;font-weight:bold;">Bm</span>] lực , cả linh hồn [<span style="color:red;font-weight:bold;">A</span>], ngợi khen Đấng [<span style="color:red;font-weight:bold;">G</span>] chủ tể muôn loài[<span style="color:red;font-weight:bold;">A</span>].<br>Nào ta hát[<span style="color:red;font-weight:bold;">Bm</span>] mừng chúc tôn[<span style="color:red;font-weight:bold;">A</span>] Ngài là Giê-xu[<span style="color:red;font-weight:bold;">G</span>]…oh oh oh [<span style="color:red;font-weight:bold;">A</span>]<br>Đồng ngợi khen[<span style="color:red;font-weight:bold;">Bm</span>] Ngài, hỡi linh hồn[<span style="color:red;font-weight:bold;">A</span>], vì quyền bính [<span style="color:red;font-weight:bold;">G</span>] dưới đất<br>trên trời [<span style="color:red;font-weight:bold;">A</span>] thuộc về chính [<span style="color:red;font-weight:bold;">Bm</span>]Ngài, chỉ duy Ngài [<span style="color:red;font-weight:bold;">A</span>] là Giê-xu [<span style="color:red;font-weight:bold;">G</span>]…oh oh oh. [<span style="color:red;font-weight:bold;">A</span>] [<span style="color:red;font-weight:bold;">Bm</span>]</p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<p><span style="color:red;font-weight:bold;font-size:20px;">HÁT KHEN GIÊ-XU</span><br>Quyền năng [<span style="color:red;font-weight:bold;">Bm</span>] Chúa vẫn [<span style="color:red;font-weight:bold;">G</span>] không đổi dời.<br>Thần Linh [<span style="color:red;font-weight:bold;">Bm</span>] Chúa oai [<span style="color:red;font-weight:bold;">G</span>] ghi rạng [<span style="color:red;font-weight:bold;">Bm</span>] ngời.<br>Danh Ngài [<span style="color:red;font-weight:bold;">G</span>] vinh quang luôn tỏa [<span style="color:red;font-weight:bold;">A</span>] sáng khắp trên trần gian [<span style="color:red;font-weight:bold;">Bm</span>].</p>
+<p>Bài ca [<span style="color:red;font-weight:bold;">Bm</span>] đắc thắng ta [<span style="color:red;font-weight:bold;">G</span>] ca rộn ràng,<br>tụng ca [<span style="color:red;font-weight:bold;">Bm</span>] Chúa chúc [<span style="color:red;font-weight:bold;">G</span>] tôn Cha đời [<span style="color:red;font-weight:bold;">Bm</span>] đời.<br>Trong [<span style="color:red;font-weight:bold;">G</span>] Danh Giê-xu, chiến [<span style="color:red;font-weight:bold;">A</span>] thắng đã thuộc về ta [<span style="color:red;font-weight:bold;">Bm</span>]</p>
+<p><span style="color:black;font-weight:bold;">Chorus</span><br>Đấng [<span style="color:red;font-weight:bold;">Bm</span>] đắc thắng bóng tối chính [<span style="color:red;font-weight:bold;">D</span>]Giê-xu,<br>cung [<span style="color:red;font-weight:bold;">G(Bm)</span>] nhau ta đi theo dấu chân [<span style="color:red;font-weight:bold;">D</span>] Ngài,<br>không [<span style="color:red;font-weight:bold;">G</span>]chi có thể đứng [<span style="color:red;font-weight:bold;">A</span>] nỗi trước Danh [<span style="color:red;font-weight:bold;">Bm</span>]Giê-xu</p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<p><span style="color:red;font-weight:bold;font-size:20px;">CHÁY LÊN VÌ GIÓ</span></p>
+<p><span style="color:black;font-weight:bold;">Chorus</span><br>Cháy lên vì [<span style="color:red;font-weight:bold;">Bm</span>] gió. Thổi đến nơi [<span style="color:red;font-weight:bold;">D</span>] đây<br>Gió thổi đến nơi [<span style="color:red;font-weight:bold;">Em</span>] đây, thổi cháy tâm [<span style="color:red;font-weight:bold;">F#7</span>] tôi.<br>Cháy theo luồng [<span style="color:red;font-weight:bold;">Bm</span>] gió, biến đổi đời [<span style="color:red;font-weight:bold;">D</span>] tôi<br>Sống theo Lời [<span style="color:red;font-weight:bold;">A</span>] Chúa [<span style="color:red;font-weight:bold;">F#</span>] Sống mãi đời [<span style="color:red;font-weight:bold;">Bm</span>] vui.</p>
+<p><span style="color:black;font-weight:bold;">Verse</span><br>Luồng [<span style="color:red;font-weight:bold;">Bm</span>] gió thổi đến nơi nào Ngọn [<span style="color:red;font-weight:bold;">D</span>] lửa đang bùng cháy.<br>Cuộn [<span style="color:red;font-weight:bold;">A</span>] lên sức sống náu [<span style="color:red;font-weight:bold;">Em</span>] nung trong lòng tôi,<br>cuộn lên [<span style="color:red;font-weight:bold;">G</span>] sức sống cháy [<span style="color:red;font-weight:bold;">F#7</span>] trong hồn tôi.<br>Vì [<span style="color:red;font-weight:bold;">Bm</span>] Chúa chỉ đến khi nào, lòng [<span style="color:red;font-weight:bold;">D</span>] người khát khao gặp Chúa.<br>Tình [<span style="color:red;font-weight:bold;">A</span>] thương rực cháy chiếu [<span style="color:red;font-weight:bold;">Em</span>] sáng linh hồn tôi,<br>đốt lên [<span style="color:red;font-weight:bold;">F#m</span>] ngọn lửa sáng soi lòng tôi [<span style="color:red;font-weight:bold;">Bm</span>].</p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<p><span style="color:red;font-weight:bold;font-size:20px;">THẦN LINH CỦA CHÚA</span></p>
+<p>[<span style="color:red;font-weight:bold;">Em</span>] Thần linh của [<span style="color:red;font-weight:bold;">D</span>] Chúa, hiện diện nơi [<span style="color:red;font-weight:bold;">Em</span>] đây.<br>Thần linh của [<span style="color:red;font-weight:bold;">D</span>] Chúa, đang ở nơi [<span style="color:red;font-weight:bold;">Em</span>] nầy.<br>Ngài nhìn [<span style="color:red;font-weight:bold;">C</span>] thấy mọi [<span style="color:red;font-weight:bold;">D</span>] lòng khác [<span style="color:red;font-weight:bold;">Em</span>] khao<br>Ngài nghe [<span style="color:red;font-weight:bold;">C</span>] thấy tiếng [<span style="color:red;font-weight:bold;">D</span>] con kêu [<span style="color:red;font-weight:bold;">Em</span>] cầu.</p>
+<p>Lạy [<span style="color:red;font-weight:bold;">C</span>] Chúa xin [<span style="color:red;font-weight:bold;">D</span>] hãy chạm [<span style="color:red;font-weight:bold;">G</span>] đến chính tâm linh [<span style="color:red;font-weight:bold;">Em</span>] nầy,<br>Một tâm [<span style="color:red;font-weight:bold;">Am7</span>] linh đang [<span style="color:red;font-weight:bold;">D7</span>] khao khát [<span style="color:red;font-weight:bold;">G</span>] Chúa.</p>
+<p>Lòng con [<span style="color:red;font-weight:bold;">C</span>] đây như đất khô [<span style="color:red;font-weight:bold;">D</span>] hạn,<br>Chờ đợi [<span style="color:red;font-weight:bold;">Bm</span>] cơn mưa Thánh Linh [<span style="color:red;font-weight:bold;">Em</span>] Ngài<br>Làm tươi [<span style="color:red;font-weight:bold;">C</span>] mát tâm [<span style="color:red;font-weight:bold;">D</span>] linh đang mòn [<span style="color:red;font-weight:bold;">G</span>] mỏi.</p>
+<p>Lòng con [<span style="color:red;font-weight:bold;">C</span>] đây như đất khô [<span style="color:red;font-weight:bold;">D</span>] hạn,<br>Chờ đợi [<span style="color:red;font-weight:bold;">Bm</span>] cơn mưa Thánh Linh [<span style="color:red;font-weight:bold;">Em</span>] Ngài,<br>Làm đã [<span style="color:red;font-weight:bold;">C</span>] khát tấm [<span style="color:red;font-weight:bold;">D</span>] lòng đang khát [<span style="color:red;font-weight:bold;">Em</span>] khao.</p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<p><span style="color:red;font-weight:bold;font-size:20px;">VÀO TRONG NƠI THIÊNG LIÊNG</span></p>
+<p><span style="color:black;font-weight:bold;">Verse:</span><br>Vào [<span style="color:red;font-weight:bold;">Em</span>] trong nơi thiêng liêng nơi chí [<span style="color:red;font-weight:bold;">D</span>] thánh Cha.<br>Bước [<span style="color:red;font-weight:bold;">C</span>] vào bằng huyết [<span style="color:red;font-weight:bold;">D</span>] Chiên Con bôi sạch [<span style="color:red;font-weight:bold;">Em</span>] lòng.<br>Vào [<span style="color:red;font-weight:bold;">Em</span>] trong chỉ thờ tôn Vua Giê-[<span style="color:red;font-weight:bold;">D</span>] xu thôi.<br>Bước [<span style="color:red;font-weight:bold;">C</span>] vào để chúc [<span style="color:red;font-weight:bold;">D</span>] tán danh Giê-[<span style="color:red;font-weight:bold;">Em</span>] xu.</p>
+<p><span style="color:black;font-weight:bold;">Chorus:</span><br>Thờ phượng [<span style="color:red;font-weight:bold;">G</span>] Chúa Giê-[<span style="color:red;font-weight:bold;">D</span>] xu, [<span style="color:red;font-weight:bold;">Am</span>] Vua Giê-[<span style="color:red;font-weight:bold;">Em</span>] xu.<br>Thờ phượng [<span style="color:red;font-weight:bold;">G</span>] Chúa Giê-[<span style="color:red;font-weight:bold;">D</span>] xu, [<span style="color:red;font-weight:bold;">Am</span>] Vua Giê-[<span style="color:red;font-weight:bold;">Em</span>] xu.</p>
+<p><span style="color:black;font-weight:bold;">Bridge:</span><br>Thánh thay là Danh [<span style="color:red;font-weight:bold;">C</span>] của Ngài. [<span style="color:red;font-weight:bold;">D</span>] Thánh thay Giê-[<span style="color:red;font-weight:bold;">Em</span>] xu.</p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<p><span style="color:red;font-weight:bold;font-size:20px;">Dâng hiến</span></p>
+<p>Chính [<span style="color:red;font-weight:bold;">Em</span>] Chúa Đấng đáp ứng nhu cầu của [<span style="color:red;font-weight:bold;">Am</span>] tôi.<br>Tùy [<span style="color:red;font-weight:bold;">D</span>] thuộc vào nguồn ơn phước nơi đầy [<span style="color:red;font-weight:bold;">Em</span>] hiển vinh.<br>Cha luôn ban thiên sứ ở bên cạnh [<span style="color:red;font-weight:bold;">Am</span>] tôi luôn mỗi [<span style="color:red;font-weight:bold;">Em</span>] ngày.<br>Giê-[<span style="color:red;font-weight:bold;">C</span>] hô-va Di-rê [<span style="color:red;font-weight:bold;">D</span>] lo liệu [<span style="color:red;font-weight:bold;">Em</span>] thay cho tôi, cho tôi.<br>Giê-[<span style="color:red;font-weight:bold;">C</span>] hô-va Di-rê [<span style="color:red;font-weight:bold;">D</span>] lo liệu [<span style="color:red;font-weight:bold;">Em</span>] thay.</p>
+]]></content>
+      <tags>
+        <tag>list</tag>
+      </tags>
+  </entry>
+</search>
