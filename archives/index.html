@@ -15,15 +15,19 @@
             
             // Get preferred theme
             function getTheme() {
-                // try {
-                //     const saved = localStorage.getItem(THEME_KEY);
-                //     if (saved) {
-                //         const { isDark } = JSON.parse(saved);
-                //         return isDark ? DARK : LIGHT;
-                //     }
-                // } catch (e) {}
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    } else {
+                        // Nếu chưa có gì trong localStorage, đặt mặc định sáng
+                        localStorage.setItem(THEME_KEY, JSON.stringify({ isDark: false }));
+                        return LIGHT;
+                    }
+                } catch (e) {}
                 
-                return LIGHT;
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
             }
             
             // Apply theme to document

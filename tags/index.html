@@ -15,15 +15,19 @@
             
             // Get preferred theme
             function getTheme() {
-                // try {
-                //     const saved = localStorage.getItem(THEME_KEY);
-                //     if (saved) {
-                //         const { isDark } = JSON.parse(saved);
-                //         return isDark ? DARK : LIGHT;
-                //     }
-                // } catch (e) {}
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    } else {
+                        // Nếu chưa có gì trong localStorage, đặt mặc định sáng
+                        localStorage.setItem(THEME_KEY, JSON.stringify({ isDark: false }));
+                        return LIGHT;
+                    }
+                } catch (e) {}
                 
-                return LIGHT;
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
             }
             
             // Apply theme to document
@@ -557,26 +561,26 @@
 		<ul class="tag-list" data-show-value="true">
 			
 				<li>
-					<a data-weight="1" href="/tags/hidden-tips/">
-						<i class="fa-solid fa-hashtag"></i>hidden tips
-					</a>
-				</li>
-			
-				<li>
-					<a data-weight="1" href="/tags/writeup/">
-						<i class="fa-solid fa-hashtag"></i>writeup
-					</a>
-				</li>
-			
-				<li>
 					<a data-weight="1" href="/tags/AboutMe/">
 						<i class="fa-solid fa-hashtag"></i>AboutMe
 					</a>
 				</li>
 			
 				<li>
+					<a data-weight="1" href="/tags/hidden-tips/">
+						<i class="fa-solid fa-hashtag"></i>hidden tips
+					</a>
+				</li>
+			
+				<li>
 					<a data-weight="1" href="/tags/list/">
 						<i class="fa-solid fa-hashtag"></i>list
+					</a>
+				</li>
+			
+				<li>
+					<a data-weight="1" href="/tags/writeup/">
+						<i class="fa-solid fa-hashtag"></i>writeup
 					</a>
 				</li>
 			
