@@ -12,57 +12,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Write-up Stolen Mount TryHackMe</title>
-    <url>/archives/post/stolenMount/</url>
-    <content><![CDATA[<p><span style="color:black;font-weight:bold;">Description:</span> An intruder has infiltrated our network and targeted the NFS server where the backup files are stored. A classified secret was accessed and stolen. The only trace left behind is a packet capture (PCAP) file recorded during the incident. Your mission, should you accept it, is to discover the contents of the stolen data.</p>
-<p><span style="font-weight:bold;">First</span>, when we click ‘Start Machine’ we will see a <span style="font-weight:bold;">challenge.pcapng</span> file in the Desktop directory<br><span style="font-weight:bold;">Open with Wireshark </span>and we will see the following: </p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="wireshark.png"
-                      alt="Wireshark Capture" style="width:100%; border-radius:10px;"
-                >
-
-<p>Since the description mentioned NFS, we will filter this protocol. After filtering, I noticed that the info column contains the names of the <span style="color:black;font-weight:bold;">“procedures”</span> in the RPC protocol that NFS uses.</p>
-<p>Searching on google, I found out that the procedure ‘READ’ is used to read the file, which may contain the file content or flag, so I searched for the keyword ‘READ’<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="filterpackage.png"
-                      alt="Filter Package" style="width:100%; border-radius:10px;"
-                ></p>
-<p>After reading through the packets, I found that there are 2 important packets, packet 214 (containing archive password) and 286 (containing 1 secret.png image file in the .zip file because hex starts with &#x3D; 50 4b 03 04)</p>
-<div style="text-align: center;">
-  <img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="package214.png"
-                      alt="No. 214" style="width: 45%; display: inline-block; margin: 5px;"
-                >
-  <img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="package286.png"
-                      alt="No. 286" style="width: 47%; display: inline-block; margin: 5px;"
-                >
-</div>
-Proceed to extract the zip file:
-Right click on the packet -> Follow -> TCP Stream -> In the Show data as box -> Select Raw -> Save as... (secret.raw)
-
-<p>Open terminal </p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mv</span> secret.raw secret.zip</span><br><span class="line">$ unzip -l secret.zip</span><br><span class="line">$ unzip secret.zip</span><br></pre></td></tr></table></figure></div>
-<p>If successful, you will see a QR Code</p>
-<blockquote>
-<p><span style="color:red;font-style:italic;font-weight:bold;">Good Luck!!</span><br><span style="font-style:italic;">Can you find the password to unzip?</span></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>tryhackme</category>
-      </categories>
-      <tags>
-        <tag>writeup</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/archives/post/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>.</p>
@@ -144,6 +93,57 @@ Right click on the packet -> Follow -> TCP Stream -> In the Show data as box -> 
 ]]></content>
       <tags>
         <tag>list</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Write-up Stolen Mount TryHackMe</title>
+    <url>/archives/post/stolenMount/</url>
+    <content><![CDATA[<p><span style="color:black;font-weight:bold;">Description:</span> An intruder has infiltrated our network and targeted the NFS server where the backup files are stored. A classified secret was accessed and stolen. The only trace left behind is a packet capture (PCAP) file recorded during the incident. Your mission, should you accept it, is to discover the contents of the stolen data.</p>
+<p><span style="font-weight:bold;">First</span>, when we click ‘Start Machine’ we will see a <span style="font-weight:bold;">challenge.pcapng</span> file in the Desktop directory<br><span style="font-weight:bold;">Open with Wireshark </span>and we will see the following: </p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="wireshark.png"
+                      alt="Wireshark Capture" style="width:100%; border-radius:10px;"
+                >
+
+<p>Since the description mentioned NFS, we will filter this protocol. After filtering, I noticed that the info column contains the names of the <span style="color:black;font-weight:bold;">“procedures”</span> in the RPC protocol that NFS uses.</p>
+<p>Searching on google, I found out that the procedure ‘READ’ is used to read the file, which may contain the file content or flag, so I searched for the keyword ‘READ’<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="filterpackage.png"
+                      alt="Filter Package" style="width:100%; border-radius:10px;"
+                ></p>
+<p>After reading through the packets, I found that there are 2 important packets, packet 214 (containing archive password) and 286 (containing 1 secret.png image file in the .zip file because hex starts with &#x3D; 50 4b 03 04)</p>
+<div style="text-align: center;">
+  <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="package214.png"
+                      alt="No. 214" style="width: 45%; display: inline-block; margin: 5px;"
+                >
+  <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="package286.png"
+                      alt="No. 286" style="width: 47%; display: inline-block; margin: 5px;"
+                >
+</div>
+Proceed to extract the zip file:
+Right click on the packet -> Follow -> TCP Stream -> In the Show data as box -> Select Raw -> Save as... (secret.raw)
+
+<p>Open terminal </p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mv</span> secret.raw secret.zip</span><br><span class="line">$ unzip -l secret.zip</span><br><span class="line">$ unzip secret.zip</span><br></pre></td></tr></table></figure></div>
+<p>If successful, you will see a QR Code<br><span style="font-style:italic;color:red;">&#x3D;&gt; Can you find the password to unzip?</span></p>
+<blockquote>
+<p><span style="color:red;font-style:italic;font-weight:bold;">Good Luck!!</span></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>tryhackme</category>
+      </categories>
+      <tags>
+        <tag>writeup</tag>
       </tags>
   </entry>
 </search>
