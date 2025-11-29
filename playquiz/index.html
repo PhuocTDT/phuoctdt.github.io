@@ -91,14 +91,14 @@
         
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Thử Thách Cuối Cùng">
+<meta property="og:title" content="PhuocTDT Blog">
 <meta property="og:url" content="https://phuoctdt.github.io/playquiz/index.html">
 <meta property="og:site_name" content="PhuocTDT Blog">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://phuoctdt.github.io/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-11-29T03:13:51.000Z">
-<meta property="article:modified_time" content="2025-11-29T03:53:33.260Z">
+<meta property="article:modified_time" content="2025-11-29T12:45:06.823Z">
 <meta property="article:author" content="Thien Phuoc">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://phuoctdt.github.io/images/redefine-og.webp">
@@ -113,7 +113,7 @@
     
     <title>
         
-            Thử Thách Cuối Cùng | Learn &amp; Share
+            Learn &amp; Share - Cybersecurity
         
     </title>
 
@@ -554,12 +554,12 @@
 
 	<div class="page-template-content markdown-body">
 		
-		<h1>Thử Thách Cuối Cùng</h1>
+		<h1></h1>
 		
 
 		<style>
 .quiz-container {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 50px auto;
   padding: 20px;
 }
@@ -574,13 +574,13 @@
 .quiz-boxes {
   display: flex;
   justify-content: space-around;
-  gap: 30px;
-  flex-wrap: wrap;
+  gap: 20px;
+  flex-wrap: nowrap;
 }
 
 .quiz-box {
   flex: 1;
-  min-width: 200px;
+  min-width: 150px;
   padding: 40px 20px;
   border-radius: 15px;
   text-align: center;
@@ -598,6 +598,10 @@
 }
 
 .easy {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+
+.easy2 {
   background: linear-gradient(135deg, #4CAF50, #45a049);
 }
 
@@ -751,7 +755,25 @@
   color: white;
 }
 
-@media (max-width: 768px) {
+.qr-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 968px) {
+  .quiz-boxes {
+    flex-wrap: wrap;
+  }
+  
+  .quiz-box {
+    min-width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 600px) {
   .quiz-boxes {
     flex-direction: column;
   }
@@ -773,7 +795,10 @@
   
   <div class="quiz-boxes">
     <div class="quiz-box easy" onclick="openEasyQuiz()">
-      <div>Dễ</div>
+      <div>Dễ 1</div>
+    </div>
+    <div class="quiz-box easy2" onclick="openEasy2Quiz()">
+      <div>Dễ 2</div>
     </div>
     <div class="quiz-box medium" onclick="openMediumQuiz()">
       <div>Trung Bình</div>
@@ -791,7 +816,24 @@
     <h2 class="modal-title">🎬 Thử Thách Dễ</h2>
     <p style="color: #666; font-size: 1.1em;">Xem video và hoàn thành thử thách!</p>
     <div class="youtube-container">
-      <iframe src="https://www.youtube.com/embed/LIAlnamOdbY" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/LIAlnamOdbY?si=LzqVwn0lwcFRIgqq" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- Modal cho mức Dễ 2 -->
+<div id="easy2Modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('easy2Modal')">&times;</span>
+    <h2 class="modal-title">📱 Thử Thách Dễ 2</h2>
+    <p style="color: #666; font-size: 1.1em;">Scan Me !!</p>
+    <div style="text-align: center;">
+      <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/qrcode.png"
+                      alt="QR Code" class="qr-image"
+                >
     </div>
   </div>
 </div>
@@ -802,8 +844,8 @@
     <span class="close-btn" onclick="closeModal('mediumModal')">&times;</span>
     <h2 class="modal-title">🧩 Thử Thách Trung Bình</h2>
     <div class="question-container">
-      <p class="question-text">❓ Câu hỏi: Tên Admin là gì?</p>
-      <p style="color: red; font-size: 1.1em;">* Viết thường, không dấu, viết liền</p>
+      <p class="question-text">❓ Câu hỏi: </p>
+      <p class="question-text">Môi-se đã ở riêng với Chúa để cầu nguyện cho Y-sơ-ra-ên trong bao nhiêu ngày ?</p>
       <input type="text" id="mediumAnswer" class="answer-input" placeholder="Nhập câu trả lời của bạn...">
       <button class="submit-btn" onclick="checkMediumAnswer()">Kiểm Tra</button>
       <div id="mediumResult" class="result-message"></div>
@@ -817,7 +859,7 @@
     <span class="close-btn" onclick="closeModal('hardModal')">&times;</span>
     <h2 class="modal-title">🔥 Thử Thách Khó</h2>
     <p style="color: #666; font-size: 1.1em;">Nhấn vào link bên dưới để truy cập thử thách!</p>
-    <p style="color: #666; font-size: 1.1em;">Nội dung phần còn lại ở bên trong các thư mục. Liệu bạn có tìm ra bí mật bên trong không? Đừng quên những cái bẫy nhá!!</p>
+    <p style="color: #666; font-size: 1.1em;">Liệu bạn có tìm ra bí mật bên trong không? Đừng để bị mắc bẫy nhá!!</p>
     <div style="margin-top: 30px; text-align: center;">
       <a class="link"   href="https://drive.google.com/drive/folders/1R1y4qNAd_N1p1BAnR1o1BCB6eTvvLCRk"  
          target="_blank" 
@@ -834,6 +876,12 @@
 // Mở modal cho mức Dễ
 function openEasyQuiz() {
   document.getElementById('easyModal').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+// Mở modal cho mức Dễ 2
+function openEasy2Quiz() {
+  document.getElementById('easy2Modal').style.display = 'block';
   document.body.style.overflow = 'hidden';
 }
 
@@ -871,11 +919,11 @@ function checkMediumAnswer() {
   const resultDiv = document.getElementById('mediumResult');
   
   // Đáp án đúng (có thể thay đổi)
-  const correctAnswers = ['Thiên Phước', 'Thien Phuoc', 'thien phuoc','phuoc','thienphuoc'];
+  const correctAnswers = ['80'];
   
   if (correctAnswers.includes(answer)) {
     resultDiv.className = 'result-message success';
-    resultDiv.innerHTML = '🎉 Chúc mừng! Bạn đã trả lời đúng! 🎉';
+    resultDiv.innerHTML = '🎉 Chúc mừng! Bạn đã trả lời đúng! 🎉<br> Đây là mảnh ghép của bạn: _Chua}';
     resultDiv.style.display = 'block';
   } else {
     resultDiv.className = 'result-message error';
