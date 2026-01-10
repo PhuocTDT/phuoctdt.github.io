@@ -1,0 +1,222 @@
+{{ partial "header.html" . }}
+<span id="sidebar-toggle-span">
+<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
+</span>
+
+{{if .Site.Home.Content }} 
+{{.Site.Home.Content}}	
+{{else}}           
+	{{if eq .Site.Language.Lang "fr"}}
+		<h1>Personaliser la page d'accueil</h1>
+		<p>
+		  Le site fonctionne. Ne pas oublier de personaliser cette page avec votre propre contenu. 3 manières de faire :
+		</p>
+		<ul>
+			<li><b>1. </b> Créer un fichier _index.md dans le dossier <b>content</b> et le remplir de Markdown</li>
+			<li><b>2. </b> Créer un fichier index.html dans le dossier <b>static</b> et le remplir de code HTML</li>
+		  <li><b>3. </b> Configurer le serveur http pour rediriger automatiquement la homepage vers la page de votre choix dans le site</li>
+		</ul>
+	{{else}}
+		<h1 id="internship-report">Internship Report</h1>
+		<style>
+			.internship-header {
+				display: grid;
+				grid-template-columns: 200px 1fr;
+				gap: 30px;
+				align-items: start;
+				margin-bottom: 25px;
+				padding-bottom: 15px;
+				/* border-bottom: 2px solid #e0e0e0; */
+			}
+
+			.internship-avatar-wrapper {
+				padding: 15px;
+				text-align: center;
+			}
+
+			.internship-avatar-wrapper img {
+				width: 170px;
+				height: 170px;
+				border-radius: 8px;
+				object-fit: cover;
+				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+			}
+
+			.internship-avatar-label {
+				margin-top: 10px;
+				color: #666;
+				font-size: 12px;
+				font-style: italic;
+			}
+
+			.internship-info-section h3 {
+				color: #232F3E;
+				font-size: 20px;
+				margin-bottom: 20px;
+				font-weight: 600;
+			}
+
+			.internship-info-grid {
+				display: grid;
+				gap: 12px;
+			}
+
+			.internship-info-item {
+				display: grid;
+				grid-template-columns: 160px 1fr;
+				gap: 15px;
+				padding: 5px 0;
+				border-bottom: 1px solid #f0f0f0;
+			}
+
+			.internship-info-item:last-child {
+				border-bottom: none;
+			}
+
+			.internship-info-item strong {
+				font-weight: 600;
+				color: #555;
+				font-size: 14px;
+			}
+
+			.internship-info-item > *:last-child {
+				color: #333;
+				font-size: 12px;
+			}
+
+			.internship-content-section {
+				margin-top: 40px;
+				padding-top: 25px;
+			}
+
+			.internship-content-section h3 {
+				color: #232F3E;
+				font-size: 20px;
+				margin-bottom: 20px;
+				font-weight: 600;
+			}
+
+			.internship-content-section ol {
+				margin-left: 20px;
+			}
+
+			.internship-content-section li {
+				margin-bottom: 5px;
+				padding: 4px 0;
+			}
+
+			.internship-content-section a {
+				color: #232F3E;
+				text-decoration: none;
+				font-size: 15px;
+				transition: color 0.2s;
+			}
+
+			.internship-content-section a:hover {
+				color: #FF9900;
+				text-decoration: underline;
+			}
+
+			/* Responsive Design */
+			@media (max-width: 768px) {
+				.internship-header {
+					grid-template-columns: 1fr;
+					text-align: center;
+				}
+
+				.internship-avatar-wrapper {
+					margin: 0 auto;
+					max-width: 220px;
+				}
+
+				.internship-avatar-wrapper img {
+					width: 180px;
+					height: 180px;
+				}
+
+				.internship-info-item {
+					grid-template-columns: 1fr;
+					gap: 5px;
+					text-align: center;
+				}
+			}
+		</style>
+
+		<div class="internship-header">
+			<div class="internship-avatar-wrapper">
+				<img alt="Your profile picture" src="/images/avatar/avatar.jpg">
+				<!-- <div class="internship-avatar-label">Your avatar</div> -->
+			</div>
+			
+			<div class="internship-info-section">
+				<h3 id="student-information">Student Information:</h3>
+				<div class="internship-info-grid">
+					<div class="internship-info-item">
+						<strong>Full Name:</strong>
+						<span>Tran Dang Thien Phuoc</span>
+					</div>
+					<div class="internship-info-item">
+						<strong>Phone Number:</strong>
+						<span>(+84) 845-910-084</span>
+					</div>
+					<div class="internship-info-item">
+						<strong>Email:</strong>
+						<span><a href="mailto:tdtp2005@gmail.com">tdtp2005@gmail.com</a></span>
+					</div>
+					<div class="internship-info-item">
+						<strong>University:</strong>
+						<span>FPT University</span>
+					</div>
+					<div class="internship-info-item">
+						<strong>Major:</strong>
+						<span>Information Assurance</span>
+					</div>
+					<div class="internship-info-item">
+						<strong>Student ID:</strong>
+						<span>SE192472</span>
+					</div>
+					<div class="internship-info-item">
+						<strong>Internship Company:</strong>
+						<span>Amazon Web Services Vietnam Co., Ltd.</span>
+					</div>
+					<div class="internship-info-item">
+						<strong>Internship Position:</strong>
+						<span>FCJ Cloud Intern</span>
+					</div>
+					<div class="internship-info-item">
+						<strong>Internship Duration:</strong>
+						<span>From 05/01/2026 to 05/01/2026</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="internship-content-section">
+			<h3 id="report-content">Report Content</h3>
+			<ol>
+				<li>
+					<a href="/1-worklog/">Worklog</a>
+				</li>
+				<li>
+					<a href="/2-proposal/">Proposal</a>
+				</li>
+				<li>
+					<a href="/3-blogstranslated/">Translated Blogs</a>
+				</li>
+				<li>
+					<a href="/4-eventparticipated/">Events Participated</a>
+				</li>
+				<li>
+					<a href="/5-workshop/">Workshop</a>
+				</li>
+				<li>
+					<a href="/6-self-evaluation/">Self-evaluation</a>
+				</li>
+				<li>
+					<a href="/7-feedback/">Sharing and Feedback</a>
+				</li>
+			</ol>
+		</div>
+	{{end}}
+{{ end }}  
+{{ partial "footer.html" . }}
