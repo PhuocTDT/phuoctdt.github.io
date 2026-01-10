@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AWS System Manager</title>
-    <link>/</link>
+    <link>https://phuoctdt.aws.github.io/</link>
     <description>Recent content on AWS System Manager</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://phuoctdt.aws.github.io/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
