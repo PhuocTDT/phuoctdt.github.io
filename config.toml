@@ -1,6 +1,6 @@
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"
-baseURL = "https://phuoctdt.aws.github.io/"
+baseURL = "https://phuoctdt.github.io/"
 defaultContentLanguage = "en"
 languageCode = "en-us"
 
