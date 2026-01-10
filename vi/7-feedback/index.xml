@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chia sẻ và đóng góp ý kiến on AWS System Manager</title>
-    <link>http://localhost:1313/vi/7-feedback/</link>
+    <link>https://phuoctdt.github.io/vi/7-feedback/</link>
     <description>Recent content in Chia sẻ và đóng góp ý kiến on AWS System Manager</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://localhost:1313/vi/7-feedback/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://phuoctdt.github.io/vi/7-feedback/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
