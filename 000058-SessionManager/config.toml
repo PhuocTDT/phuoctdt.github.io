@@ -1,6 +1,7 @@
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"
 defaultContentLanguage = "en"
+languageCode = "en-us"
 
 # For search functionality
 [outputs]
