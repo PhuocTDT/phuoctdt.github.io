@@ -39,7 +39,7 @@
       </section>
     {{end}}
 
-    {{ if or hugo.IsMultilingual $showvisitedlinks }}
+    {{ if or (gt (len .Site.Languages) 1) $showvisitedlinks }}
     <section id="prefooter">
       <hr/>
       <ul>
