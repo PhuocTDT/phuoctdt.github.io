@@ -31,7 +31,6 @@ jobs:
 
       - name: Build Hugo site
         run: |
-          cd 000058-SessionManager
           hugo -d ../public
 
       - name: Deploy to GitHub Pages
