@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Các bài blog đã dịch on AWS System Manager</title>
-    <link>https://phuoctdt.aws.github.io/vi/3-blogstranslated/</link>
+    <link>http://localhost:1313/vi/3-blogstranslated/</link>
     <description>Recent content in Các bài blog đã dịch on AWS System Manager</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>vi</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="https://phuoctdt.aws.github.io/vi/3-blogstranslated/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/vi/3-blogstranslated/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
