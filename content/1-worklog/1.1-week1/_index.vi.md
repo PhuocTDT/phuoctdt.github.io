@@ -23,3 +23,27 @@ pre: " <b> 1.1. </b> "
 | 7   | - Deploy trang web Workshop AWS lên github| 10/01/2026 | 10/01/2026 |
 
 ### Kết quả đạt được tuần 1:
+
+- Hoàn thành **buổi kick-off tại doanh nghiệp**, nắm rõ:
+  - Văn hóa làm việc
+  - Quy trình học tập và phối hợp nhóm
+  - Các quy định cần tuân thủ trong quá trình thực tập tại AWS
+
+- **Thành lập nhóm làm việc**, phân công vai trò bước đầu và thống nhất phương thức trao đổi, báo cáo tiến độ.
+
+- Nắm được **kiến thức tổng quan về các dịch vụ cốt lõi của AWS**, bao gồm:
+  - EC2: khái niệm máy chủ ảo và cách sử dụng cơ bản
+  - S3: lưu trữ đối tượng và các ứng dụng phổ biến
+  - Networking: kiến thức nền tảng về mạng trong AWS
+
+- **Thực hành vẽ kiến trúc hệ thống trên draw.io**, hiểu cách biểu diễn:
+  - Các thành phần AWS
+  - Luồng dữ liệu trong hệ thống
+  - Kiến trúc cơ bản của một ứng dụng cloud
+
+- **Deploy thành công trang web workshop lên GitHub**, làm quen với:
+  - Quy trình quản lý source code
+  - Publish website bằng GitHub Pages
+
+- Bước đầu hình thành **workflow làm việc nhóm**, sẵn sàng cho các bài lab và dự án phức tạp hơn trong các tuần tiếp theo.
+

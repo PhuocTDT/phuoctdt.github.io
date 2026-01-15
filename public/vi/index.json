@@ -1,216 +1,216 @@
 [
 {
-	"uri": "https://phuoctdt.github.io/vi/1-worklog/1.12-week12/",
+	"uri": "http://localhost:1313/vi/1-worklog/1.12-week12/",
 	"title": "Nhật ký Tuần 12",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/1-worklog/1.11-week11/",
+	"uri": "http://localhost:1313/vi/1-worklog/1.11-week11/",
 	"title": "Nhật ký Tuần 11",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/1-worklog/1.10-week10/",
+	"uri": "http://localhost:1313/vi/1-worklog/1.10-week10/",
 	"title": "Nhật ký Tuần 10",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/1-worklog/1.9-week9/",
+	"uri": "http://localhost:1313/vi/1-worklog/1.9-week9/",
 	"title": "Nhật ký Tuần 9",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/1-worklog/1.8-week8/",
+	"uri": "http://localhost:1313/vi/1-worklog/1.8-week8/",
 	"title": "Nhật ký Tuần 8",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/1-worklog/1.7-week7/",
+	"uri": "http://localhost:1313/vi/1-worklog/1.7-week7/",
 	"title": "Nhật ký Tuần 7",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/1-worklog/1.6-week6/",
+	"uri": "http://localhost:1313/vi/1-worklog/1.6-week6/",
 	"title": "Nhật ký Tuần 6",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/1-worklog/1.5-week5/",
+	"uri": "http://localhost:1313/vi/1-worklog/1.5-week5/",
 	"title": "Nhật ký Tuần 5",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/1-worklog/1.4-week4/",
+	"uri": "http://localhost:1313/vi/1-worklog/1.4-week4/",
 	"title": "Nhật ký Tuần 4",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/1-worklog/1.3-week3/",
+	"uri": "http://localhost:1313/vi/1-worklog/1.3-week3/",
 	"title": "Nhật ký Tuần 3",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/1-worklog/1.2-week2/",
+	"uri": "http://localhost:1313/vi/1-worklog/1.2-week2/",
 	"title": "Nhật ký Tuần 2",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": "Mục tiêu tuần 2: Tải và cấu hình AWS CLI (T2) Tìm hiểu về hosting trên S3 (T2) Cấu hình site-to-site VPN (T3) Kiến thức cơ bản về CSDL với RDS (T4) Giám sát hệ thống với CloudWatch (T5) Các công việc cần triển khai trong tuần này: Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu 2 Cài đặt và cấu hình AWS CLI, làm quen với các lệnh cơ bản https://docs.aws.amazon.com/cli/latest/userguide/ https://000011.awsstudygroup.com/vi/ 3 Tìm hiểu và thực hành hosting website tĩnh trên Amazon S3 https://000057.awsstudygroup.com/vi/ 4 Nghiên cứu kiến trúc và quy trình cấu hình Site-to-Site VPN trên AWS https://000003.awsstudygroup.com/vi/5-vpnsitetosite/ 5 Tìm hiểu kiến thức cơ bản về Amazon RDS và các loại database engine https://000005.awsstudygroup.com/vi/ 6 Giám sát tài nguyên và hệ thống với Amazon CloudWatch https://000008.awsstudygroup.com/vi/ Kết quả đạt được tuần 2: Cài đặt và cấu hình thành công AWS CLI, hiểu cách sử dụng profile, region và các lệnh cơ bản để quản lý tài nguyên AWS. Nắm được quy trình triển khai website tĩnh trên Amazon S3, bao gồm cấu hình bucket, quyền truy cập và static website hosting. Hiểu kiến trúc Site-to-Site VPN, các thành phần chính và luồng kết nối giữa hệ thống on-premises và AWS. Có kiến thức nền tảng về Amazon RDS, phân biệt được các loại cơ sở dữ liệu và cách quản lý database cơ bản. Làm quen với Amazon CloudWatch, biết cách theo dõi metric, xem log và thiết lập cảnh báo cho tài nguyên AWS. "
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/1-worklog/1.1-week1/",
+	"uri": "http://localhost:1313/vi/1-worklog/1.1-week1/",
 	"title": "Nhật ký tuần 1",
 	"tags": [],
 	"description": "",
-	"content": "Mục tiêu tuần 1: Kết nối, làm quen với các thành viên trong First Cloud AI Journey. Hiểu dịch vụ AWS cơ bản Các công việc cần triển khai trong tuần này: Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu 2 - Kick off tại doanh nghiệp - Hiểu rõ hơn về văn hóa công ty, cách làm việc và học tập hiệu quả - Hiểu rõ các quy tắc doanh nghiệp trong quá trình làm việc - Lập nhóm 05/01/2026 05/01/2026 3 - Tìm hiểu về các dịch vụ của AWS + EC2 + S3 + Networking + Database 06/01/2026 06/01/2026 https://cloudjourney.awsstudygroup.com/\nhttps://www.udemy.com/course/vo-long-ve-amazon-web-services/ 4 - Thực hành vẽ Diagrams trên draw.io theo video hướng dẫn 07/01/2026 07/01/2026 https://www.youtube.com/watch?v=l8isyDe-GwY 5 - Meeting: Tìm hiểu rõ về điểm mạnh và điểm yếu của từng thành viên, thống nhất cách làm việc trong quá trình học tập và làm dự án tại AWS 08/01/2026 08/01/2026 6 - Workshop AWS: tạo trang Web blog cá nhân 09/01/2026 09/01/2026 https://www.youtube.com/watch?v=l8isyDe-GwY 7 - Deploy trang web Workshop AWS lên github 10/01/2026 10/01/2026 Kết quả đạt được tuần 1: "
+	"content": "Mục tiêu tuần 1: Kết nối, làm quen với các thành viên trong First Cloud AI Journey. Hiểu dịch vụ AWS cơ bản Các công việc cần triển khai trong tuần này: Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu 2 - Kick off tại doanh nghiệp - Hiểu rõ hơn về văn hóa công ty, cách làm việc và học tập hiệu quả - Hiểu rõ các quy tắc doanh nghiệp trong quá trình làm việc - Lập nhóm 05/01/2026 05/01/2026 3 - Tìm hiểu về các dịch vụ của AWS + EC2 + S3 + Networking + Database 06/01/2026 06/01/2026 https://cloudjourney.awsstudygroup.com/\nhttps://www.udemy.com/course/vo-long-ve-amazon-web-services/ 4 - Thực hành vẽ Diagrams trên draw.io theo video hướng dẫn 07/01/2026 07/01/2026 https://www.youtube.com/watch?v=l8isyDe-GwY 5 - Meeting: Tìm hiểu rõ về điểm mạnh và điểm yếu của từng thành viên, thống nhất cách làm việc trong quá trình học tập và làm dự án tại AWS 08/01/2026 08/01/2026 6 - Workshop AWS: tạo trang Web blog cá nhân 09/01/2026 09/01/2026 https://www.youtube.com/watch?v=l8isyDe-GwY 7 - Deploy trang web Workshop AWS lên github 10/01/2026 10/01/2026 Kết quả đạt được tuần 1: Hoàn thành buổi kick-off tại doanh nghiệp, nắm rõ:\nVăn hóa làm việc Quy trình học tập và phối hợp nhóm Các quy định cần tuân thủ trong quá trình thực tập tại AWS Thành lập nhóm làm việc, phân công vai trò bước đầu và thống nhất phương thức trao đổi, báo cáo tiến độ.\nNắm được kiến thức tổng quan về các dịch vụ cốt lõi của AWS, bao gồm:\nEC2: khái niệm máy chủ ảo và cách sử dụng cơ bản S3: lưu trữ đối tượng và các ứng dụng phổ biến Networking: kiến thức nền tảng về mạng trong AWS Thực hành vẽ kiến trúc hệ thống trên draw.io, hiểu cách biểu diễn:\nCác thành phần AWS Luồng dữ liệu trong hệ thống Kiến trúc cơ bản của một ứng dụng cloud Deploy thành công trang web workshop lên GitHub, làm quen với:\nQuy trình quản lý source code Publish website bằng GitHub Pages Bước đầu hình thành workflow làm việc nhóm, sẵn sàng cho các bài lab và dự án phức tạp hơn trong các tuần tiếp theo.\n"
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/1-worklog/",
+	"uri": "http://localhost:1313/vi/1-worklog/",
 	"title": "Nhật kí công việc",
 	"tags": [],
 	"description": "",
 	"content": "Tuần 1: Khởi dộng\nTuần 2: Nhiệm vụ A\u0026hellip;\nTuần 3: Nhiệm vụ B\u0026hellip;\nTuần 4: Nhiệm vụ C\u0026hellip;\nTuần 5: Nhiệm vụ D\u0026hellip;\nTuần 6: Nhiệm vụ E\u0026hellip;\nTuần 7: Nhiệm vụ G\u0026hellip;\nTuần 8: Nhiệm vụ H\u0026hellip;\nTuần 9: Nhiệm vụ I\u0026hellip;\nTuần 10: Nhiệm vụ L\u0026hellip;\nTuần 11: Nhiệm vụ M\u0026hellip;\nTuần 12: Nhiệm vụ N\u0026hellip;\n"
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/2-proposal/",
+	"uri": "http://localhost:1313/vi/2-proposal/",
 	"title": "Bản đề xuất",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/3-blogstranslated/3.3-blog3/",
+	"uri": "http://localhost:1313/vi/3-blogstranslated/3.3-blog3/",
 	"title": "Bài blog 3",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/3-blogstranslated/3.2-blog2/",
+	"uri": "http://localhost:1313/vi/3-blogstranslated/3.2-blog2/",
 	"title": "Bài blog 2",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/3-blogstranslated/3.1-blog1/",
+	"uri": "http://localhost:1313/vi/3-blogstranslated/3.1-blog1/",
 	"title": "Bài blog 1",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/3-blogstranslated/",
+	"uri": "http://localhost:1313/vi/3-blogstranslated/",
 	"title": "Các bài blog đã dịch",
 	"tags": [],
 	"description": "",
 	"content": "Tại đây sẽ là phần liệt kê, giới thiệu các blogs mà các bạn đã dịch. Ví dụ:\nBlog 1 - Getting started with healthcare data lakes: Using microservices Blog 2 - \u0026hellip; Blog 3 - \u0026hellip; Blog 4 - \u0026hellip; Blog 5 - \u0026hellip; Blog 6 - \u0026hellip; "
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/4-eventparticipated/4.3-event3/",
+	"uri": "http://localhost:1313/vi/4-eventparticipated/4.3-event3/",
 	"title": "Sự kiện 3",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/4-eventparticipated/4.2-event2/",
+	"uri": "http://localhost:1313/vi/4-eventparticipated/4.2-event2/",
 	"title": "Sự kiện 2",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/4-eventparticipated/4.1-event1/",
+	"uri": "http://localhost:1313/vi/4-eventparticipated/4.1-event1/",
 	"title": "Sự kiện 1",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/4-eventparticipated/",
+	"uri": "http://localhost:1313/vi/4-eventparticipated/",
 	"title": "Các sự kiện đã tham gia",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/5-workshop/5.3-workshop3/",
+	"uri": "http://localhost:1313/vi/5-workshop/5.3-workshop3/",
 	"title": "Hội Thảo 3",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/5-workshop/5.2-workshop2/",
+	"uri": "http://localhost:1313/vi/5-workshop/5.2-workshop2/",
 	"title": "Hội Thảo 2",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/5-workshop/5.1-workshop1/",
+	"uri": "http://localhost:1313/vi/5-workshop/5.1-workshop1/",
 	"title": "Hội Thảo 1",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/5-workshop/",
+	"uri": "http://localhost:1313/vi/5-workshop/",
 	"title": "Hội thảo",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/6-selfevaluation/",
+	"uri": "http://localhost:1313/vi/6-selfevaluation/",
 	"title": "Tự đánh giá",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/7-feedback/",
+	"uri": "http://localhost:1313/vi/7-feedback/",
 	"title": "Chia sẻ và đóng góp ý kiến",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/",
+	"uri": "http://localhost:1313/vi/",
 	"title": "AWS System Manager",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/categories/",
+	"uri": "http://localhost:1313/vi/categories/",
 	"title": "Categories",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://phuoctdt.github.io/vi/tags/",
+	"uri": "http://localhost:1313/vi/tags/",
 	"title": "Tags",
 	"tags": [],
 	"description": "",
