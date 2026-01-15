@@ -19,11 +19,11 @@ pre: " <b> 1.2. </b> "
 
 | Day | Task | Start Date | Completion Date | Source of materials ||
 | --- | --------- | ------------ | --------------- | -------------- |
-| 2 | Install and configure AWS CLI, familiarize yourself with basic commands | | | <https://docs.aws.amazon.com/cli/latest/userguide/> <https://000011.awsstudygroup.com/vi/>|
-| 3 | Learn and practice hosting static websites on Amazon S3 | | | <https://000057.awsstudygroup.com/vi/> |
-| 4 | Studying the architecture and configuration process of Site-to-Site VPN on AWS | | | <https://000003.awsstudygroup.com/vi/5-vpnsitetosite/> |
-| 5 | Understanding the basics of Amazon RDS and database engines | | | <https://000005.awsstudygroup.com/vi/> |
-| 6 | Monitoring resources and systems with Amazon CloudWatch | | | <https://000008.awsstudygroup.com/vi/> |
+| 2 | Install and configure AWS CLI, familiarize yourself with basic commands | 12/01/2026 | 12/01/2026 | <https://docs.aws.amazon.com/cli/latest/userguide/> <https://000011.awsstudygroup.com/vi/>|
+| 3 | Learn and practice hosting static websites on Amazon S3 | 13/01/2026 | 13/01/2026 | <https://000057.awsstudygroup.com/vi/> |
+| 4 | Studying the architecture and configuration process of Site-to-Site VPN on AWS | 14/01/2026 | 14/01/2026 | <https://000003.awsstudygroup.com/vi/5-vpnsitetosite/> |
+| 5 | Understanding the basics of Amazon RDS and database engines | 15/01/2026 | 15/01/2026 | <https://000005.awsstudygroup.com/vi/> |
+| 6 | Monitoring resources and systems with Amazon CloudWatch | 16/01/2026 | 16/01/2026 | <https://000008.awsstudygroup.com/vi/> |
 ---
 
 ### Week 2 Results:

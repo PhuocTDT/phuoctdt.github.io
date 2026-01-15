@@ -19,11 +19,11 @@ pre: " <b> 1.2. </b> "
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu ||
 | --- | --------- | ------------ | --------------- | -------------- |
-| 2 | Cài đặt và cấu hình AWS CLI, làm quen với các lệnh cơ bản | | | <https://docs.aws.amazon.com/cli/latest/userguide/> <https://000011.awsstudygroup.com/vi/>|
-| 3 | Tìm hiểu và thực hành hosting website tĩnh trên Amazon S3 | | | <https://000057.awsstudygroup.com/vi/> |
-| 4 | Nghiên cứu kiến trúc và quy trình cấu hình Site-to-Site VPN trên AWS | | | <https://000003.awsstudygroup.com/vi/5-vpnsitetosite/> |
-| 5 | Tìm hiểu kiến thức cơ bản về Amazon RDS và các loại database engine | | | <https://000005.awsstudygroup.com/vi/> |
-| 6 | Giám sát tài nguyên và hệ thống với Amazon CloudWatch | | | <https://000008.awsstudygroup.com/vi/> |
+| 2 | Cài đặt và cấu hình AWS CLI, làm quen với các lệnh cơ bản | 12/01/2026 | 12/01/2026 | <https://docs.aws.amazon.com/cli/latest/userguide/> <https://000011.awsstudygroup.com/vi/>|
+| 3 | Tìm hiểu và thực hành hosting website tĩnh trên Amazon S3 | 13/01/2026 | 13/01/2026 | <https://000057.awsstudygroup.com/vi/> |
+| 4 | Nghiên cứu kiến trúc và quy trình cấu hình Site-to-Site VPN trên AWS | 14/01/2026 | 14/01/2026 | <https://000003.awsstudygroup.com/vi/5-vpnsitetosite/> |
+| 5 | Tìm hiểu kiến thức cơ bản về Amazon RDS và các loại database engine | 15/01/2026 | 15/01/2026 | <https://000005.awsstudygroup.com/vi/> |
+| 6 | Giám sát tài nguyên và hệ thống với Amazon CloudWatch | 16/01/2026 | 16/01/2026 | <https://000008.awsstudygroup.com/vi/> |
 ---
 
 ### Kết quả đạt được tuần 2:
