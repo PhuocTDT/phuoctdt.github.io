@@ -25,19 +25,19 @@ pre: " <b> 1.1. </b> "
 ### Week 1 Achievements:
 
 - Completed **kick-off at the company**, understanding:
- - Work culture
- - Learning process and teamwork
- - Regulations to be followed during the AWS internship
- - **Formed a working group**, assigned initial roles and agreed on methods for communication and progress reporting.
+  - Work culture
+  - Learning process and teamwork
+  - Regulations to be followed during the AWS internship
+  - **Formed a working group**, assigned initial roles and agreed on methods for communication and progress reporting.
 - Gain a **general understanding of AWS core services**, including:
- - EC2: the concept of virtual servers and basic usage
- - S3: object storage and common applications
- - Networking: fundamental knowledge of networking in AWS
+  - EC2: the concept of virtual servers and basic usage
+  - S3: object storage and common applications
+  - Networking: fundamental knowledge of networking in AWS
 - **Practice drawing system architectures on draw.io**, understanding how to represent:
- - AWS components
- - Data flow in the system
- - Basic architecture of a cloud application
+  - AWS components
+  - Data flow in the system
+  - Basic architecture of a cloud application
 - **Successfully deploy the workshop website to GitHub**, becoming familiar with:
- - Source code management process
- - Publish the website using GitHub Pages
- - Begin to form a **teamworkflow**, preparing for more complex labs and projects in the following weeks.
+  - Source code management process
+  - Publish the website using GitHub Pages
+  - Begin to form a **teamworkflow**, preparing for more complex labs and projects in the following weeks.
