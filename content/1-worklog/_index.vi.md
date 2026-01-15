@@ -8,7 +8,7 @@ pre: " <b> 1. </b> "
 
 **Tuần 1:** [Khởi dộng](1.1-week1/)
 
-**Tuần 2:** [Nhiệm vụ A...](1.2-week2/)
+**Tuần 2:** [AWS Cli, RDS, CloudWatch, Site-to-site VPN,... ](1.2-week2/)
 
 **Tuần 3:** [Nhiệm vụ B...](1.3-week3/)
 
