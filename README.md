@@ -1,36 +1,41 @@
 # FCAJ AWS Vietnam – Learning Workflow Repository
 
-## 📌 Giới thiệu
+## 📌 Introduction
 
-Repository này được sử dụng để **lưu trữ workflow học tập chương trình FCAJ (Fundamental Cloud & AI Journey)** tại **AWS Vietnam**. Nội dung tập trung vào việc học, thực hành và chuẩn hóa quy trình làm việc nhóm trong môi trường cloud, DevOps và security.
+This repository is used to **store learning workflows for the FCAJ (Fundamental Cloud & AI Journey) program** at **AWS Vietnam**. The content focuses on learning, practicing, and standardizing team workflows in cloud, DevOps, and security environments.
 
-Repo đóng vai trò như một **learning hub** cho sinh viên/thực tập sinh theo định hướng AWS, giúp:
+The repository acts as a **learning hub** for AWS-oriented students/interns, helping them to:
 
-* Theo dõi tiến độ học tập
-* Chuẩn hóa quy trình làm việc
-* Lưu trữ tài liệu, bài lab và báo cáo
-* Thực hành các best practices của AWS
-
----
-
-## 🎯 Mục tiêu
-
-* Hiểu và áp dụng các **dịch vụ cốt lõi của AWS**
-* Làm quen với **workflow làm việc chuyên nghiệp**
-* Phát triển tư duy **Cloud – Security – AI – Automation**
-* Chuẩn bị nền tảng cho **AWS Internship / AWS Academy / AWS Certification**
+* Track learning progress
+* Standardize workflows
+* Store documents, labs, and reports
+* Practice AWS best practices
 
 ---
 
-## 🧭 Phạm vi học tập
+## 🎯 Objectives
 
-Repo bao gồm các nội dung chính:
+* Understand and apply AWS core services
+
+* Become familiar with professional workflows
+
+* Develop a **Cloud – Security – AI – Automation** mindset
+* Prepare a foundation for **AWS Internship / AWS Academy / AWS Certification**
+
+---
+
+## 🧭 Scope of Learning
+
+The repository includes the following main topics:
 
 ### 1️⃣ Cloud Fundamentals
 
 * AWS Global Infrastructure (Region, AZ, Edge Location)
+
 * IAM (User, Role, Policy, Best Practice)
+
 * EC2, Lightsail, VPC
+
 * S3, EBS, EFS
 
 ### 2️⃣ DevOps & Workflow
@@ -38,33 +43,35 @@ Repo bao gồm các nội dung chính:
 * Git/GitHub workflow
 * Branching strategy
 * Pull Request & Code Review
-* CI/CD với GitHub Actions
-* Infrastructure as Code (CloudFormation / Terraform – mức cơ bản)
+* CI/CD with GitHub Actions
+* Infrastructure as Code (CloudFormation / Terraform – basic level)
 
 ### 3️⃣ Security Basics
 
 * Shared Responsibility Model
 * Network Security (Security Group, NACL)
+
 * Logging & Monitoring (CloudWatch, CloudTrail)
+
 * Basic Threat Modeling
 
-### 4️⃣ AI & Automation (định hướng)
+### 4️⃣ AI & Automation (orientation)
 
-* Giới thiệu AI/ML trên AWS
+* Introduction to AI/ML on AWS
 * Serverless & Automation
 * Event-driven architecture
 
 ---
 
-## 📊 Đánh giá & theo dõi tiến độ
+## 📊 Evaluation & Progress Tracking
 
-* Báo cáo học tập theo **tuần**
-* Mỗi lab có **mục tiêu – kết quả – rút kinh nghiệm**
-* Ưu tiên tư duy giải quyết vấn đề thay vì chỉ làm theo hướng dẫn
+* Weekly learning reports
+* Each lab has **goals – results – lessons learned**
+* Prioritize problem-solving thinking over simply following instructions
 
 ---
 
-## 📚 Tham khảo
+## 📚 References
 
 * AWS Documentation
 * AWS Skill Builder
