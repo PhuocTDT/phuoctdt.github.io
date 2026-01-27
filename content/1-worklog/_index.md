@@ -10,7 +10,7 @@ pre: " <b> 1. </b> "
 
 **Week 2:** [AWS Cli, RDS, CloudWatch, Site-to-site VPN,...](1.2-week2/)
 
-**Week 3:** [Doing task B...](1.3-week3/)
+**Week 3:** [EC2 AUto Scaling, Route53, LightSail, Amazon DynamoDB,...](1.3-week3/)
 
 **Week 4:** [Doing task C...](1.4-week4/)
 

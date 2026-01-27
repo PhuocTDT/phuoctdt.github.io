@@ -10,7 +10,7 @@ pre: " <b> 1. </b> "
 
 **Tuần 2:** [AWS Cli, RDS, CloudWatch, Site-to-site VPN,... ](1.2-week2/)
 
-**Tuần 3:** [Nhiệm vụ B...](1.3-week3/)
+**Tuần 3:** [EC2 AUto Scaling, Route53, LightSail, Amazon DynamoDB,... ](1.3-week3/)
 
 **Tuần 4:** [Nhiệm vụ C...](1.4-week4/)
 
