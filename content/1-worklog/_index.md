@@ -12,7 +12,7 @@ pre: " <b> 1. </b> "
 
 **Week 3:** [EC2 AUto Scaling, Route53, LightSail, Amazon DynamoDB,...](1.3-week3/)
 
-**Week 4:** [Doing task C...](1.4-week4/)
+**Week 4:** [ElastiCache, CloudFont, Lambda@Edge, Lambda, CloudWatch & Grafana, AWS Systems Manager](1.4-week4/)
 
 **Week 5:** [Doing task D...](1.5-week5/)
 
