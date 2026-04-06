@@ -1,35 +1,37 @@
 ---
 title: "Worklog Week 2"
-date: 2026-01-09T14:54:21+07:00
-weight: 1
+date: 2026-01-12T09:00:00+07:00
+weight: 9
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
 
-### Week 2 Goals:
+### Week 2 Objectives:
 
-- Download and configure AWS CLI (T2)
-- Learn about hosting on S3 (T2)
-- Configure site-to-site VPN (T3)
-- Basic database knowledge with RDS (T4)
-- Monitor the system with CloudWatch (T5)
+- Understand the foundation of Networking in AWS (VPC)
+- Learn how to design and create Subnets (Public/Private)
+- Master Routing and Internet Gateways (IGW)
+- Implement NAT Gateway for secure outbound connectivity
+- Practice designing a basic 3-tier network architecture
+
 ---
 
 ### Tasks to be implemented this week:
 
-| Day | Task | Start Date | Completion Date | Source of materials ||
-| --- | --------- | ------------ | --------------- | -------------- |
-| 2 | Install and configure AWS CLI, familiarize yourself with basic commands | 12/01/2026 | 12/01/2026 | <https://docs.aws.amazon.com/cli/latest/userguide/> <https://000011.awsstudygroup.com/vi/>|
-| 3 | Learn and practice hosting static websites on Amazon S3 | 13/01/2026 | 13/01/2026 | <https://000057.awsstudygroup.com/vi/> |
-| 4 | Studying the architecture and configuration process of Site-to-Site VPN on AWS | 14/01/2026 | 14/01/2026 | <https://000003.awsstudygroup.com/vi/5-vpnsitetosite/> |
-| 5 | Understanding the basics of Amazon RDS and database engines | 15/01/2026 | 15/01/2026 | <https://000005.awsstudygroup.com/vi/> |
-| 6 | Monitoring resources and systems with Amazon CloudWatch | 16/01/2026 | 16/01/2026 | <https://000008.awsstudygroup.com/vi/> |
+| Day | Task | Start Date | End Date | Reference Materials |
+| --- | ---- | ---------- | -------- | ------------------- |
+| 2 | VPC Foundations: Creating a VPC, CIDR blocks, and understanding IP addressing | 12/01/2026 | 12/01/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/> |
+| 3 | Subnetting Design: Creating Public and Private subnets across multiple Availability Zones | 13/01/2026 | 13/01/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html> |
+| 4 | Internet Connectivity: Configuring Internet Gateways (IGW) and Route Tables | 14/01/2026 | 14/01/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html> |
+| 5 | Secure Outbound Traffic: Implementing NAT Gateways in Public Subnets | 15/01/2026 | 15/01/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html> |
+| 6 | Networking Capstone: Practice building and testing a secure multi-tier VPC environment | 16/01/2026 | 16/01/2026 | <https://000001.awsstudygroup.com/vi/> |
+
 ---
 
-### Week 2 Results:
+### Week 2 Outcomes:
 
-- Successfully installed and configured **AWS CLI**, understanding how to use profiles, regions, and basic commands to manage AWS resources.
-- Understood the process of **deploying a static website on Amazon S3**, including bucket configuration, access permissions, and static website hosting.
-- Understand the **Site-to-Site VPN** architecture, its key components, and the connection flow between on-premises systems and AWS.
-- Have a foundational understanding of **Amazon RDS**, be able to differentiate between database types, and understand basic database management.
-- Be familiar with **Amazon CloudWatch**, knowing how to monitor metrics, view logs, and set up alerts for AWS resources.
+- Gained a solid foundation in **VPC architecture**, understanding how to define network boundaries in the cloud.
+- Successfully designed and implemented **Subnets (Public/Private)**, ensuring proper resource isolation.
+- Mastered **Routing and Internet Gateways**, enabling communication between VPC resources and the internet.
+- Successfully implemented **NAT Gateways**, allowing resources in private subnets to access the internet securely.
+- Developed a **3-tier network architecture**, providing a secure and scalable environment for future application hosting.

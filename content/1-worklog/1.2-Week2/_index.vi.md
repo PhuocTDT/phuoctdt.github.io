@@ -1,35 +1,37 @@
 ---
-title: "Nhật ký Tuần 2"
-date: 2026-01-09T14:54:16+07:00
-weight: 1
+title: "Nhật ký công việc Tuần 2"
+date: 2026-01-12T09:00:00+07:00
+weight: 9
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
 
-### Mục tiêu tuần 2:
+### Mục tiêu Tuần 2:
 
-- Tải và cấu hình AWS CLI (T2)
-- Tìm hiểu về hosting trên S3 (T2)
-- Cấu hình site-to-site VPN (T3)
-- Kiến thức cơ bản về CSDL với RDS (T4)
-- Giám sát hệ thống với CloudWatch (T5)
+- Tìm hiểu nền tảng Mạng trong AWS (VPC)
+- Học cách thiết kế và tạo các Subnet (Công khai/Riêng tư)
+- Thành thạo về Định tuyến (Routing) và Internet Gateway (IGW)
+- Triển khai NAT Gateway để có kết nối ra ngoài an toàn
+- Thực hành thiết kế kiến trúc mạng 3 lớp cơ bản
+
 ---
 
-### Các công việc cần triển khai trong tuần này:
+### Các nhiệm vụ thực hiện trong tuần:
 
-| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu ||
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --------- | ------------ | --------------- | -------------- |
-| 2 | Cài đặt và cấu hình AWS CLI, làm quen với các lệnh cơ bản | 12/01/2026 | 12/01/2026 | <https://docs.aws.amazon.com/cli/latest/userguide/> <https://000011.awsstudygroup.com/vi/>|
-| 3 | Tìm hiểu và thực hành hosting website tĩnh trên Amazon S3 | 13/01/2026 | 13/01/2026 | <https://000057.awsstudygroup.com/vi/> |
-| 4 | Nghiên cứu kiến trúc và quy trình cấu hình Site-to-Site VPN trên AWS | 14/01/2026 | 14/01/2026 | <https://000003.awsstudygroup.com/vi/5-vpnsitetosite/> |
-| 5 | Tìm hiểu kiến thức cơ bản về Amazon RDS và các loại database engine | 15/01/2026 | 15/01/2026 | <https://000005.awsstudygroup.com/vi/> |
-| 6 | Giám sát tài nguyên và hệ thống với Amazon CloudWatch | 16/01/2026 | 16/01/2026 | <https://000008.awsstudygroup.com/vi/> |
+| 2 | Nền tảng VPC: Tạo VPC, CIDR blocks và tìm hiểu về địa chỉ IP | 12/01/2026 | 12/01/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/> |
+| 3 | Thiết kế Subnet: Tạo các subnet Public và Private trên nhiều Availability Zones | 13/01/2026 | 13/01/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html> |
+| 4 | Kết nối Internet: Cấu hình Internet Gateways (IGW) và Route Tables | 14/01/2026 | 14/01/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html> |
+| 5 | Luồng dữ liệu ra an toàn: Triển khai các NAT Gateway trong Public Subnets | 15/01/2026 | 15/01/2026 | <https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html> |
+| 6 | Bài tập tổng kết Mạng: Thực hành xây dựng và kiểm tra môi trường VPC đa lớp bảo mật | 16/01/2026 | 16/01/2026 | <https://000001.awsstudygroup.com/vi/> |
+
 ---
 
-### Kết quả đạt được tuần 2:
+### Kết quả Tuần 2:
 
-- Cài đặt và cấu hình thành công **AWS CLI**, hiểu cách sử dụng profile, region và các lệnh cơ bản để quản lý tài nguyên AWS.
-- Nắm được quy trình **triển khai website tĩnh trên Amazon S3**, bao gồm cấu hình bucket, quyền truy cập và static website hosting.
-- Hiểu **kiến trúc Site-to-Site VPN**, các thành phần chính và luồng kết nối giữa hệ thống on-premises và AWS.
-- Có kiến thức nền tảng về **Amazon RDS**, phân biệt được các loại cơ sở dữ liệu và cách quản lý database cơ bản.
-- Làm quen với **Amazon CloudWatch**, biết cách theo dõi metric, xem log và thiết lập cảnh báo cho tài nguyên AWS.
+- Đạt được nền tảng vững chắc về **Kiến trúc VPC**, hiểu cách xác định ranh giới mạng trên đám mây.
+- Thiết kế và triển khai thành công các **Subnet (Công khai/Riêng tư)**, đảm bảo cách ly tài nguyên hợp lý.
+- Thành thạo **Định tuyến và Internet Gateways**, cho phép liên lạc giữa tài nguyên VPC và internet.
+- Triển khai thành công **NAT Gateways**, cho phép tài nguyên trong subnet riêng tư truy cập internet một cách an toàn.
+- Phát triển **Kiến trúc mạng 3 lớp**, cung cấp môi trường an toàn và có khả năng mở rộng để lưu trữ ứng dụng trong tương lai.

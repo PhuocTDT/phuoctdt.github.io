@@ -1,0 +1,2667 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.154.3">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Troubleshooting :: AWS System Manager</title>
+
+    
+    <link href="/css/nucleus.css?1775458885" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1775458885" rel="stylesheet">
+    <link href="/css/hybrid.css?1775458885" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1775458885" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1775458885" rel="stylesheet">
+    <link href="/css/auto-complete.css?1775458885" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1775458885" rel="stylesheet">
+    <link href="/css/theme.css?1775458885" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1775458885" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1775458885" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1775458885"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/5-workshop/5.11-appendices/5.11.3-troubleshooting/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1775458885"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1775458885"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost:1313\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1775458885"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-worklog/" title="Worklog" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-worklog/">
+           <b> 1. </b> Worklog
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-worklog/1.1-week1/" title="Worklog Week 1" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-worklog/1.1-week1/">
+           <b> 1.1. </b> Worklog Week 1
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-worklog/1.2-week2/" title="Worklog Week 2" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-worklog/1.2-week2/">
+           <b> 1.2. </b> Worklog Week 2
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-worklog/1.3-week3/" title="Worklog Week 3" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-worklog/1.3-week3/">
+           <b> 1.3. </b> Worklog Week 3
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-worklog/1.4-week4/" title="Worklog Week 4" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-worklog/1.4-week4/">
+           <b> 1.4. </b> Worklog Week 4
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-worklog/1.5-week5/" title="Worklog Week 5" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-worklog/1.5-week5/">
+           <b> 1.5. </b> Worklog Week 5
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-worklog/1.6-week6/" title="Worklog Week 6" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-worklog/1.6-week6/">
+           <b> 1.6. </b> Worklog Week 6
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-worklog/1.7-week7/" title="Worklog Week 7" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-worklog/1.7-week7/">
+           <b> 1.7. </b> Worklog Week 7
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-worklog/1.8-week8/" title="Worklog Week 8" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-worklog/1.8-week8/">
+           <b> 1.8. </b> Worklog Week 8
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-worklog/1.9-week9/" title="Worklog Week 9" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-worklog/1.9-week9/">
+           <b> 1.9. </b> Worklog Week 9
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-worklog/1.10-week10/" title="Worklog Week 10" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-worklog/1.10-week10/">
+           <b> 1.10. </b> Worklog Week 10
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-proposal/" title="Proposal" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-proposal/">
+           <b> 2. </b> Proposal
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-blogstranslated/" title="Blogs Translated" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-blogstranslated/">
+           <b> 3. </b> Blogs Translated
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-blogstranslated/3.1-blog1/" title="Blog 1" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-blogstranslated/3.1-blog1/">
+           <b> 3.1. </b> Blog 1
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-blogstranslated/3.2-blog2/" title="Blog 2" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-blogstranslated/3.2-blog2/">
+           <b> 3.2. </b> Blog 2
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-blogstranslated/3.3-blog3/" title="Blog 3" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-blogstranslated/3.3-blog3/">
+           <b> 3.3. </b> Blog 3
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-eventparticipated/" title="Events Participated" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-eventparticipated/">
+           <b> 4. </b> Events Participated
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-eventparticipated/4.1-event1/" title="Event 1" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-eventparticipated/4.1-event1/">
+           <b> 4.1. </b> Event 1
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-eventparticipated/4.2-event2/" title="Event 2" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-eventparticipated/4.2-event2/">
+           <b> 4.2. </b> Event 2
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-eventparticipated/4.3-event3/" title="Event 3" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-eventparticipated/4.3-event3/">
+           <b> 4.3. </b> Event 3
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/" title="Workshop" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/5-workshop/">
+           <b> 5. </b> Workshop
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.1-overview/" title="Overview" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.1-overview/">
+           <b> 5.1. </b> Overview
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.2-prerequiste/" title="Prerequisites" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.2-prerequiste/">
+           <b> 5.2. </b> Prerequisites
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.3-foundation-setup/" title="Foundation Setup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.3-foundation-setup/">
+           <b> 5.3. </b> Foundation Setup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.4-monitoring-setup/" title="Monitoring Setup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.4-monitoring-setup/">
+           <b> 5.4. </b> Monitoring Setup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.4-monitoring-setup/5.4.1-appsync/" title="AppSync" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.4-monitoring-setup/5.4.1-appsync/">
+           <b> 5.4.1. </b> AppSync
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.4-monitoring-setup/5.4.2-dynamodb/" title="DynamoDB" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.4-monitoring-setup/5.4.2-dynamodb/">
+           <b> 5.4.2. </b> DynamoDB
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.5-processing-setup/" title="Processing Setup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.5-processing-setup/">
+           <b> 5.5. </b> Processing Setup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.5-processing-setup/5.5.1-bedrock/" title="Bedrock" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.5-processing-setup/5.5.1-bedrock/">
+           <b> 5.5.1. </b> Bedrock
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.5-processing-setup/5.5.2-aiengine/" title="AIEngine" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.5-processing-setup/5.5.2-aiengine/">
+           <b> 5.5.2. </b> AIEngine
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.6-automation-setup/" title="Automation Setup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.6-automation-setup/">
+           <b> 5.6. </b> Automation Setup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.6-automation-setup/5.6.2-realtime-subscriptions/" title="Realtime Subscriptions" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.6-automation-setup/5.6.2-realtime-subscriptions/">
+           <b> 5.6.2. </b> Realtime Subscriptions
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.6-automation-setup/5.6.1-friendrequest/" title="FriendRequest" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.6-automation-setup/5.6.1-friendrequest/">
+           <b> 5.6.1. </b> FriendRequest
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.7-dashboard-setup/" title="Dashboard Setup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.7-dashboard-setup/">
+           <b> 5.7. </b> Dashboard Setup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.7-dashboard-setup/5.7.2-uicomponents/" title="UIComponents" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.7-dashboard-setup/5.7.2-uicomponents/">
+           <b> 5.7.2. </b> UIComponents
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.7-dashboard-setup/5.7.1-reactnative/" title="ReactNative" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.7-dashboard-setup/5.7.1-reactnative/">
+           <b> 5.7.1. </b> ReactNative
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.8-verify-setup/" title="Verify Setup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.8-verify-setup/">
+           <b> 5.8. </b> Verify Setup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.9-use-cdk/" title="Use CDK" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.9-use-cdk/">
+           <b> 5.9. </b> Use CDK
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.10-cleanup/" title="Cleanup" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.10-cleanup/">
+           <b> 5.10. </b> Cleanup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.11-appendices/" title="Appendices" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/5-workshop/5.11-appendices/">
+           <b> 5.11. </b> Appendices
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.11-appendices/5.11.3-troubleshooting/" title="Troubleshooting" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/5-workshop/5.11-appendices/5.11.3-troubleshooting/">
+           <b> 5.11.3. </b> Troubleshooting
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-workshop/5.11-appendices/5.11.2-iam-policies/" title="IAM Policies" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-workshop/5.11-appendices/5.11.2-iam-policies/">
+           <b> 5.11.2. </b> IAM Policies
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-selfevaluation/" title="Self-Assessment" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-selfevaluation/">
+           <b> 6. </b> Self-Assessment
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-feedback/" title="Sharing and Feedback" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-feedback/">
+           <b> 7. </b> Sharing and Feedback
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="http://localhost:1313/5-workshop/5.11-appendices/5.11.3-troubleshooting/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="http://localhost:1313/vi/5-workshop/5.11-appendices/5.11.3-troubleshooting/">Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+        <br>
+        <br>
+            <b> Contacts: </b> <br>
+           
+            <i> <a href="https://www.facebook.com/phuoctdt.260823/"  style="color:orange">Facebook: Thien Phuoc</a> <br>
+                <a href="https://github.com/phuoctdt/"  style="color:orange">GitHub: PhuocTDT</a>
+        </i>
+        </left>
+<left>
+    <br>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>06-04-2026</font></i>
+    </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>AWS System Manager</a> > <a href='/5-workshop/'>Workshop</a> > <a href='/5-workshop/5.11-appendices/'>Appendices</a> > Troubleshooting
+          
+        
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#amplify-sandbox">Amplify sandbox</a>
+      <ul>
+        <li><a href="#error-userpoolclient-already-exists"><code>Error: UserPoolClient already exists</code></a></li>
+        <li><a href="#the-provided-credentials-are-expired"><code>The provided credentials are expired</code></a></li>
+        <li><a href="#sandbox-secret-not-found-for-key-google_client_id"><code>sandbox secret not found for key GOOGLE_CLIENT_ID</code></a></li>
+        <li><a href="#amplify_outputsjson-not-found-in-the-frontend"><code>amplify_outputs.json not found</code> in the frontend</a></li>
+      </ul>
+    </li>
+    <li><a href="#bedrock">Bedrock</a>
+      <ul>
+        <li><a href="#accessdeniedexception-you-dont-have-access-to-the-model-with-the-specified-model-id"><code>AccessDeniedException: You don&#39;t have access to the model with the specified model ID</code></a></li>
+        <li><a href="#throttlingexception-rate-exceeded"><code>ThrottlingException: Rate exceeded</code></a></li>
+        <li><a href="#validationexception-input-is-too-long"><code>ValidationException: Input is too long</code></a></li>
+        <li><a href="#wrong-region-errors-on-bedrock">Wrong-region errors on Bedrock</a></li>
+      </ul>
+    </li>
+    <li><a href="#dynamodb">DynamoDB</a>
+      <ul>
+        <li><a href="#resourcenotfoundexception-requested-resource-not-found-in-processnutrition"><code>ResourceNotFoundException: Requested resource not found</code> in processNutrition</a></li>
+        <li><a href="#same-bug-class-on-friendrequest">Same bug class on friendRequest</a></li>
+        <li><a href="#conditionalcheckfailedexception-on-friendrequest"><code>ConditionalCheckFailedException</code> on friendRequest</a></li>
+      </ul>
+    </li>
+    <li><a href="#lambda--nodejs-22">Lambda / Node.js 22</a>
+      <ul>
+        <li><a href="#cannot-find-module-sharp-in-resizeimage"><code>Cannot find module &#39;sharp&#39;</code> in resizeImage</a></li>
+        <li><a href="#cold-start-exceeds-2-seconds">Cold start exceeds 2 seconds</a></li>
+        <li><a href="#timeout-on-aiengine-during-long-bedrock-calls">Timeout on aiEngine during long Bedrock calls</a></li>
+      </ul>
+    </li>
+    <li><a href="#cognito">Cognito</a>
+      <ul>
+        <li><a href="#usernotfoundexception-on-sign-in"><code>UserNotFoundException</code> on sign-in</a></li>
+        <li><a href="#usernotconfirmedexception"><code>UserNotConfirmedException</code></a></li>
+        <li><a href="#notauthorizedexception-incorrect-username-or-password"><code>NotAuthorizedException: Incorrect username or password</code></a></li>
+        <li><a href="#google-oauth-redirect-loop">Google OAuth redirect loop</a></li>
+      </ul>
+    </li>
+    <li><a href="#expo--react-native">Expo / React Native</a>
+      <ul>
+        <li><a href="#peer-dependency-errors-on-npm-install">Peer-dependency errors on <code>npm install</code></a></li>
+        <li><a href="#metro-cannot-resolve-amplify_outputsjson">Metro cannot resolve <code>amplify_outputs.json</code></a></li>
+        <li><a href="#biometric-prompt-does-not-appear">Biometric prompt does not appear</a></li>
+      </ul>
+    </li>
+    <li><a href="#ecs-fastapi-side">ECS (FastAPI side)</a>
+      <ul>
+        <li><a href="#task-stuck-in-provisioning">Task stuck in <code>PROVISIONING</code></a></li>
+        <li><a href="#task-stops-immediately-after-start">Task stops immediately after start</a></li>
+        <li><a href="#alb-returns-502-bad-gateway">ALB returns <code>502 Bad Gateway</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#generic-debugging-checklist">Generic debugging checklist</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Troubleshooting
+            </h1>
+          
+
+        
+
+
+
+	<h1 id="5113-troubleshooting">5.11.3 Troubleshooting</h1>
+<p>A categorised runbook for the errors you will actually see while building and running NutriTrack. Each entry follows the same three-line structure:</p>
+<ul>
+<li><strong>Symptom</strong> — the exact error string or observable behaviour</li>
+<li><strong>Root cause</strong> — what is actually wrong</li>
+<li><strong>Fix</strong> — the command to run or the file to edit</li>
+</ul>
+<p>Scan by category first. If your error is not listed, jump to the debugging checklist at the bottom.</p>
+<h2 id="amplify-sandbox">Amplify sandbox</h2>
+<h3 id="error-userpoolclient-already-exists"><code>Error: UserPoolClient already exists</code></h3>
+<ul>
+<li><strong>Symptom</strong>: <code>npx ampx sandbox</code> fails during CFN deploy with a duplicate resource error on the Cognito User Pool Client.</li>
+<li><strong>Root cause</strong>: a previous sandbox run left partial state in CloudFormation. The local <code>.amplify/</code> directory and the CFN stack have drifted.</li>
+<li><strong>Fix</strong>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd backend
+</span></span><span style="display:flex;"><span>npx ampx sandbox delete
+</span></span><span style="display:flex;"><span>npx ampx sandbox
+</span></span></code></pre></div><p>If <code>sandbox delete</code> itself fails, delete the CFN stack manually in the AWS console (look for <code>amplify-&lt;app&gt;-&lt;user&gt;-sandbox-*</code>), then retry.</p>
+<h3 id="the-provided-credentials-are-expired"><code>The provided credentials are expired</code></h3>
+<ul>
+<li><strong>Symptom</strong>: sandbox or <code>ampx generate outputs</code> fails with an STS credentials error.</li>
+<li><strong>Root cause</strong>: your SSO session token has expired.</li>
+<li><strong>Fix</strong>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws sso login --profile &lt;profile-name&gt;
+</span></span></code></pre></div><p>Confirm the current identity before retrying:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws sts get-caller-identity --profile &lt;profile-name&gt;
+</span></span></code></pre></div><h3 id="sandbox-secret-not-found-for-key-google_client_id"><code>sandbox secret not found for key GOOGLE_CLIENT_ID</code></h3>
+<ul>
+<li><strong>Symptom</strong>: sandbox deploy fails because <code>auth/resource.ts</code> references a secret that was never set.</li>
+<li><strong>Root cause</strong>: secrets are per-sandbox and do not sync from another developer&rsquo;s workstation.</li>
+<li><strong>Fix</strong>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npx ampx sandbox secret set GOOGLE_CLIENT_ID
+</span></span><span style="display:flex;"><span>npx ampx sandbox secret set GOOGLE_CLIENT_SECRET
+</span></span><span style="display:flex;"><span>npx ampx sandbox secret list
+</span></span></code></pre></div><p>Paste the value from your Google Cloud Console OAuth 2.0 client when prompted.</p>
+<h3 id="amplify_outputsjson-not-found-in-the-frontend"><code>amplify_outputs.json not found</code> in the frontend</h3>
+<ul>
+<li><strong>Symptom</strong>: Metro or Expo fails to start with a missing module error on <code>amplify_outputs.json</code>.</li>
+<li><strong>Root cause</strong>: the file is generated by the backend and not committed.</li>
+<li><strong>Fix</strong>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd backend
+</span></span><span style="display:flex;"><span>npx ampx generate outputs --outputs-out-dir ../frontend
+</span></span></code></pre></div><p>Re-run whenever the backend schema changes.</p>
+<h2 id="bedrock">Bedrock</h2>
+<h3 id="accessdeniedexception-you-dont-have-access-to-the-model-with-the-specified-model-id"><code>AccessDeniedException: You don't have access to the model with the specified model ID</code></h3>
+<ul>
+<li><strong>Symptom</strong>: <code>aiEngine</code> invocations return an AccessDenied error referencing <code>qwen.qwen3-vl-235b-a22b</code>.</li>
+<li><strong>Root cause</strong>: model access has not been granted for your account in <code>ap-southeast-2</code>. Bedrock gates every foundation model behind an explicit opt-in.</li>
+<li><strong>Fix</strong>: AWS Console → Bedrock → <em>Model access</em> → Request access → select <code>Qwen3-VL 235B A22B</code> in <code>ap-southeast-2</code> → submit. Propagation takes minutes to hours. Re-invoke once the status flips to <em>Access granted</em>.</li>
+</ul>
+<h3 id="throttlingexception-rate-exceeded"><code>ThrottlingException: Rate exceeded</code></h3>
+<ul>
+<li><strong>Symptom</strong>: intermittent throttles under load, usually during image analysis bursts.</li>
+<li><strong>Root cause</strong>: on-demand Bedrock has per-account, per-model, per-region rate limits.</li>
+<li><strong>Fix</strong>: add exponential backoff in <code>callQwen()</code> (retry on <code>ThrottlingException</code>, <code>ModelTimeoutException</code>, <code>ServiceUnavailableException</code>). For sustained traffic, request Provisioned Throughput via AWS Support.</li>
+</ul>
+<h3 id="validationexception-input-is-too-long"><code>ValidationException: Input is too long</code></h3>
+<ul>
+<li><strong>Symptom</strong>: image analysis fails when the user uploads a very large photo.</li>
+<li><strong>Root cause</strong>: base64-encoded image plus prompt exceeds the model&rsquo;s context window.</li>
+<li><strong>Fix</strong>: the <code>resizeImage</code> Lambda already caps the longest side at 1280 px before the image reaches <code>aiEngine</code>. Verify that the handler reads from <code>media/</code> (post-resize) and not <code>incoming/</code> (pre-resize) for the analysis path. If the path is correct, reduce the max dimension to 1024 px.</li>
+</ul>
+<h3 id="wrong-region-errors-on-bedrock">Wrong-region errors on Bedrock</h3>
+<ul>
+<li><strong>Symptom</strong>: <code>The model ID is not supported in this region</code> or similar.</li>
+<li><strong>Root cause</strong>: the Bedrock client or Lambda environment was configured for a region where <code>qwen.qwen3-vl-235b-a22b</code> is not approved.</li>
+<li><strong>Fix</strong>: hard-code <code>REGION = &quot;ap-southeast-2&quot;</code> in <code>ai-engine/handler.ts</code> and confirm the IAM resource ARN matches. Do not rely on <code>AWS_REGION</code> — the Lambda can run in any region and still need to call Bedrock in Sydney.</li>
+</ul>
+<h2 id="dynamodb">DynamoDB</h2>
+<h3 id="resourcenotfoundexception-requested-resource-not-found-in-processnutrition"><code>ResourceNotFoundException: Requested resource not found</code> in processNutrition</h3>
+<ul>
+<li><strong>Symptom</strong>: nutrition lookups fail in sandbox when multiple developers share an AWS account.</li>
+<li><strong>Root cause</strong>: <code>discoverTableName()</code> uses <code>ListTables()</code> and picks the first <code>Food-*</code> name it finds — which can belong to another sandbox.</li>
+<li><strong>Fix</strong>: inject the table name explicitly in <code>backend/amplify/backend.ts</code>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cfnProcessNutritionFn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">backend</span>.<span style="color:#a6e22e">processNutrition</span>.<span style="color:#a6e22e">resources</span>.<span style="color:#a6e22e">cfnResources</span>.<span style="color:#a6e22e">cfnFunction</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">cfnProcessNutritionFn</span>.<span style="color:#a6e22e">addPropertyOverride</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#39;Environment.Variables.FOOD_TABLE_NAME&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">backend</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">resources</span>.<span style="color:#a6e22e">tables</span>[<span style="color:#e6db74">&#39;Food&#39;</span>].<span style="color:#a6e22e">tableName</span>
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p>The handler already honours <code>process.env.FOOD_TABLE_NAME</code> first. Re-deploy, then remove <code>dynamodb:ListTables</code> from the IAM statement.</p>
+<h3 id="same-bug-class-on-friendrequest">Same bug class on friendRequest</h3>
+<ul>
+<li><strong>Symptom</strong>: friendRequest Lambda throws <code>USER_TABLE_NAME env var not set</code> or writes to the wrong Friendship table.</li>
+<li><strong>Root cause</strong>: env var injection block missing or stale after a schema rename.</li>
+<li><strong>Fix</strong>: <code>friendRequest</code> already has the correct pattern in <code>backend.ts</code>. If you renamed the <code>user</code> or <code>Friendship</code> model in <code>data/resource.ts</code>, update the key in <code>backend.data.resources.tables['&lt;name&gt;']</code> to match. Both <code>USER_TABLE_NAME</code> and <code>FRIENDSHIP_TABLE_NAME</code> must resolve.</li>
+</ul>
+<h3 id="conditionalcheckfailedexception-on-friendrequest"><code>ConditionalCheckFailedException</code> on friendRequest</h3>
+<ul>
+<li><strong>Symptom</strong>: <code>sendRequest</code> or <code>acceptRequest</code> fails with a conditional check error.</li>
+<li><strong>Root cause</strong>: the friendship row already exists (duplicate request, or the other side already accepted).</li>
+<li><strong>Fix</strong>: catch <code>ConditionalCheckFailedException</code> in the Lambda and return a typed response (<code>{ success: false, code: 'ALREADY_FRIENDS' }</code>). The frontend should render a friendly message, not a crash.</li>
+</ul>
+<h2 id="lambda--nodejs-22">Lambda / Node.js 22</h2>
+<h3 id="cannot-find-module-sharp-in-resizeimage"><code>Cannot find module 'sharp'</code> in resizeImage</h3>
+<ul>
+<li><strong>Symptom</strong>: <code>resizeImage</code> invocations crash at import time.</li>
+<li><strong>Root cause</strong>: sharp ships native binaries per OS/CPU. When installed on macOS or Windows, the Lambda bundle does not contain the Linux ARM64 binary.</li>
+<li><strong>Fix</strong>: install sharp with the correct target:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd backend/amplify/resize-image
+</span></span><span style="display:flex;"><span>npm install --os<span style="color:#f92672">=</span>linux --cpu<span style="color:#f92672">=</span>arm64 sharp
+</span></span></code></pre></div><p>Alternatively, package sharp as a Lambda layer and reference it from the function. Verify the binary exists under <code>node_modules/@img/sharp-linux-arm64/</code> before deploying.</p>
+<h3 id="cold-start-exceeds-2-seconds">Cold start exceeds 2 seconds</h3>
+<ul>
+<li><strong>Symptom</strong>: first invocation after idle is slow; subsequent calls are fast.</li>
+<li><strong>Root cause</strong>: Node.js 22 with several SDK clients has a non-trivial init. Memory setting also bounds CPU.</li>
+<li><strong>Fix</strong>: raise <code>memoryMB</code> in the function&rsquo;s <code>resource.ts</code> (256 → 512 or 1024). For user-facing hot paths (<code>aiEngine</code>), consider Provisioned Concurrency instead of raising memory indefinitely.</li>
+</ul>
+<h3 id="timeout-on-aiengine-during-long-bedrock-calls">Timeout on aiEngine during long Bedrock calls</h3>
+<ul>
+<li><strong>Symptom</strong>: voice-to-food or image analysis returns a Lambda timeout after 30 seconds.</li>
+<li><strong>Root cause</strong>: Bedrock can take 10–60 s on long prompts or cold model routing. The default Lambda timeout is too low.</li>
+<li><strong>Fix</strong>: set <code>timeoutSeconds: 120</code> in <code>backend/amplify/ai-engine/resource.ts</code>. If the underlying Transcribe + Bedrock chain legitimately exceeds that, redesign as two invocations (start job → poll via AppSync subscription) rather than raising timeout further.</li>
+</ul>
+<h2 id="cognito">Cognito</h2>
+<h3 id="usernotfoundexception-on-sign-in"><code>UserNotFoundException</code> on sign-in</h3>
+<ul>
+<li><strong>Symptom</strong>: login fails immediately with <code>UserNotFoundException</code>.</li>
+<li><strong>Root cause</strong>: the email address is not registered in this User Pool.</li>
+<li><strong>Fix</strong>: route the user to the signup screen. Do not surface the raw error — it leaks which emails exist.</li>
+</ul>
+<h3 id="usernotconfirmedexception"><code>UserNotConfirmedException</code></h3>
+<ul>
+<li><strong>Symptom</strong>: login fails because the email OTP was never verified.</li>
+<li><strong>Root cause</strong>: signup completed but the verification step was skipped.</li>
+<li><strong>Fix</strong>: call <code>resendSignUpCode({ username })</code> and navigate to the verify-otp screen. The user enters the new code and confirms.</li>
+</ul>
+<h3 id="notauthorizedexception-incorrect-username-or-password"><code>NotAuthorizedException: Incorrect username or password</code></h3>
+<ul>
+<li><strong>Symptom</strong>: login fails even though the user exists.</li>
+<li><strong>Root cause</strong>: wrong password, or the account was disabled in the Cognito console.</li>
+<li><strong>Fix</strong>: offer &ldquo;Forgot password&rdquo; flow. If the issue is admin-side (disabled account), check the user&rsquo;s status in the Cognito console.</li>
+</ul>
+<h3 id="google-oauth-redirect-loop">Google OAuth redirect loop</h3>
+<ul>
+<li><strong>Symptom</strong>: Google login bounces between Cognito hosted UI and Google, never landing on the app.</li>
+<li><strong>Root cause</strong>: callback URL mismatch. Cognito&rsquo;s allowed callback URLs and Google Cloud Console&rsquo;s authorised redirect URIs must match <strong>exactly</strong>, including scheme, host, path, and trailing slash.</li>
+<li><strong>Fix</strong>: in Cognito → App client settings, copy the callback list. Paste it verbatim into Google Cloud Console → OAuth 2.0 Client → <em>Authorised redirect URIs</em>. Remove any legacy dev URLs that no longer exist.</li>
+</ul>
+<h2 id="expo--react-native">Expo / React Native</h2>
+<h3 id="peer-dependency-errors-on-npm-install">Peer-dependency errors on <code>npm install</code></h3>
+<ul>
+<li><strong>Symptom</strong>: <code>npm install</code> in <code>frontend/</code> fails with <code>ERESOLVE</code> peer conflicts.</li>
+<li><strong>Root cause</strong>: Expo&rsquo;s native-module ecosystem has strict peer ranges that newer React Native versions violate.</li>
+<li><strong>Fix</strong>: always use <code>--legacy-peer-deps</code>. This is enforced in <code>frontend/.npmrc</code>; if you delete it, re-create it:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>legacy-peer-deps=true
+</span></span></code></pre></div><h3 id="metro-cannot-resolve-amplify_outputsjson">Metro cannot resolve <code>amplify_outputs.json</code></h3>
+<ul>
+<li><strong>Symptom</strong>: Metro bundler errors on import of <code>amplify_outputs.json</code>.</li>
+<li><strong>Root cause</strong>: the file is not checked in and was not generated locally.</li>
+<li><strong>Fix</strong>: regenerate from the backend:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd backend
+</span></span><span style="display:flex;"><span>npx ampx generate outputs --outputs-out-dir ../frontend
+</span></span></code></pre></div><h3 id="biometric-prompt-does-not-appear">Biometric prompt does not appear</h3>
+<ul>
+<li><strong>Symptom</strong>: <code>expo-local-authentication</code> never prompts on Android or iOS.</li>
+<li><strong>Root cause</strong>: Expo Go does not ship with every native module. Biometric support requires a dev build.</li>
+<li><strong>Fix</strong>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd frontend
+</span></span><span style="display:flex;"><span>npx expo run:android      <span style="color:#75715e"># or</span>
+</span></span><span style="display:flex;"><span>npx expo run:ios
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># For a hosted build:</span>
+</span></span><span style="display:flex;"><span>eas build --profile development --platform android
+</span></span></code></pre></div><p>Reinstall the resulting dev client and the prompt will appear.</p>
+<h2 id="ecs-fastapi-side">ECS (FastAPI side)</h2>
+<h3 id="task-stuck-in-provisioning">Task stuck in <code>PROVISIONING</code></h3>
+<ul>
+<li><strong>Symptom</strong>: ECS tasks never reach <code>RUNNING</code>; ECS service events show repeated pull failures.</li>
+<li><strong>Root cause</strong>: no network path to ECR (missing NAT Gateway for private subnets), or the task execution role lacks ECR permissions.</li>
+<li><strong>Fix</strong>: confirm <code>AmazonECSTaskExecutionRolePolicy</code> is attached to the execution role (<code>ecr:GetAuthorizationToken</code>, <code>ecr:BatchGetImage</code>). If using private subnets, ensure a NAT Gateway or ECR interface endpoints exist.</li>
+</ul>
+<h3 id="task-stops-immediately-after-start">Task stops immediately after start</h3>
+<ul>
+<li><strong>Symptom</strong>: task transitions <code>PROVISIONING → RUNNING → STOPPED</code> in seconds.</li>
+<li><strong>Root cause</strong>: the container crashes on startup — missing env var, failed DB connection, syntax error.</li>
+<li><strong>Fix</strong>: open CloudWatch Logs for the task&rsquo;s log group. The first 10 lines after startup usually name the exact issue. Add missing env vars via the task definition, not the image.</li>
+</ul>
+<h3 id="alb-returns-502-bad-gateway">ALB returns <code>502 Bad Gateway</code></h3>
+<ul>
+<li><strong>Symptom</strong>: ALB routes traffic but every request is 502.</li>
+<li><strong>Root cause</strong>: health check path (default <code>/health</code>) is not implemented in the FastAPI app, so the target group marks tasks unhealthy.</li>
+<li><strong>Fix</strong>: add a simple handler:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74">&#34;/health&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">health</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;ok&#34;</span>}
+</span></span></code></pre></div><p>Rebuild, push, redeploy. Confirm the target group&rsquo;s health check path in the console.</p>
+<h2 id="generic-debugging-checklist">Generic debugging checklist</h2>
+<p>When nothing on this page matches, work through the list in order — cheapest first:</p>
+<ol>
+<li><strong>Reproduce locally</strong> with <code>npx ampx sandbox</code> pointed at your own account. Most &ldquo;mysterious&rdquo; bugs become boring when you own the stack.</li>
+<li><strong>Check CloudWatch Logs</strong> for the specific Lambda. Set <code>DEBUG=true</code> as an env var on the function to enable the handler&rsquo;s <code>debug()</code> logger.</li>
+<li><strong>Set CloudWatch log retention</strong> on every log group (default is <em>Never expire</em>, which is both expensive and unhelpful). Two weeks is a good default for non-production.</li>
+<li><strong>Tag every resource</strong> with <code>Project=NutriTrack</code> and <code>Environment=sandbox|staging|prod</code>. Makes cost tracking and cleanup trivial.</li>
+<li><strong>Run the AWS CLI with <code>--debug</code></strong> when a call behaves unexpectedly. The full signed request and raw response help identify policy vs. configuration issues.</li>
+<li><strong>Compare IAM statements</strong> against <a href="/5-workshop/5.11-appendices/5.11.2-iam-policies/">5.11.2 IAM Policies</a>. If a statement is missing, no amount of code-level retries will save you.</li>
+<li><strong>Check the region</strong> twice. NutriTrack pins Bedrock to <code>ap-southeast-2</code> — every other service can be regional, Bedrock is not.</li>
+</ol>
+<p>If you are still stuck after the checklist, capture the error, the exact command, the region, and the Lambda request ID, and file an issue.</p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/5-workshop/5.11-appendices/5.11.2-iam-policies/" title="IAM Policies"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/5-workshop/5.10-cleanup/" title="Cleanup" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1775458885"></script>
+    <script src="/js/perfect-scrollbar.min.js?1775458885"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1775458885"></script>
+    <script src="/js/jquery.sticky.js?1775458885"></script>
+    <script src="/js/featherlight.min.js?1775458885"></script>
+    <script src="/js/highlight.pack.js?1775458885"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1775458885"></script>
+    <script src="/js/learn.js?1775458885"></script>
+    <script src="/js/hugo-learn.js?1775458885"></script>
+
+    <link href="/mermaid/mermaid.css?1775458885" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1775458885"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
