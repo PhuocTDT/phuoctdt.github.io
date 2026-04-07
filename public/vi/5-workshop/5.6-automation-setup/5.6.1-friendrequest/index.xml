@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>FriendRequest on AWS System Manager</title>
-    <link>http://localhost:1313/vi/5-workshop/5.6-automation-setup/5.6.1-friendrequest/</link>
+    <link>http://localhost:55557/vi/5-workshop/5.6-automation-setup/5.6.1-friendrequest/</link>
     <description>Recent content in FriendRequest on AWS System Manager</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://localhost:1313/vi/5-workshop/5.6-automation-setup/5.6.1-friendrequest/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:55557/vi/5-workshop/5.6-automation-setup/5.6.1-friendrequest/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
