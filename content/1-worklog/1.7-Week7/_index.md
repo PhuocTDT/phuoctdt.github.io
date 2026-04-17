@@ -1,7 +1,7 @@
 ---
 title: "Worklog Week 7"
 date: 2026-03-02T09:00:00+07:00
-weight: 4
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
@@ -23,7 +23,7 @@ pre: " <b> 1.7. </b> "
 | 3 | Configuring Cognito User Pool (Email OTP + Google Federation) | 03/03/2026 | 03/03/2026 | <https://docs.aws.amazon.com/cognito/> |
 | 4 | Implementing AWS KMS for data encryption | 04/03/2026 | 04/03/2026 | <https://docs.aws.amazon.com/kms/> |
 | 5 | Using AWS Secrets Manager for environment secrets | 05/03/2026 | 05/03/2026 | <https://docs.aws.amazon.com/secretsmanager/> |
-| 6 | Infrastructure Review: Verifying the core security baseline | 06/03/2026 | 06/03/2026 | <https://wellarchitected.aws/> |
+| 6 | Infrastructure Review: Verifying the core security baseline | 06/03/2026 | 06/03/2026 |  |
 
 ---
 

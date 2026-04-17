@@ -1,7 +1,7 @@
 ---
 title: "Nhật ký công việc Tuần 10"
 date: 2026-03-23T09:00:00+07:00
-weight: 1
+weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
@@ -23,7 +23,7 @@ pre: " <b> 1.10. </b> "
 | 3 | Thực hiện đánh giá bảo mật cuối dùng bằng IAM Access Analyzer | 24/03/2026 | 24/03/2026 | <https://aws.amazon.com/iam/access-analyzer/> |
 | 4 | Cập nhật sơ đồ Kiến trúc và tệp README kỹ thuật | 25/03/2026 | 25/03/2026 | <https://aws.amazon.com/architecture/icons/> |
 | 5 | Showcase: Chạy thử end-to-end NutriTrack và quay video demo | 26/03/2026 | 26/03/2026 | <https://000008.awsstudygroup.com/> |
-| 6 | Tổng kết lộ trình 10 tuần AWS: Bài học kinh nghiệm và bước tiếp theo | 27/03/2026 | 27/03/2026 | <https://wellarchitected.aws/> |
+| 6 | Tổng kết lộ trình 10 tuần AWS: Bài học kinh nghiệm và bước tiếp theo | 27/03/2026 | 27/03/2026 |  |
 
 ---
 

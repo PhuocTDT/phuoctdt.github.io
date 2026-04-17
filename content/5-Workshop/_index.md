@@ -2,40 +2,45 @@
 title: "Workshop"
 date: 2026-01-09T16:03:34+07:00
 weight: 5
-chapter: true
+chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# NutriTrack — Full-Stack AWS Deployment Workshop
+# NutriTrack — AWS Full-Stack Deployment Workshop
+This guide provides a complete step-by-step process for deploying **NutriTrack**—an automated AI nutrition tracking and image analysis system on AWS. The workshop leverages the **AWS Amplify Gen 2** governance framework to establish a core serverless infrastructure including **Amazon Cognito** (Authentication), **AWS AppSync** & **DynamoDB** (Data), and **Amazon S3** (Storage). The system is extended with a high-performance computing layer using **Amazon ECS Fargate** to handle computer vision tasks and in-depth nutrition analysis via **Amazon Bedrock**, seamlessly connecting to the **React Native** mobile application. The entire solution incorporates an automated **CI/CD** process, optimizing deployment from development to actual operation in the cloud environment.
 
-#### Overview
-
-This workshop is a step-by-step guide to deploying **NutriTrack**, a production-grade serverless nutrition-tracking platform on AWS. You will build a React Native (Expo SDK 54) mobile app backed by **AWS Amplify Gen 2**, **Amazon Bedrock** (Qwen3-VL 235B multimodal), **AWS AppSync** GraphQL, **Amazon DynamoDB**, and a containerized **FastAPI** service on **ECS Fargate**. The finished system ingests food photos, transcribes Vietnamese voice input, calls an AI coach named **Ollie**, and persists nutrition logs with real-time GraphQL subscriptions.
-
-Everything in this workshop mirrors the actual deployed codebase — no placeholder architecture, no toy examples. Every IAM statement, every Lambda `runtime: 22`, every DynamoDB GSI, and every S3 prefix matches what runs in the `main` environment today.
-
-#### What you will build
-
-- **Frontend**: Expo Router app (React Native 0.81, React 19) with biometric auth, camera/voice capture, Zustand stores, and a `@react-three/fiber` pet evolution screen.
-- **Backend**: Amplify Gen 2 (`defineBackend`) provisioning Cognito + Google OAuth, 8 DynamoDB models via AppSync, an S3 bucket with 4 access prefixes, and 4 Lambda functions (`aiEngine`, `processNutrition`, `friendRequest`, `resizeImage`).
-- **AI layer**: Bedrock Qwen3-VL (`qwen.qwen3-vl-235b-a22b`) in `ap-southeast-2`, invoked through a single multi-action Lambda that routes 10 AI actions (photo analysis, voice-to-food, coach replies, recipe generation, weekly insights…).
-- **Container tier**: FastAPI on ECS Fargate behind an ALB, deployed from ECR, networked through a purpose-built VPC.
-- **Ops**: Amplify CI/CD across three environments (sandbox, `feat/phase3`, `main`), CloudWatch logs, and a cleanup playbook.
-
-#### Contents
+## Workshop Contents
 
 1. [Overview](5.1-Overview/)
 2. [Prerequisites](5.2-Prerequiste/)
-3. [Foundation Setup — Amplify, Cognito, S3](5.3-Foundation-Setup/)
-4. [Data Layer — AppSync & DynamoDB](5.4-Monitoring-Setup/)
-5. [Compute & AI — Bedrock, Lambdas](5.5-Processing-Setup/)
-6. [API & Social — Friends, Realtime Subscriptions](5.6-Automation-Setup/)
-7. [Frontend — Expo, UI, Voice & Camera](5.7-Dashboard-Setup/)
-8. [ECS Deployment — VPC, ECR, Fargate, ALB](5.8-Verify-Setup/)
-9. [CI/CD — Amplify Multi-Environment](5.9-Use-CDK/)
-10. [Cleanup](5.10-Cleanup/)
-11. [Appendices — Budget, IAM, Troubleshooting, Prompts](5.11-Appendices/)
+3. [Frontend Setup](5.3-Frontend/)
+4. [Backend Setup](5.4-Backend/)
+5. [ECS Fargate Tier](5.5-ECS-Fargate/)
+6. [CI/CD](5.6-CICD/)
+7. [5.7 Resource Cleanup](5.7-Cleanup/)
 
-#### Who this is for
+## Cost Estimation
 
-Engineers who are comfortable with TypeScript, have used AWS at least casually, and want to see how a real Amplify Gen 2 project is structured end-to-end. You do **not** need prior Bedrock, Amplify Gen 2, or React Native experience — every step includes the exact commands, file paths, and IAM policies to copy.
+The following table provides an estimated cost for maintaining the NutriTrack system on AWS. Please note that actual costs may vary based on usage levels and specific configurations.
+
+| Services             | Monthly Cost | Cost per Day |
+|----------------------|-------------:|-------------:|
+| Amazon Route 53      | $0.90        | $0.016       |
+| Amplify WAF          | $42.10       | $1.403       |
+| CloudFront           | $0.00        | $0.850       |
+| AWS Amplify          | $4.65        | $0.341       |
+| Fargate ARM64        | $10.23       | $0.254       |
+| ALB                  | $28.46       | $0.040       |
+| NAT Instance         | $7.63        | $0.2544      |
+| Amazon Cognito       | $0.00        | $0.016       |
+| AWS AppSync          | $3.11        | $0           |
+| AWS Lambda           | $0.00        | $0.008       |
+| Amazon Transcribe    | $6.57        | $0.010       |
+| Amazon Bedrock       | $147.57      | $0.001       |
+| Amazon S3            | $1.47        | $0           |
+| Amazon DynamoDB      | $0.13        | $0.007       |
+| CloudWatch           | $0.00        | $0           |
+| AWS Secrets Manager  | $1.20        | $0           |
+| **Total**            | **$254.02**  | **$2.94**    |
+
+---

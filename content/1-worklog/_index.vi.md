@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-# NHẬT KÝ CÔNG VIỆC
-
 **Tuần 1:** [Làm quen với AWS và các dịch vụ AWS cơ bản](1.1-Week1/)
 
 **Tuần 2:** [AWS CLI, RDS, CloudWatch, Site-to-Site VPN](1.2-Week2/)

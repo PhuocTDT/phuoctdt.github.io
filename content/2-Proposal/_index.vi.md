@@ -1,5 +1,5 @@
 ---
-title: "Bản đề xuất"
+menuTitle: "Proposal"
 date: 2026-01-09T15:00:11+07:00
 weight: 2
 chapter: false
@@ -51,7 +51,7 @@ NutriTrack tiếp cận bằng kiến trúc AWS-native hoàn toàn serverless:
 
 #### Hiệu quả chi phí
 
-Chi phí vận hành ước tính **~$60.87/tháng** cho 1.000 người dùng hoạt động — nhờ tận dụng AWS Free Tier và mô hình thanh toán theo mức dùng của serverless. Mốc hòa vốn phụ thuộc vào tỉ lệ chuyển đổi sang gói premium (phân tích ảnh không giới hạn, báo cáo AI chuyên sâu, coach ưu tiên) và sẽ được xác nhận sau khi ra mắt.
+Chi phí vận hành ước tính **~$250/tháng** cho 1.000 người dùng hoạt động — nhờ tận dụng AWS Free Tier và mô hình thanh toán theo mức dùng của serverless. Mốc hòa vốn phụ thuộc vào tỉ lệ chuyển đổi sang gói premium (phân tích ảnh không giới hạn, báo cáo AI chuyên sâu, coach ưu tiên) và sẽ được xác nhận sau khi ra mắt.
 
 ---
 

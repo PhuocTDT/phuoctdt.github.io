@@ -1,7 +1,7 @@
 ---
 title: "AWS Cloud Mastery 2"
 date: 2026-04-04T15:59:44+07:00
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 4.3. </b> "
 ---

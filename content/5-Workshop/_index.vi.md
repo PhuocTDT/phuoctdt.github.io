@@ -1,41 +1,48 @@
 ---
-title: "Xưởng thực hành"
+title: "Workshop"
 date: 2026-01-09T16:03:34+07:00
 weight: 5
-chapter: true
+chapter: false
 pre: " <b> 5. </b> "
 ---
 
 # NutriTrack — Workshop Triển Khai Full-Stack Trên AWS
 
-#### Tổng quan
+## Tổng quan
+Hướng dẫn này cung cấp quy trình từng bước hoàn chỉnh để triển khai **NutriTrack** — hệ thống theo dõi dinh dưỡng và phân tích hình ảnh AI tự động trên AWS. Workshop tận dụng khung quản trị **AWS Amplify Gen 2** để thiết lập hạ tầng serverless cốt lõi bao gồm **Amazon Cognito** (Xác thực), **AWS AppSync** & **DynamoDB** (Dữ liệu), và **Amazon S3** (Lưu trữ). Hệ thống được mở rộng với tầng tính toán hiệu năng cao bằng **Amazon ECS Fargate** để xử lý các tác vụ thị giác máy tính và phân tích dinh dưỡng sâu qua **Amazon Bedrock**, kết nối linh hoạt với ứng dụng mobile **React Native**. Toàn bộ giải pháp được tích hợp quy trình **CI/CD** tự động, giúp tối ưu hóa việc triển khai từ giai đoạn phát triển đến vận hành thực tế trên môi trường cloud.
 
-Workshop này là hướng dẫn từng bước để triển khai **NutriTrack**, một nền tảng theo dõi dinh dưỡng serverless mức production trên AWS. Bạn sẽ xây dựng ứng dụng mobile React Native (Expo SDK 54) kết nối tới **AWS Amplify Gen 2**, **Amazon Bedrock** (Qwen3-VL 235B đa phương thức), **AWS AppSync** GraphQL, **Amazon DynamoDB**, và một dịch vụ **FastAPI** đóng gói container chạy trên **ECS Fargate**. Hệ thống hoàn chỉnh nhận ảnh món ăn, chuyển giọng nói tiếng Việt thành văn bản, gọi AI coach tên **Ollie**, và lưu nhật ký dinh dưỡng với real-time GraphQL subscriptions.
+## Nội dung thực hành
 
-Toàn bộ nội dung workshop phản ánh đúng codebase đang chạy thật — không có kiến trúc giả, không có ví dụ đồ chơi. Mọi IAM statement, mọi `runtime: 22` của Lambda, mọi GSI DynamoDB, và mọi S3 prefix đều trùng với môi trường `main` hiện tại.
+1. [Tổng quan](5.1-Overview/)
+2. [Điều kiện tiên quyết](5.2-Prerequiste/)
+3. [Thiết lập Frontend](5.3-Frontend/)
+4. [Thiết lập Backend](5.4-Backend/)
+5. [Tầng Container ECS Fargate](5.5-ECS-Fargate/)
+6. [CI/CD](5.6-CICD/)
+7. [Dọn dẹp tài nguyên](5.7-Cleanup/)
 
-#### Bạn sẽ xây dựng những gì
+## Ước tính chi phí
 
-- **Frontend**: Ứng dụng Expo Router (React Native 0.81, React 19) với xác thực sinh trắc, camera/voice capture, Zustand stores, và màn hình pet evolution dùng `@react-three/fiber`.
-- **Backend**: Amplify Gen 2 (`defineBackend`) cấp phát Cognito + Google OAuth, 8 model DynamoDB thông qua AppSync, một S3 bucket với 4 access prefix, và 4 Lambda (`aiEngine`, `processNutrition`, `friendRequest`, `resizeImage`).
-- **Lớp AI**: Bedrock Qwen3-VL (`qwen.qwen3-vl-235b-a22b`) ở `ap-southeast-2`, được gọi qua một Lambda multi-action duy nhất điều phối 10 AI action (phân tích ảnh, voice-to-food, phản hồi coach, sinh công thức, insight hàng tuần…).
-- **Tầng container**: FastAPI trên ECS Fargate đứng sau ALB, deploy từ ECR, chạy trong một VPC riêng.
-- **Vận hành**: Amplify CI/CD qua ba môi trường (sandbox, `feat/phase3`, `main`), log CloudWatch, và playbook dọn dẹp.
+Dưới đây là bảng ước tính chi phí cho việc duy trì hệ thống NutriTrack trên AWS. Lưu ý rằng chi phí thực tế có thể thay đổi tùy thuộc vào mức độ sử dụng và cấu hình cụ thể.
 
-#### Nội dung
+| Dịch vụ              | Chi phí tháng | Chi phí/Ngày |
+|----------------------|-------------:|-------------:|
+| Amazon Route 53      | $0.90        | $0.016       |
+| Amplify WAF          | $42.10       | $1.403       |
+| CloudFront           | $0.00        | $0.850       |
+| AWS Amplify          | $4.65        | $0.341       |
+| Fargate ARM64        | $10.23       | $0.254       |
+| ALB                  | $28.46       | $0.040       |
+| NAT Instance         | $7.63        | $0.2544      |
+| Amazon Cognito       | $0.00        | $0.016       |
+| AWS AppSync          | $3.11        | $0           |
+| AWS Lambda           | $0.00        | $0.008       |
+| Amazon Transcribe    | $6.57        | $0.010       |
+| Amazon Bedrock       | $147.57      | $0.001       |
+| Amazon S3            | $1.47        | $0           |
+| Amazon DynamoDB      | $0.13        | $0.007       |
+| CloudWatch           | $0.00        | $0           |
+| AWS Secrets Manager  | $1.20        | $0           |
+| **Tổng cộng**        | **$254.02**  | **$2.94**    |
 
-1. [Tổng Quan](5.1-Overview/)
-2. [Điều Kiện Tiên Quyết](5.2-Prerequiste/)
-3. [Thiết Lập Nền Tảng — Amplify, Cognito, S3](5.3-Foundation-Setup/)
-4. [Tầng Dữ Liệu — AppSync & DynamoDB](5.4-Monitoring-Setup/)
-5. [Compute & AI — Bedrock, Lambda](5.5-Processing-Setup/)
-6. [API & Xã Hội — Friends, Realtime Subscriptions](5.6-Automation-Setup/)
-7. [Frontend — Expo, UI, Giọng Nói & Camera](5.7-Dashboard-Setup/)
-8. [Triển Khai ECS — VPC, ECR, Fargate, ALB](5.8-Verify-Setup/)
-9. [CI/CD — Amplify Đa Môi Trường](5.9-Use-CDK/)
-10. [Dọn Dẹp](5.10-Cleanup/)
-11. [Phụ Lục — Ngân Sách, IAM, Xử Lý Lỗi, Prompt](5.11-Appendices/)
-
-#### Workshop dành cho ai
-
-Các kỹ sư đã quen với TypeScript, có kinh nghiệm AWS ở mức cơ bản, và muốn thấy cấu trúc end-to-end của một dự án Amplify Gen 2 thực tế. Bạn **không** cần kinh nghiệm trước về Bedrock, Amplify Gen 2, hay React Native — mỗi bước đều kèm command, đường dẫn file, và IAM policy cụ thể để sao chép.
+---

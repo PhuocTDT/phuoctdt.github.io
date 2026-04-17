@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-# WORKLOG
-
 **Week 1:** [Getting familiar with AWS and basic AWS services](1.1-Week1/)
 
 **Week 2:** [AWS CLI, RDS, CloudWatch, Site-to-Site VPN](1.2-Week2/)

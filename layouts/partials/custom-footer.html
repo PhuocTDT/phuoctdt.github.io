@@ -6,5 +6,37 @@
 
   ga('create', 'UA-158079754-2', 'auto');
   ga('send', 'pageview');
+</script>
 
+<script>
+  /* --- Premium Alert Enhancement --- */
+  document.addEventListener("DOMContentLoaded", function() {
+    const alerts = document.querySelectorAll('blockquote');
+    alerts.forEach(function(alert) {
+      const firstLine = alert.querySelector('p:first-child');
+      if (firstLine) {
+        const text = firstLine.innerHTML;
+        const match = text.match(/^\[!(TIP|IMPORTANT|CAUTION|NOTE|WARNING|INFO)\]/i);
+        if (match) {
+          const type = match[1].toUpperCase();
+          alert.classList.add('premium-alert');
+          alert.classList.add('alert-' + type.toLowerCase());
+          
+          // Map types to display labels
+          const labels = {
+            'TIP': 'Tip',
+            'IMPORTANT': 'Important',
+            'CAUTION': 'Caution',
+            'WARNING': 'Warning',
+            'NOTE': 'Note',
+            'INFO': 'Info'
+          };
+          alert.setAttribute('data-label', labels[type] || 'Info');
+          
+          // Remove the raw marker text [!TYPE]
+          firstLine.innerHTML = text.replace(/^\[!(TIP|IMPORTANT|CAUTION|NOTE|WARNING|INFO)\]/i, '').trim();
+        }
+      }
+    });
+  });
 </script>

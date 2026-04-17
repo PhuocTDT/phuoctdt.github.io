@@ -11,7 +11,7 @@ Detailed records of major technical events, workshops, and conferences attended 
 ### Event 1
 **Event Name**: AWS re:Invent 2025 Recap - Infrastructure & Security  
 **Date & Time**: 09:00, January 27, 2026  
-**Location**: AWS Vietnam Office (Floor 26 & 36), Ho Chi Minh City  
+**Location**: AWS Vietnam Office (Floor 36), Ho Chi Minh City  
 **Role**: Attendee (FCJ Cloud Intern)
 
 ---

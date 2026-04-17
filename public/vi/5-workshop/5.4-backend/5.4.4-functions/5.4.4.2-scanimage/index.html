@@ -1,0 +1,2847 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.154.3">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Function scan-image :: AWS System Manager</title>
+
+    
+    <link href="/css/nucleus.css?1776414907" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1776414907" rel="stylesheet">
+    <link href="/css/hybrid.css?1776414907" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1776414907" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1776414907" rel="stylesheet">
+    <link href="/css/auto-complete.css?1776414907" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1776414907" rel="stylesheet">
+    <link href="/css/theme.css?1776414907" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1776414907" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1776414907" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1776414907"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.2-scanimage/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+  
+  
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+    <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1776414907"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1776414907"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost\/\/vi";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1776414907"></script>
+
+    
+  </div>
+
+  <div class="highlightable">
+    <ul class="topics">
+
+      
+      
+      
+
+
+
+
+
+
+
+<li data-nav-id="/vi/1-worklog/" title="Nhật ký công việc" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/1-worklog/">
+     <b> 1. </b> Nhật ký công việc
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/1-worklog/1.1-week1/" title="Nhật ký công việc tuần 1" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/1-worklog/1.1-week1/">
+     <b> 1.1. </b> Nhật ký công việc tuần 1
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/1-worklog/1.2-week2/" title="Nhật ký công việc Tuần 2" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/1-worklog/1.2-week2/">
+     <b> 1.2. </b> Nhật ký công việc Tuần 2
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/1-worklog/1.3-week3/" title="Nhật ký công việc Tuần 3" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/1-worklog/1.3-week3/">
+     <b> 1.3. </b> Nhật ký công việc Tuần 3
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/1-worklog/1.4-week4/" title="Nhật ký công việc Tuần 4" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/1-worklog/1.4-week4/">
+     <b> 1.4. </b> Nhật ký công việc Tuần 4
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/1-worklog/1.5-week5/" title="Nhật ký công việc Tuần 5" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/1-worklog/1.5-week5/">
+     <b> 1.5. </b> Nhật ký công việc Tuần 5
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/1-worklog/1.6-week6/" title="Nhật ký công việc Tuần 6" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/1-worklog/1.6-week6/">
+     <b> 1.6. </b> Nhật ký công việc Tuần 6
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/1-worklog/1.7-week7/" title="Nhật ký công việc Tuần 7" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/1-worklog/1.7-week7/">
+     <b> 1.7. </b> Nhật ký công việc Tuần 7
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/1-worklog/1.8-week8/" title="Nhật ký công việc Tuần 8" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/1-worklog/1.8-week8/">
+     <b> 1.8. </b> Nhật ký công việc Tuần 8
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/1-worklog/1.9-week9/" title="Nhật ký công việc Tuần 9" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/1-worklog/1.9-week9/">
+     <b> 1.9. </b> Nhật ký công việc Tuần 9
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/1-worklog/1.10-week10/" title="Nhật ký công việc Tuần 10" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/1-worklog/1.10-week10/">
+     <b> 1.10. </b> Nhật ký công việc Tuần 10
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+
+
+<li data-nav-id="/vi/2-proposal/" title="" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/2-proposal/">
+     <b> 2. </b> Proposal
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+
+
+<li data-nav-id="/vi/3-blogstranslated/" title="Các bài blog đã dịch" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/3-blogstranslated/">
+     <b> 3. </b> Các bài blog đã dịch
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/3-blogstranslated/3.3-blog3/" title="Bài blog 3" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/3-blogstranslated/3.3-blog3/">
+     <b> 3.3. </b> Bài blog 3
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/3-blogstranslated/3.2-blog2/" title="Bài blog 2" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/3-blogstranslated/3.2-blog2/">
+     <b> 3.2. </b> Bài blog 2
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/3-blogstranslated/3.1-blog1/" title="Bài blog 1" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/3-blogstranslated/3.1-blog1/">
+     <b> 3.1. </b> Bài blog 1
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+
+
+<li data-nav-id="/vi/4-eventparticipated/" title="Các sự kiện đã tham gia" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/4-eventparticipated/">
+     <b> 4. </b> Các sự kiện đã tham gia
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/4-eventparticipated/4.3-event3/" title="AWS Cloud Mastery 2" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/4-eventparticipated/4.3-event3/">
+     <b> 4.3. </b> AWS Cloud Mastery 2
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/4-eventparticipated/4.2-event2/" title="AWS Cloud Mastery 1" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/4-eventparticipated/4.2-event2/">
+     <b> 4.2. </b> AWS Cloud Mastery 1
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/4-eventparticipated/4.1-event1/" title="AWS re:Invent 2025 Recap - Hạ tầng &amp; Bảo mật" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/4-eventparticipated/4.1-event1/">
+     <b> 4.1. </b> AWS re:Invent 2025 Recap - Hạ tầng &amp; Bảo mật
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/" title="Workshop" class="dd-item 
+        parent
+        
+        
+        ">
+  <a href="/vi/5-workshop/">
+     <b> 5. </b> Workshop
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.1-overview/" title="Tổng quan" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.1-overview/">
+     <b> 5.1. </b> Tổng quan
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.2-prerequiste/" title="Điều kiện tiên quyết" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.2-prerequiste/">
+     <b> 5.2. </b> Điều kiện tiên quyết
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.3-frontend/" title="Thiết lập Frontend" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.3-frontend/">
+     <b> 5.3. </b> Thiết lập Frontend
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.4-backend/" title="Thiết lập AWS Amplify Gen 2" class="dd-item 
+        parent
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.4-backend/">
+     <b> 5.4. </b> Thiết lập Backend
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.4-backend/5.4.1-auth/" title="Lớp Xác thực (Auth)" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.4-backend/5.4.1-auth/">
+     <b> 5.4.1. </b> Lớp Xác thực (Auth)
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.4-backend/5.4.2-data/" title="Lớp Dữ liệu (Data)" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.4-backend/5.4.2-data/">
+     <b> 5.4.2. </b> Lớp Dữ liệu (Data)
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.4-backend/5.4.3-storage/" title="" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.4-backend/5.4.3-storage/">
+     <b> 5.4.3. </b> Lớp Lưu trữ (Storage)
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.4-backend/5.4.4-functions/" title="Các hàm Logic (Functions)" class="dd-item 
+        parent
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.4-backend/5.4.4-functions/">
+     <b> 5.4.4. </b> Các hàm Logic (Functions)
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.1-aiengine/" title="Function ai-engine (Bedrock)" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.1-aiengine/">
+    5.4.4.1. Function ai-engine
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.2-scanimage/" title="Function scan-image" class="dd-item 
+        
+        active
+        
+        ">
+  <a href="/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.2-scanimage/">
+    5.4.4.2. Function scan-image
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.3-processnutrition/" title="Function process-nutrition" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.3-processnutrition/">
+    5.4.4.3. Function process-nutrition
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.4-friendrequest/" title="Function friend-request" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.4-friendrequest/">
+    5.4.4.4. Function friend-request
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.5-resizeimage/" title="Function resize-image" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.5-resizeimage/">
+    5.4.4.5. Function resize-image
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.5-ecs-fargate/" title="Tầng Container (ECS Fargate)" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.5-ecs-fargate/">
+     <b> 5.5. </b> Tầng Container ECS
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.5-ecs-fargate/5.5.1-vpc-network/" title="Hạ tầng Mạng (VPC &amp; Network)" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.5-ecs-fargate/5.5.1-vpc-network/">
+     <b> 5.5.1. </b> VPC &amp; Network
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.5-ecs-fargate/5.5.2-infrastructure/" title="Hạ tầng hỗ trợ" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.5-ecs-fargate/5.5.2-infrastructure/">
+     <b> 5.5.2. </b> Infrastructure
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.5-ecs-fargate/5.5.3-nat-instance/" title="Tối ưu hóa NAT (NAT Instance)" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.5-ecs-fargate/5.5.3-nat-instance/">
+     <b> 5.5.3. </b> NAT Instance
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.5-ecs-fargate/5.5.4-fargate-alb/" title="Triển khai Fargate &amp; ALB" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.5-ecs-fargate/5.5.4-fargate-alb/">
+     <b> 5.5.4. </b> Fargate &amp; ALB
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.6-cicd/" title="" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.6-cicd/">
+     <b> 5.6. </b> CI/CD
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/vi/5-workshop/5.7-cleanup/" title="Dọn dẹp" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/5-workshop/5.7-cleanup/">
+     <b> 5.7. </b> Dọn dẹp
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+
+
+<li data-nav-id="/vi/6-selfevaluation/" title="Tự đánh giá" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/6-selfevaluation/">
+     <b> 6. </b> Tự đánh giá
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+
+
+<li data-nav-id="/vi/7-feedback/" title="Chia sẻ và đóng góp ý kiến" class="dd-item 
+        
+        
+        
+        ">
+  <a href="/vi/7-feedback/">
+     <b> 7. </b> Chia sẻ và đóng góp ý kiến
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+      
+      
+    </ul>
+
+    
+    
+    <section id="shortcuts">
+      <h3>More</h3>
+      <ul>
+        
+        <li>
+          <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+        </li>
+        
+      </ul>
+    </section>
+    
+
+    
+    <section id="prefooter">
+      <hr />
+      <ul>
+        
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+            <div class="select-style">
+              <select id="select-language" onchange="location = this.value;">
+                
+                
+                
+                
+                
+                
+                
+                
+                <option id="en" value="http://localhost/5-workshop/5.4-backend/5.4.4-functions/5.4.4.2-scanimage/">English
+                </option>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <option id="vi" value="http://localhost/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.2-scanimage/" selected>Tiếng Việt</option>
+                
+                
+                
+                
+              </select>
+              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="255px" height="255px"
+                viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+                <g>
+                  <g id="arrow-drop-down">
+                    <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </a>
+        </li>
+        
+
+        
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+        
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/vi/'>AWS System Manager</a> > <a href='/vi/5-workshop/'>Workshop</a> > <a href='/vi/5-workshop/5.4-backend/'>Thiết lập AWS Amplify Gen 2</a> > <a href='/vi/5-workshop/5.4-backend/5.4.4-functions/'>Các hàm Logic (Functions)</a> > Function scan-image
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-cấu-hình-tài-nguyên-resourcets">1. Cấu hình Tài nguyên (<code>resource.ts</code>)</a></li>
+        <li><a href="#2-mã-nguồn-xử-lý-handlerts">2. Mã nguồn xử lý (<code>handler.ts</code>)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Function scan-image
+            </h1>
+          
+
+        
+
+
+
+	<p>Hàm này đóng vai trò trung gian (Proxy) để gửi các yêu cầu phân tích hình ảnh từ AppSync tới cụm <strong>ECS Fargate</strong> thông qua Application Load Balancer.</p>
+<h3 id="1-cấu-hình-tài-nguyên-resourcets">1. Cấu hình Tài nguyên (<code>resource.ts</code>)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">defineFunction</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@aws-amplify/backend&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scanImage</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">defineFunction</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;scan-image&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./handler.ts&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">runtime</span>: <span style="color:#66d9ef">22</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">memoryMB</span>: <span style="color:#66d9ef">1024</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">timeoutSeconds</span>: <span style="color:#66d9ef">300</span>,
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h3 id="2-mã-nguồn-xử-lý-handlerts">2. Mã nguồn xử lý (<code>handler.ts</code>)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">S3Client</span>, <span style="color:#a6e22e">GetObjectCommand</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/client-s3&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">SecretsManagerClient</span>, <span style="color:#a6e22e">GetSecretValueCommand</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/client-secrets-manager&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">createHmac</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;crypto&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">REGION</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ap-southeast-2&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">s3Client</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">S3Client</span>({ <span style="color:#a6e22e">region</span>: <span style="color:#66d9ef">REGION</span> });
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secretsClient</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SecretsManagerClient</span>({ <span style="color:#a6e22e">region</span>: <span style="color:#66d9ef">REGION</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">STORAGE_BUCKET</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">STORAGE_BUCKET_NAME</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ECS_BASE_URL</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">ECS_BASE_URL</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">IS_DEBUG</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DEBUG</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">NODE_ENV</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;development&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">debug</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">message</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">data?</span>: <span style="color:#66d9ef">any</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">IS_DEBUG</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`[scan-image] </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">message</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>, <span style="color:#a6e22e">data</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Cache secrets across warm Lambda invocations
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">cachedSecrets</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">apiKey</span>: <span style="color:#66d9ef">string</span>; <span style="color:#a6e22e">internalToken</span>: <span style="color:#66d9ef">string</span> } <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getSecrets</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span>{ <span style="color:#a6e22e">apiKey</span>: <span style="color:#66d9ef">string</span>; <span style="color:#a6e22e">internalToken</span>: <span style="color:#66d9ef">string</span> }<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cachedSecrets</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cachedSecrets</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">resp</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">secretsClient</span>.<span style="color:#a6e22e">send</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GetSecretValueCommand</span>({ <span style="color:#a6e22e">SecretId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;nutritrack/prod/api-keys&#34;</span> })
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secret</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">SecretString</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;{}&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">cachedSecrets</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">apiKey</span>: <span style="color:#66d9ef">secret.NUTRITRACK_API_KEY</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">internalToken</span>: <span style="color:#66d9ef">secret.NUTRITRACK_INTERNAL_TOKEN</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cachedSecrets</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Generate HS256 JWT using Node.js built-in crypto (no external JWT library needed)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">generateJWT</span>(<span style="color:#a6e22e">secret</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">b64url</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">buf</span>: <span style="color:#66d9ef">Buffer</span>) <span style="color:#f92672">=&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#e6db74">&#34;base64&#34;</span>).<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/\+/g</span>, <span style="color:#e6db74">&#34;-&#34;</span>).<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/\//g</span>, <span style="color:#e6db74">&#34;_&#34;</span>).<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/=/g</span>, <span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">header</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b64url</span>(<span style="color:#a6e22e">Buffer</span>.<span style="color:#66d9ef">from</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">alg</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;HS256&#34;</span>, <span style="color:#a6e22e">typ</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;JWT&#34;</span> })));
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">now</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">floor</span>(Date.<span style="color:#a6e22e">now</span>() <span style="color:#f92672">/</span> <span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">payload</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b64url</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Buffer</span>.<span style="color:#66d9ef">from</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">service</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;backend&#34;</span>, <span style="color:#a6e22e">iat</span>: <span style="color:#66d9ef">now</span>, <span style="color:#a6e22e">exp</span>: <span style="color:#66d9ef">now</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">300</span> }))
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">header</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">payload</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b64url</span>(<span style="color:#a6e22e">createHmac</span>(<span style="color:#e6db74">&#34;sha256&#34;</span>, <span style="color:#a6e22e">secret</span>).<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">data</span>).<span style="color:#a6e22e">digest</span>());
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">sig</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ACTION_TO_ENDPOINT</span>: <span style="color:#66d9ef">Record</span>&lt;<span style="color:#f92672">string</span>, <span style="color:#a6e22e">string</span>&gt; <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">analyzeFoodImage</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/analyze-food?method=tools&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">analyzeFoodLabel</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/analyze-label&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">scanBarcode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/scan-barcode&#34;</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Poll /jobs/{jobId} until completed or failed
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">pollJob</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">jobId</span>: <span style="color:#66d9ef">string</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">authHeader</span>: <span style="color:#66d9ef">string</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">internalToken</span>: <span style="color:#66d9ef">string</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">signal</span>: <span style="color:#66d9ef">AbortSignal</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">stickyCookie?</span>: <span style="color:#66d9ef">string</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pollIntervalMs</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3000</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">maxWaitMs</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">270</span><span style="color:#a6e22e">_000</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">any</span>&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pollUrl</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">ECS_BASE_URL</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/jobs/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">jobId</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">start</span> <span style="color:#f92672">=</span> Date.<span style="color:#a6e22e">now</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (Date.<span style="color:#a6e22e">now</span>() <span style="color:#f92672">-</span> <span style="color:#a6e22e">start</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">maxWaitMs</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;Job polling timeout — analysis took too long&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Wait before polling
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">void</span>&gt;((<span style="color:#a6e22e">resolve</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">pollIntervalMs</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">signal</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;abort&#34;</span>, () <span style="color:#f92672">=&gt;</span> { <span style="color:#a6e22e">clearTimeout</span>(<span style="color:#a6e22e">t</span>); <span style="color:#a6e22e">resolve</span>(); }, { <span style="color:#a6e22e">once</span>: <span style="color:#66d9ef">true</span> });
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">signal</span>.<span style="color:#a6e22e">aborted</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;AbortError&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pollHeaders</span>: <span style="color:#66d9ef">Record</span>&lt;<span style="color:#f92672">string</span>, <span style="color:#a6e22e">string</span>&gt; <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Authorization</span>: <span style="color:#66d9ef">authHeader</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;X-Nutri-Internal-Token&#34;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">internalToken</span>,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">stickyCookie</span>) <span style="color:#a6e22e">pollHeaders</span>[<span style="color:#e6db74">&#34;Cookie&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">stickyCookie</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">resp</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">pollUrl</span>, {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">headers</span>: <span style="color:#66d9ef">pollHeaders</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">signal</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">body</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">text</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Job poll failed (</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">): </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">body</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">job</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Poll result&#34;</span>, { <span style="color:#a6e22e">status</span>: <span style="color:#66d9ef">job.status</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">job</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;completed&#34;</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">job</span>.<span style="color:#a6e22e">result</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">job</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;failed&#34;</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#a6e22e">job</span>.<span style="color:#a6e22e">error</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;ECS job failed&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// status === &#34;processing&#34; → keep polling
+</span></span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">GENFOODMacros</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">protein_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">carbs_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fat_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">saturated_fat_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">polyunsaturated_fat_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">monounsaturated_fat_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fiber_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sugar_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sodium_mg</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">cholesterol_mg</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">potassium_mg</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">GENFOODMicronutrients</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">calcium_mg</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">iron_mg</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">vitamin_a_ug</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">vitamin_c_mg</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">GENFOODServing</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">default_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">unit</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">portions?</span>: <span style="color:#66d9ef">Record</span>&lt;<span style="color:#f92672">string</span>, <span style="color:#a6e22e">number</span>&gt;;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">GENFOODIngredient</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">weight_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">GENFOOD</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">food_id</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">macros</span>: <span style="color:#66d9ef">GENFOODMacros</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">micronutrients</span>: <span style="color:#66d9ef">GENFOODMicronutrients</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">serving</span>: <span style="color:#66d9ef">GENFOODServing</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ingredients</span>: <span style="color:#66d9ef">GENFOODIngredient</span>[];
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">verified</span>: <span style="color:#66d9ef">boolean</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">source</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">EMPTY_MACROS</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">saturated_fat_g</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">polyunsaturated_fat_g</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">monounsaturated_fat_g</span>: <span style="color:#66d9ef">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fiber_g</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">sugar_g</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">sodium_mg</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">cholesterol_mg</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">potassium_mg</span>: <span style="color:#66d9ef">0</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">EMPTY_MICRONUTRIENTS</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">calcium_mg</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">iron_mg</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">vitamin_a_ug</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">vitamin_c_mg</span>: <span style="color:#66d9ef">0</span> };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Food photo: job.result.data.dishes[0]
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">normalizeFoodToGENFOOD</span>(<span style="color:#a6e22e">ecsResult</span>: <span style="color:#66d9ef">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">GENFOOD</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dish</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ecsResult</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">data</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">dishes</span><span style="color:#f92672">?</span>.[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">dish</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;No food detected in image&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">dish</span>.<span style="color:#a6e22e">nutritions</span> <span style="color:#f92672">||</span> {};
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">food_id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;custom_gen_temp&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">dish.vi_name</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">dish</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Unknown Food&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">dish.name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Unknown Food&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">macros</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">calories</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">protein_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">protein</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">carbs_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">carbs</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fat_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">fat</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      ...<span style="color:#a6e22e">EMPTY_MACROS</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">micronutrients</span>: <span style="color:#66d9ef">EMPTY_MICRONUTRIENTS</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">serving</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">default_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">dish</span>.<span style="color:#a6e22e">weight</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">dish</span>.<span style="color:#a6e22e">serving_value</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">unit</span>: <span style="color:#66d9ef">dish.serving_unit</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;serving&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">portions</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">small</span>: <span style="color:#66d9ef">0.7</span>, <span style="color:#a6e22e">medium</span>: <span style="color:#66d9ef">1.0</span>, <span style="color:#a6e22e">large</span>: <span style="color:#66d9ef">1.3</span> },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ingredients</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">dish</span>.<span style="color:#a6e22e">ingredients</span> <span style="color:#f92672">||</span> []).<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">ing</span>: <span style="color:#66d9ef">any</span>) <span style="color:#f92672">=&gt;</span> ({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">ing.name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Ingredient&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">ing.name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Ingredient&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">weight_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">weight</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    })),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">verified</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">source</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ECS Scan&#34;</span>,
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Nutrition label: job.result.data.labels[0]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// label.nutrition = [{ nutrient: &#34;Chất đạm&#34;, value: 6.9, unit: &#34;g&#34; }, ...]
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">normalizeLabelToGENFOOD</span>(<span style="color:#a6e22e">ecsResult</span>: <span style="color:#66d9ef">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">GENFOOD</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">label</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ecsResult</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">data</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">labels</span><span style="color:#f92672">?</span>.[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">label</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;No nutrition label detected in image&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nutrition</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">nutrient</span>: <span style="color:#66d9ef">string</span>; <span style="color:#a6e22e">value</span>: <span style="color:#66d9ef">number</span> }[] <span style="color:#f92672">=</span> <span style="color:#a6e22e">label</span>.<span style="color:#a6e22e">nutrition</span> <span style="color:#f92672">||</span> [];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">findNutrient</span> <span style="color:#f92672">=</span> (...<span style="color:#a6e22e">keywords</span>: <span style="color:#66d9ef">string</span>[]) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nutrition</span>.<span style="color:#a6e22e">find</span>((<span style="color:#a6e22e">it</span>) <span style="color:#f92672">=&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">keywords</span>.<span style="color:#a6e22e">some</span>((<span style="color:#a6e22e">k</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">it</span>.<span style="color:#a6e22e">nutrient</span>.<span style="color:#a6e22e">toLowerCase</span>().<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">k</span>))
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Number(<span style="color:#a6e22e">item</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">value</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">food_id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;custom_label_temp&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">label.name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Sản phẩm&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">label.name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Product&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">macros</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">findNutrient</span>(<span style="color:#e6db74">&#34;năng lượng&#34;</span>, <span style="color:#e6db74">&#34;energy&#34;</span>, <span style="color:#e6db74">&#34;calori&#34;</span>, <span style="color:#e6db74">&#34;kcal&#34;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">protein_g</span>: <span style="color:#66d9ef">findNutrient</span>(<span style="color:#e6db74">&#34;đạm&#34;</span>, <span style="color:#e6db74">&#34;protein&#34;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">carbs_g</span>: <span style="color:#66d9ef">findNutrient</span>(<span style="color:#e6db74">&#34;carbohydrate&#34;</span>, <span style="color:#e6db74">&#34;glucid&#34;</span>, <span style="color:#e6db74">&#34;tinh bột&#34;</span>, <span style="color:#e6db74">&#34;đường bột&#34;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fat_g</span>: <span style="color:#66d9ef">findNutrient</span>(<span style="color:#e6db74">&#34;béo&#34;</span>, <span style="color:#e6db74">&#34;fat&#34;</span>, <span style="color:#e6db74">&#34;lipid&#34;</span>),
+</span></span><span style="display:flex;"><span>      ...<span style="color:#a6e22e">EMPTY_MACROS</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">micronutrients</span>: <span style="color:#66d9ef">EMPTY_MICRONUTRIENTS</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">serving</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">default_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">label</span>.<span style="color:#a6e22e">serving_value</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">unit</span>: <span style="color:#66d9ef">label.serving_unit</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;g&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">portions</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">small</span>: <span style="color:#66d9ef">0.7</span>, <span style="color:#a6e22e">medium</span>: <span style="color:#66d9ef">1.0</span>, <span style="color:#a6e22e">large</span>: <span style="color:#66d9ef">1.3</span> },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ingredients</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">label</span>.<span style="color:#a6e22e">ingredients</span> <span style="color:#f92672">||</span> []).<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>) <span style="color:#f92672">=&gt;</span> ({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">name</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">name</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">weight_g</span>: <span style="color:#66d9ef">0</span>,
+</span></span><span style="display:flex;"><span>    })),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">verified</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">source</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ECS Label Scan&#34;</span>,
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Barcode: job.result.data = { found: bool, food: { product_name, nutritions: { calories, protein, fat, carbs } } }
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">normalizeBarcodeToGENFOOD</span>(<span style="color:#a6e22e">ecsResult</span>: <span style="color:#66d9ef">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">GENFOOD</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ecsResult</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">data</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">found</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;Barcode not found or product not in database&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">food</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">food</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">food</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;No product data for barcode&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">food</span>.<span style="color:#a6e22e">nutritions</span> <span style="color:#f92672">||</span> {};
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">food_id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`barcode_</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">food</span>.<span style="color:#a6e22e">barcode</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;unknown&#34;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">food.product_name</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">food</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Sản phẩm&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">food.product_name</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">food</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Product&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">macros</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">calories</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">protein_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">protein</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">carbs_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">carbs</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fat_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">fat</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fiber_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">fiber</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">sugar_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">sugar</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">sodium_mg</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">sodium</span>) <span style="color:#f92672">?</span> Number(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">sodium</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">1000</span> : <span style="color:#66d9ef">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">saturated_fat_g</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">polyunsaturated_fat_g</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">monounsaturated_fat_g</span>: <span style="color:#66d9ef">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">cholesterol_mg</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">potassium_mg</span>: <span style="color:#66d9ef">0</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">micronutrients</span>: <span style="color:#66d9ef">EMPTY_MICRONUTRIENTS</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">serving</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">default_g</span>: <span style="color:#66d9ef">100</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">unit</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;g&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">portions</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">small</span>: <span style="color:#66d9ef">0.7</span>, <span style="color:#a6e22e">medium</span>: <span style="color:#66d9ef">1.0</span>, <span style="color:#a6e22e">large</span>: <span style="color:#66d9ef">1.3</span> },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ingredients</span><span style="color:#f92672">:</span> [],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">verified</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">source</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Barcode (</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">source</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;database&#34;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">)`</span>,
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">normalizeEcsResult</span>(<span style="color:#a6e22e">action</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">ecsResult</span>: <span style="color:#66d9ef">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">GENFOOD</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">action</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;analyzeFoodLabel&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">normalizeLabelToGENFOOD</span>(<span style="color:#a6e22e">ecsResult</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;scanBarcode&#34;</span><span style="color:#f92672">:</span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">normalizeBarcodeToGENFOOD</span>(<span style="color:#a6e22e">ecsResult</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>                 <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">normalizeFoodToGENFOOD</span>(<span style="color:#a6e22e">ecsResult</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handler</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">event</span>: <span style="color:#66d9ef">any</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">action</span>, <span style="color:#a6e22e">payload</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">arguments</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Handler invoked&#34;</span>, { <span style="color:#a6e22e">action</span>, <span style="color:#a6e22e">hasPayload</span><span style="color:#f92672">:</span> <span style="color:#f92672">!!</span><span style="color:#a6e22e">payload</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Validate action
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">ACTION_TO_ENDPOINT</span>[<span style="color:#a6e22e">action</span>]) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Unknown action: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">action</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Parse payload
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">s3Key</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">parsed</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">payload</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;{}&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">s3Key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">parsed</span>.<span style="color:#a6e22e">s3Key</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Invalid payload JSON&#34;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Validate s3Key
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">s3Key</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">s3Key</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#34;string&#34;</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Missing or invalid s3Key in payload&#34;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">s3Key</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;..&#34;</span>)) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Invalid s3Key: path traversal not allowed&#34;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Downloading image from S3&#34;</span>, { <span style="color:#a6e22e">s3Key</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Download image from S3
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">s3Response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">s3Client</span>.<span style="color:#a6e22e">send</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GetObjectCommand</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Bucket</span>: <span style="color:#66d9ef">STORAGE_BUCKET</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Key</span>: <span style="color:#66d9ef">s3Key</span>,
+</span></span><span style="display:flex;"><span>      })
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Stream body to buffer
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chunks</span>: <span style="color:#66d9ef">Uint8Array</span>[] <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">stream</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s3Response</span>.<span style="color:#a6e22e">Body</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">stream</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;Failed to read S3 object&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">await</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chunk</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">stream</span> <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">any</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">chunks</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">chunk</span> <span style="color:#66d9ef">instanceof</span> <span style="color:#a6e22e">Buffer</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">chunk</span> : <span style="color:#66d9ef">Buffer.from</span>(<span style="color:#a6e22e">chunk</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">imageBuffer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Buffer</span>.<span style="color:#a6e22e">concat</span>(<span style="color:#a6e22e">chunks</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">contentType</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s3Response</span>.<span style="color:#a6e22e">ContentType</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;image/jpeg&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Image downloaded&#34;</span>, { <span style="color:#a6e22e">size</span>: <span style="color:#66d9ef">imageBuffer.length</span>, <span style="color:#a6e22e">contentType</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Get API key + generate JWT for ECS auth
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secrets</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getSecrets</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">secrets</span>.<span style="color:#a6e22e">apiKey</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ECS API key not configured&#34;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">generateJWT</span>(<span style="color:#a6e22e">secrets</span>.<span style="color:#a6e22e">apiKey</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">authHeader</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`Bearer </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">token</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">internalToken</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">secrets</span>.<span style="color:#a6e22e">internalToken</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Build FormData with Blob
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">blob</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Blob</span>([<span style="color:#a6e22e">imageBuffer</span>], { <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">contentType</span> });
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">form</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormData</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;file&#34;</span>, <span style="color:#a6e22e">blob</span>, <span style="color:#e6db74">&#34;upload.jpg&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Call ECS — POST to get job_id (async response, HTTP 202)
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">endpoint</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ACTION_TO_ENDPOINT</span>[<span style="color:#a6e22e">action</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ecsUrl</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">ECS_BASE_URL</span><span style="color:#e6db74">}${</span><span style="color:#a6e22e">endpoint</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Calling ECS&#34;</span>, { <span style="color:#a6e22e">ecsUrl</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">controller</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AbortController</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 290s total: ~3s init + up to 270s polling + buffer
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">timeout</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setTimeout</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">abort</span>(), <span style="color:#ae81ff">290</span><span style="color:#a6e22e">_000</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">jobId</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">stickyCookie</span>: <span style="color:#66d9ef">string</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">undefined</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">initResponse</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">ecsUrl</span>, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;POST&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">body</span>: <span style="color:#66d9ef">form</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">Authorization</span>: <span style="color:#66d9ef">authHeader</span>, <span style="color:#e6db74">&#34;X-Nutri-Internal-Token&#34;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">internalToken</span> },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">signal</span>: <span style="color:#66d9ef">controller.signal</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">initResponse</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">errorBody</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">initResponse</span>.<span style="color:#a6e22e">text</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">errorDetail</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Analysis failed&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">errorJson</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">errorBody</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">errorDetail</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">errorJson</span>.<span style="color:#a6e22e">detail</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">errorDetail</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">// Ignore parse errors
+</span></span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`ECS error: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">errorDetail</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">initBody</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">initResponse</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">jobId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">initBody</span>.<span style="color:#a6e22e">job_id</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">jobId</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ECS did not return a job_id&#34;</span>,
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Read ALB sticky cookie to ensure polls go to same ECS task
+</span></span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">setCookie</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">initResponse</span>.<span style="color:#a6e22e">headers</span>.<span style="color:#66d9ef">get</span>(<span style="color:#e6db74">&#34;set-cookie&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">stickyCookie</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setCookie</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">setCookie</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;;&#34;</span>)[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">:</span> <span style="color:#66d9ef">undefined</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Job accepted&#34;</span>, { <span style="color:#a6e22e">jobId</span>, <span style="color:#a6e22e">status</span>: <span style="color:#66d9ef">initBody.status</span> });
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Don&#39;t clear timeout yet — still need it for polling
+</span></span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Poll for result
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">ecsResult</span>: <span style="color:#66d9ef">any</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ecsResult</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">pollJob</span>(<span style="color:#a6e22e">jobId</span>, <span style="color:#a6e22e">authHeader</span>, <span style="color:#a6e22e">internalToken</span>, <span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">signal</span>, <span style="color:#a6e22e">stickyCookie</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">clearTimeout</span>(<span style="color:#a6e22e">timeout</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Job completed&#34;</span>, { <span style="color:#a6e22e">jobId</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Normalize response based on action type
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">genfood</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">normalizeEcsResult</span>(<span style="color:#a6e22e">action</span>, <span style="color:#a6e22e">ecsResult</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">text</span>: <span style="color:#66d9ef">JSON.stringify</span>(<span style="color:#a6e22e">genfood</span>),
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">errorMessage</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">error</span> <span style="color:#66d9ef">instanceof</span> Error <span style="color:#f92672">?</span> <span style="color:#a6e22e">error.message</span> : <span style="color:#66d9ef">String</span>(<span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;[scan-image] Error:&#34;</span>, <span style="color:#a6e22e">errorMessage</span>, <span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">errorMessage</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;NoSuchKey&#34;</span>)) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Image not found in S3&#34;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">errorMessage</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;AbortError&#34;</span>) <span style="color:#f92672">||</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">errorMessage</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;timeout&#34;</span>)
+</span></span><span style="display:flex;"><span>    ) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Image processing service unavailable (timeout)&#34;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">errorMessage</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;ECONNREFUSED&#34;</span>)) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Image processing service unavailable (connection refused)&#34;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">error</span>: <span style="color:#66d9ef">errorMessage</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<p><a href="/vi/5-workshop/5.4-backend/5.4.4-functions/">Quay lại danh sách các hàm</a></p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.1-aiengine/" title="Function ai-engine (Bedrock)"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.3-processnutrition/" title="Function process-nutrition" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1776414907"></script>
+    <script src="/js/perfect-scrollbar.min.js?1776414907"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1776414907"></script>
+    <script src="/js/jquery.sticky.js?1776414907"></script>
+    <script src="/js/featherlight.min.js?1776414907"></script>
+    <script src="/js/highlight.pack.js?1776414907"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1776414907"></script>
+    <script src="/js/learn.js?1776414907"></script>
+    <script src="/js/hugo-learn.js?1776414907"></script>
+
+    <link href="/mermaid/mermaid.css?1776414907" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1776414907"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<script>
+   
+  document.addEventListener("DOMContentLoaded", function() {
+    const alerts = document.querySelectorAll('blockquote');
+    alerts.forEach(function(alert) {
+      const firstLine = alert.querySelector('p:first-child');
+      if (firstLine) {
+        const text = firstLine.innerHTML;
+        const match = text.match(/^\[!(TIP|IMPORTANT|CAUTION|NOTE|WARNING|INFO)\]/i);
+        if (match) {
+          const type = match[1].toUpperCase();
+          alert.classList.add('premium-alert');
+          alert.classList.add('alert-' + type.toLowerCase());
+          
+          
+          const labels = {
+            'TIP': 'Tip',
+            'IMPORTANT': 'Important',
+            'CAUTION': 'Caution',
+            'WARNING': 'Warning',
+            'NOTE': 'Note',
+            'INFO': 'Info'
+          };
+          alert.setAttribute('data-label', labels[type] || 'Info');
+          
+          
+          firstLine.innerHTML = text.replace(/^\[!(TIP|IMPORTANT|CAUTION|NOTE|WARNING|INFO)\]/i, '').trim();
+        }
+      }
+    });
+  });
+</script>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 ---
 title: "Nhật ký công việc Tuần 3"
 date: 2026-01-19T09:00:00+07:00
-weight: 8
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
