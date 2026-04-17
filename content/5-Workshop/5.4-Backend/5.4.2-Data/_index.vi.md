@@ -1,6 +1,6 @@
 ---
-title: "Lớp Dữ liệu (Data)"
-menuTitle: "Lớp Dữ liệu (Data)"
+title: "Lớp Dữ liệu"
+menuTitle: "Lớp Dữ liệu"
 date: 2026-01-09T16:03:43+07:00
 weight: 42
 chapter: false

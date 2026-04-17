@@ -1,12 +1,12 @@
 ---
-title: "Lớp Xác thực (Auth)"
+menuTitle: "Lớp Xác thực "
 date: 2026-01-09T16:03:43+07:00
 weight: 41
 chapter: false
 pre: " <b> 5.4.1. </b> "
 ---
 
-# 5.4.1 Lớp Xác thực (Auth)
+# Lớp Xác thực 
 
 Sử dụng Amazon Cognito để quản lý danh tính người dùng.
 

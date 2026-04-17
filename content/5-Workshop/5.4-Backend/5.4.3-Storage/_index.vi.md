@@ -1,5 +1,5 @@
 ---
-menuTitle: "Lớp Lưu trữ (Storage)"
+menuTitle: "Lớp Lưu trữ"
 date: 2026-01-09T16:03:43+07:00
 weight: 43
 chapter: false

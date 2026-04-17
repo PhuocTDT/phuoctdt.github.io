@@ -1,12 +1,12 @@
 ---
-title: "Authentication (Auth)"
+menuTitle: "Authentication"
 date: 2026-01-09T16:03:43+07:00
 weight: 41
 chapter: false
 pre: " <b> 5.4.1. </b> "
 ---
 
-# 5.4.1 Authentication Layer (Auth)
+# Authentication Layer 
 
 Using Amazon Cognito for identity management.
 
@@ -51,6 +51,17 @@ export const auth = defineAuth({
 });
 
 ```
+
+## Setting Secrets for Google OAuth
+
+Since we're using `secret()` in the source code, you need to load these values ​​into AWS Amplify before deployment. Run the following commands in the terminal at the backend directory:
+
+```bash
+npx ampx secret set GOOGLE_CLIENT_ID
+npx ampx secret set GOOGLE_CLIENT_SECRET
+```
+
+The system will prompt you to enter values ​​for each variable (taken from the Google Cloud Console).
 
 ![cognito-user-pool.png](/images/cognito-user-pool.png)
 ---

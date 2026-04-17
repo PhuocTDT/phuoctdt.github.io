@@ -41,3 +41,6 @@ Introduction of **AWS AI Factories**, enabling organizations to deploy managed A
 - **AWS Security Agent**: Proactively secures applications via automated pentesting and design reviews throughout the development lifecycle.
 - **Route 53 Global Resolver & AI Factories**: Address complex hybrid and sovereign cloud needs with anycast resolution and on-premises managed AI.
 - Identified **S3 Tables and GuardDuty** features directly applicable to enhancing NutriTrack's data security and operational visibility.
+
+![1769703855906.jpg](/images/1769703855906.jpg)
+![1769703854680.jpg](/images/1769703854680.jpg)

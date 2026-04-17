@@ -12,21 +12,21 @@
     <title>Proposal :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1776415702" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1776415702" rel="stylesheet">
-    <link href="/css/hybrid.css?1776415702" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1776415702" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1776415702" rel="stylesheet">
-    <link href="/css/auto-complete.css?1776415702" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1776415702" rel="stylesheet">
-    <link href="/css/theme.css?1776415702" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1776415702" rel="stylesheet">
+    <link href="/css/nucleus.css?1776441028" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1776441028" rel="stylesheet">
+    <link href="/css/hybrid.css?1776441028" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1776441028" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1776441028" rel="stylesheet">
+    <link href="/css/auto-complete.css?1776441028" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1776441028" rel="stylesheet">
+    <link href="/css/theme.css?1776441028" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1776441028" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1776415702" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1776441028" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1776415702"></script>
+    <script src="/js/jquery-3.3.1.min.js?1776441028"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1776415702"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1776415702"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1776441028"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1776441028"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1776415702"></script>
+<script type="text/javascript" src="/js/search.js?1776441028"></script>
 
     
   </div>
@@ -816,13 +816,13 @@
 
 
 
-<li data-nav-id="/5-workshop/5.4-backend/5.4.1-auth/" title="Authentication (Auth)" class="dd-item 
+<li data-nav-id="/5-workshop/5.4-backend/5.4.1-auth/" title="" class="dd-item 
         
         
         
         ">
   <a href="/5-workshop/5.4-backend/5.4.1-auth/">
-     <b> 5.4.1. </b> Authentication (Auth)
+     <b> 5.4.1. </b> Authentication
     
     <i class="fas fa-check read-icon"></i>
     
@@ -844,13 +844,13 @@
 
 
 
-<li data-nav-id="/5-workshop/5.4-backend/5.4.2-data/" title="Data Layer (Data)" class="dd-item 
+<li data-nav-id="/5-workshop/5.4-backend/5.4.2-data/" title="Data Layer" class="dd-item 
         
         
         
         ">
   <a href="/5-workshop/5.4-backend/5.4.2-data/">
-     <b> 5.4.2. </b> Data Layer (Data)
+     <b> 5.4.2. </b> Data Layer
     
     <i class="fas fa-check read-icon"></i>
     
@@ -872,13 +872,13 @@
 
 
 
-<li data-nav-id="/5-workshop/5.4-backend/5.4.3-storage/" title="Storage Layer (Storage)" class="dd-item 
+<li data-nav-id="/5-workshop/5.4-backend/5.4.3-storage/" title="Storage Layer" class="dd-item 
         
         
         
         ">
   <a href="/5-workshop/5.4-backend/5.4.3-storage/">
-     <b> 5.4.3. </b> Storage Layer (Storage)
+     <b> 5.4.3. </b> Storage Layer
     
     <i class="fas fa-check read-icon"></i>
     
@@ -1473,17 +1473,18 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#ai-integrated-aws-serverless-solution-for-nutrition-tracking">AI-Integrated AWS Serverless Solution for Nutrition Tracking</a>
+    <li><a href="#aws-serverless-solution-with-integrated-ai-for-nutrition-tracking">AWS Serverless Solution with Integrated AI for Nutrition Tracking</a>
       <ul>
         <li><a href="#1-project-summary">1. Project Summary</a></li>
         <li><a href="#2-context-and-solution">2. Context and Solution</a></li>
         <li><a href="#3-solution-architecture">3. Solution Architecture</a></li>
         <li><a href="#4-technical-implementation">4. Technical Implementation</a></li>
-        <li><a href="#5-schedule--milestones">5. Schedule &amp; Milestones</a></li>
-        <li><a href="#6-budget-estimate">6. Budget Estimate</a></li>
-        <li><a href="#7-risk-assessment">7. Risk Assessment</a></li>
-        <li><a href="#8-expected-outcomes">8. Expected Outcomes</a></li>
-        <li><a href="#9-next-steps">9. Next Steps</a></li>
+        <li><a href="#5-schedule--milestones-dragon-journey">5. Schedule &amp; Milestones (Dragon Journey)</a></li>
+        <li><a href="#6-risk-assessment--handling">6. Risk Assessment &amp; Handling</a></li>
+        <li><a href="#7-expected-results">7. Expected Results</a></li>
+        <li><a href="#8-next-steps">8. Next Steps</a></li>
+        <li><a href="#9-expected-results">9. Expected Results</a></li>
+        <li><a href="#10-next-steps">10. Next Steps</a></li>
       </ul>
     </li>
   </ul>
@@ -1512,410 +1513,194 @@
 
 
 	<h1 id="nutritrack-platform">NutriTrack Platform</h1>
-<h2 id="ai-integrated-aws-serverless-solution-for-nutrition-tracking">AI-Integrated AWS Serverless Solution for Nutrition Tracking</h2>
+<h2 id="aws-serverless-solution-with-integrated-ai-for-nutrition-tracking">AWS Serverless Solution with Integrated AI for Nutrition Tracking</h2>
 <hr>
 <h3 id="1-project-summary">1. Project Summary</h3>
-<p>NutriTrack is built for Gen Z and Millennial users in Vietnam — those who want meaningful personal health control without the complexity. The platform aims for 1,000+ active users, featuring a cross-platform mobile interface developed with React Native (Expo), allowing users to log meal data via photos, voice, or manual entry.</p>
-<p>The entire infrastructure complies with the AWS Well-Architected Framework, leveraging the serverless ecosystem (AWS Amplify Gen 2, AppSync, Lambda) and Generative AI capabilities from Amazon Bedrock (Qwen3-VL 235B model). The result is a real-time nutrition tracking system with predictive AI, rich gamification mechanisms, and optimized operational costs — all protected by Amazon Cognito combined with Google OAuth2.</p>
+<p>NutriTrack was built for Gen Z and Millennials in Vietnam—those who want to monitor their personal health in a practical, uncomplicated way. The platform targets over 1,000 active users, with a cross-platform mobile interface developed using React Native (Expo), allowing for meal data capture via photos, voice, or manual input.</p>
+<p>The entire infrastructure complies with the AWS Well-Architected Framework, leveraging the serverless ecosystem (AWS Amplify Gen 2, AppSync, Lambda) and the Generative AI capabilities of Amazon Bedrock (model Qwen3-VL 235B). The result is a real-time nutrition tracking system with AI prediction, rich gamification mechanisms, and optimized operating costs—all protected by Amazon Cognito combined with Google OAuth2.</p>
 <hr>
 <h3 id="2-context-and-solution">2. Context and Solution</h3>
-<h4 id="current-problems">Current Problems</h4>
-<p>Most current nutrition tracking apps require manual data entry — tedious and easy to give up on. Food databases are often poor in Vietnamese cuisine, lacking familiar dishes like pho, banh mi, or bun bo Hue. Furthermore, third-party nutrition APIs (Nutritionix, FatSecret) are expensive to scale and limited in their data models.</p>
-<p>Managing the fridge, planning daily menus, or utilizing available ingredients are also problems that haven&rsquo;t been well-solved — leading to food waste and inconsistent eating habits.</p>
-<h4 id="how-nutritrack-solves-it">How NutriTrack Solves It?</h4>
-<p>NutriTrack approaches this with a fully serverless AWS-native architecture:</p>
+<h4 id="current-problem">Current Problem</h4>
+<p>Most current nutrition tracking applications require users to manually input data—boring and easy to give up on. Food databases are often poor in Vietnamese cuisine, lacking familiar dishes like pho, banh mi, or bun bo Hue. Furthermore, third-party nutrition APIs (Nutritionix, FatSecret) are expensive to scale and limited in data models.</p>
+<p>Refrigerator management, daily meal planning, and utilizing available ingredients are also unresolved issues—leading to food waste and inconsistent eating habits.</p>
+<h4 id="how-does-nutritrack-solve-this">How does NutriTrack solve this?</h4>
+<p>NutriTrack adopts a completely serverless AWS-native architecture:</p>
 <ul>
-<li><strong>AWS AppSync (GraphQL)</strong> handles meal data via mutations and real-time subscriptions.</li>
-<li><strong>AWS Lambda</strong> with 4 specialized functions handles all backend logic — from AI orchestration to friend management and image optimization.</li>
-<li><strong>Amazon DynamoDB</strong> stores 8 data models with auto-scaling capabilities.</li>
-<li><strong>Amazon Bedrock (Qwen3-VL 235B)</strong> analyzes food photos, scans barcodes/nutrition labels, and generates nutrition data for items not in the database.</li>
-<li><strong>AWS Amplify Gen 2</strong> combined with React Native/Expo creates a smooth Vietnamese–English bilingual interface.</li>
+<li>
+<p><strong>AWS AppSync (GraphQL)</strong> receives meal data via mutations and real-time subscriptions.</p>
+</li>
+<li>
+<p><strong>AWS Lambda</strong> with 5 specialized functions handles all backend logic — from AI coordination and nutrition processing to friend management and image optimization.</p>
+</li>
+<li>
+<p><strong>Amazon DynamoDB</strong> stores 6 core data models with the ability to scale automatically according to load.</p>
+</li>
+<li>
+<p><strong>Amazon Bedrock (Qwen3-VL 235B)</strong> analyzes food images, suggests recipes, and generates intelligent nutritional data.</p>
+</li>
+<li>
+<p><strong>AWS Amplify Gen 2</strong> combines React Native/Expo to create a smooth bilingual Vietnamese-English interface.</p>
+</li>
 </ul>
 <p><strong>Key Features:</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>Feature</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>📸 Food Image Analysis</td>
-          <td>Take one photo — get a detailed nutrition table immediately</td>
-      </tr>
-      <tr>
-          <td>🎙️ Voice Logging</td>
-          <td>AWS Transcribe converts speech into meal data</td>
-      </tr>
-      <tr>
-          <td>🍳 Smart Fridge</td>
-          <td>Track food storage, suggest recipes from available ingredients</td>
-      </tr>
-      <tr>
-          <td>🤖 AI Coach &ldquo;Ollie&rdquo;</td>
-          <td>Personalized nutrition advice and weekly analysis</td>
-      </tr>
-      <tr>
-          <td>🎮 Gamification</td>
-          <td>Daily streaks, evolving virtual pets, community challenges</td>
-      </tr>
-      <tr>
-          <td>👥 Social Features</td>
-          <td>Friend system, leaderboards, competitive challenges</td>
-      </tr>
-  </tbody>
-</table>
-<h4 id="cost-efficiency">Cost Efficiency</h4>
-<p>Estimated operational cost is <strong>~$60.87/month</strong> for 1,000 active users — by leveraging AWS Free Tier and the pay-as-you-go serverless model. The break-even point depends on the conversion rate to premium plans (unlimited image analysis, deep AI reports, priority coach) and will be confirmed after launch.</p>
+<p>| Feature | Description |</p>
+<p>|&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;-|</p>
+<p>| 📸 Food Image Analysis | Take a picture — instantly receive a detailed nutrition chart via Vision AI |</p>
+<p>| 🎙️ Voice Logging | AWS Transcribe converts speech into specific food items |</p>
+<p>| 🍳 Smart Refrigerator | Tracks food, suggests menus from ingredients nearing their expiration date |</p>
+<p>| 🤖 AI Coach &ldquo;Ollie&rdquo; | Personalized nutrition advice (Vietnamese name: Bảo) |</p>
+<p>| 🎮 Gamification | 180-day Dragon evolution journey, pets, challenges |</p>
+<p>| 👥 Social Features | Make friends, public Streak and Pet Score leaderboards |</p>
+<h4 id="cost-effectiveness">Cost-Effectiveness</h4>
+<p>The actual operating cost is optimized at <strong>$60.87/month</strong> for 1,000 active users. This is achieved by the strategy of moving the Lambda functions processing AI outside the VPC to eliminate NAT Gateway costs and minimize latency.</p>
 <hr>
 <h3 id="3-solution-architecture">3. Solution Architecture</h3>
-<p>Data moves from the React Native app → CloudFront/WAF (Edge security) → AppSync GraphQL API → Lambda handlers → DynamoDB, enriched by Bedrock AI. The entire infrastructure is orchestrated via AWS Amplify Gen 2 with automated CI/CD across 3 deployment environments.</p>
-<h4 id="aws-services-used">AWS Services Used</h4>
-<table>
-  <thead>
-      <tr>
-          <th>Service</th>
-          <th>Role</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>AWS Amplify Gen 2</strong></td>
-          <td>Orchestrates infrastructure using TypeScript CDK, manages CI/CD pipeline and 3 environments (Sandbox, feat/phase3, main)</td>
-      </tr>
-      <tr>
-          <td><strong>AWS AppSync</strong></td>
-          <td>Secure GraphQL API with real-time subscriptions between mobile app and Lambda resolvers</td>
-      </tr>
-      <tr>
-          <td><strong>AWS Lambda</strong></td>
-          <td>4 logical handlers: <code>ai-engine</code>, <code>process-nutrition</code>, <code>friend-request</code>, <code>resize-image</code></td>
-      </tr>
-      <tr>
-          <td><strong>Amazon DynamoDB</strong></td>
-          <td>8 NoSQL tables: <code>user</code>, <code>Food</code> (~200 Vietnamese dishes), <code>FoodLog</code>, <code>FridgeItem</code>, <code>Challenge</code>, <code>ChallengeParticipant</code>, <code>Friendship</code>, <code>UserPublicStats</code></td>
-      </tr>
-      <tr>
-          <td><strong>Amazon Bedrock</strong></td>
-          <td>Qwen3-VL 235B (ap-southeast-2) for image analysis, barcode scanning, label reading, recipe suggestions, AI coaching</td>
-      </tr>
-      <tr>
-          <td><strong>AWS Transcribe</strong></td>
-          <td>Converts audio recordings (S3 prefix <code>/voice</code>) to text for the voice logging feature</td>
-      </tr>
-      <tr>
-          <td><strong>Amazon S3</strong></td>
-          <td>Media storage with 4 prefixes: <code>incoming/</code> (deleted after 1 day), <code>voice/</code>, <code>avatar/</code>, <code>media/</code></td>
-      </tr>
-      <tr>
-          <td><strong>Amazon Cognito</strong></td>
-          <td>Email/OTP and Google OAuth2 authentication, managing JWT tokens and user pools</td>
-      </tr>
-      <tr>
-          <td><strong>Amazon CloudFront</strong></td>
-          <td>CDN for global content delivery acceleration</td>
-      </tr>
-      <tr>
-          <td><strong>AWS WAF</strong></td>
-          <td>Firewall protecting API from common attacks and DDoS</td>
-      </tr>
-      <tr>
-          <td><strong>Route 53</strong></td>
-          <td>DNS resolution for the application domain</td>
-      </tr>
-      <tr>
-          <td><strong>Amazon ECR</strong></td>
-          <td>Container image repository for ECS Fargate</td>
-      </tr>
-      <tr>
-          <td><strong>Amazon ECS Fargate</strong></td>
-          <td>Serverless container for FastAPI backend in VPC (private subnets, 2 AZ, ALB, Auto Scaling)</td>
-      </tr>
-      <tr>
-          <td><strong>AWS CloudWatch</strong></td>
-          <td>Monitoring with 4 custom metrics: <code>Bedrock_AI_Error_Rate</code>, <code>Image_Processing_Time</code>, <code>User_Daily_Active</code>, <code>Food_Log_Count</code></td>
-      </tr>
-      <tr>
-          <td><strong>AWS CloudTrail</strong></td>
-          <td>API logging for auditing and compliance</td>
-      </tr>
-      <tr>
-          <td><strong>AWS KMS</strong></td>
-          <td>Encryption of sensitive data at rest</td>
-      </tr>
-      <tr>
-          <td><strong>AWS Secrets Manager</strong></td>
-          <td>Secures API keys, JWT master key, and app configuration</td>
-      </tr>
-      <tr>
-          <td><strong>AWS Textract</strong></td>
-          <td>OCR for extracting text from nutrition labels</td>
-      </tr>
-  </tbody>
-</table>
-<h4 id="layered-design">Layered Design</h4>
-<p><strong>Client</strong> — React Native/Expo app collects input via Camera, Microphone, and manual forms. Data is visualized through interactive charts and a gamification interface with virtual pets that evolve based on daily streaks.</p>
-<p><strong>Edge Security</strong> — Route 53 → WAF → CloudFront handles DNS resolution, DDoS mitigation, and content acceleration before requests reach the backend.</p>
-<p><strong>Authentication</strong> — Cognito manages registration (email/OTP), Google OAuth2 login, and JWT lifecycle. The app adds a local biometric protection layer (FaceID/TouchID).</p>
-<p><strong>Processing</strong> — 4 Lambda handlers handle all logic:</p>
+<p>Data migrates from React Native application → CloudFront/WAF (edge-to-edge security) → AppSync GraphQL API → Lambda handlers → DynamoDB. Heavy image processing tasks are delegated to ECS Fargate, while artificial intelligence is handled by Amazon Bedrock.</p>
+<h4 id="aws-services">AWS Services</h4>
+<p>| Service | Role |</p>
+<p>|&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;|</p>
+<p>| <strong>AWS Amplify Gen 2</strong> | Infrastructure orchestration using TypeScript CDK, CI/CD pipeline management, and 3 decoupled environments |</p>
+<p>| <strong>AWS AppSync</strong> | GraphQL API with real-time subscriptions and owner-based authorization |</p>
+<p>| <strong>AWS Lambda</strong> | 5 logic functions: <code>ai-engine</code>, <code>scan-image</code>, <code>process-nutrition</code>, <code>friend-request</code>, <code>resize-image</code> |
+| <strong>Amazon DynamoDB</strong> | 6 NoSQL tables: <code>user</code>, <code>Food</code>, <code>FoodLog</code>, <code>FridgeItem</code>, <code>Friendship</code>, <code>UserPublicStats</code> |</p>
+<p>| <strong>Amazon Bedrock</strong> | Qwen3-VL 235B (ap-southeast-2) handles 9 AI tasks (Vision, NLP, Coaching) |</p>
+<p>| <strong>AWS Transcribe</strong> | Converts voice recordings (.m4a) from S3 to text for food processing |</p>
+<p>| <strong>Amazon S3</strong> | Partitioned media storage: <code>incoming/</code> (temp), <code>voice/</code>, <code>avatar/</code>, <code>media/</code> (permanent) |</p>
+<p>| <strong>Amazon Cognito</strong> | Centralized authentication: Email/OTP and Google OAuth2 federation |</p>
+<p>| <strong>Amazon ECS Fargate</strong> | Runs FastAPI backend in VPC for high-intensity Vision AI processing |</p>
+<p>| <strong>AWS CloudWatch</strong> | Centralized monitoring with Custom Metrics and Budget Alerts |</p>
+<p>| <strong>AWS Secrets Manager</strong> | Secure API Keys for ECS and Bedrock Model IDs |</p>
+<h4 id="specific-engineering-design">Specific Engineering Design</h4>
+<p><strong>Hybrid AI Processing</strong> — The system prioritizes fuzzy match queries from the local database before fallback to Bedrock AI to ensure speed and cost savings.</p>
+<p><strong>VPC Optimization</strong> — The Lambda <code>scan-image</code> function is placed outside the VPC to connect directly to S3 and Bedrock, reducing latency by 90% and completely eliminating NAT Gateway costs for AI tasks.</p>
+<p><strong>AI Engine (9 Tasks)</strong> — The central coordinating brain:</p>
 <ul>
-<li><code>aiEngine</code> — Orchestrates 10 Bedrock tasks: <code>analyzeFoodImage</code>, <code>voiceToFood</code>, <code>generateRecipe</code>, <code>generateCoachResponse</code>, <code>searchFoodNutrition</code>, <code>fixFood</code>, <code>ollieCoachTip</code>, <code>calculateMacros</code>, <code>challengeSummary</code>, <code>weeklyInsight</code></li>
-<li><code>processNutrition</code> — Hybrid lookup: fuzzy match on DynamoDB (~200 Vietnamese dishes) first, Bedrock AI fallback if not found</li>
-<li><code>friendRequest</code> — Social logic (send/accept/reject/block) via DynamoDB <code>TransactWriteItems</code></li>
-<li><code>resizeImage</code> — S3 event trigger on <code>incoming/</code>, using <code>sharp</code> to scale the longest side to 1280px (maintaining aspect ratio, auto-rotating via EXIF), encoding to progressive JPEG at 85 quality, written to <code>media/{entity_id}/</code></li>
+<li><code>analyzeFoodImage</code>: Analyzes food images directly.</li>
+<li><code>voiceToFood</code>: Converts speech to nutritional data.</li>
+<li><code>generateCoachResponse</code>: Responds to Coach Ollie&rsquo;s conversation.</li>
+<li><code>generateFood</code>: Generates data for a non-food item.
+Included in the database.</li>
+<li><code>calculateMacros</code>: Calculates calorie targets based on body mass index.</li>
+<li>And other tasks such as: <code>fixFood</code>, <code>ollieCoachTip</code>, <code>generateRecipe</code>, <code>weeklyInsight</code>.</li>
 </ul>
-<p><strong>Data</strong> — 8 DynamoDB tables with owner-scoped permissions and GSIs optimized for common query patterns.</p>
-<p><strong>AI/ML</strong> — Bedrock (Qwen3-VL 235B) and Transcribe form the core intelligence layer, all routed through <code>aiEngine</code> with structured prompt templates.</p>
-<p><strong>Container</strong> — ECS Fargate runs the FastAPI backend in a VPC (2 AZs in ap-southeast-2a), load balanced via ALB, connecting to AWS services through VPC Endpoints.</p>
 <hr>
 <h3 id="4-technical-implementation">4. Technical Implementation</h3>
-<h4 id="technology-stack">Technology Stack</h4>
+<h4 id="technologies-used">Technologies Used</h4>
 <ul>
-<li><strong>Frontend:</strong> React Native, Expo, TypeScript, Zustand, react-native-reanimated, expo-router, i18n (Vietnamese/English)</li>
-<li><strong>Backend:</strong> Amplify Gen 2 (TypeScript CDK), Lambda (Node.js 22), AppSync, DynamoDB (8 tables + GSIs), Cognito (User Pools + Identity Pools + Google federation), S3 (4 prefixes + lifecycle rules)</li>
-<li><strong>AI:</strong> Bedrock API (Qwen3-VL 235B, ap-southeast-2), Transcribe (async jobs), prompt engineering with JSON schema enforcement</li>
-<li><strong>Infra:</strong> Docker/ECS Fargate, VPC (public/private subnets), ALB, Auto Scaling, ECR</li>
+<li>
+<p><strong>Frontend:</strong> React Native, Expo Router, TypeScript, Zustand (State), i18n.</p>
+</li>
+<li>
+<p><strong>Backend:</strong> Amplify Gen 2, AppSync, DynamoDB, Lambda (Node.js 22).</p>
+</li>
+<li>
+<p><strong>AI/ML:</strong> Bedrock (Qwen3-VL 235B), Transcribe, Vision AI on ECS Fargate.</p>
+</li>
+<li>
+<p><strong>DevOps:</strong> Automated CI/CD, CDK Escape Hatches to resolve Table Discovery errors.</p>
+</li>
 </ul>
 <h4 id="development-roadmap">Development Roadmap</h4>
-<p><strong>Month 0 — Research &amp; Architecture</strong>
-Exploration of React Native/Expo with Amplify Gen 2, Designing serverless-AI architecture, drafting solution diagrams, and defining data models.</p>
-<p><strong>Month 1 — Infrastructure Foundation</strong>
-Cost estimation using AWS Pricing Calculator (confirmed under $65/month for 1,000 users). Initializing Amplify Gen 2 sandbox, Cognito + Google federation, and 8-model GraphQL schema.</p>
-<p><strong>Month 2 — Core Logic</strong>
-Implementing 4 TypeScript Lambda handlers, connecting AppSync resolvers, building React Native UI for 6 main tabs, integrating S3 image upload and resize pipeline.</p>
-<p><strong>Month 3 — Integration &amp; Launch</strong>
-Integrating Bedrock (Qwen3-VL) for 10 AI tasks, E2E testing across 3 environments, handling edge cases (JWT federation, <code>discoverTables()</code>, <code>NoValidAuthTokens</code>), and production deployment.</p>
-<p><strong>Post-Launch — Continuous Optimization</strong>
-UX improvements based on user feedback, gamification upgrades, prompt engineering refinement, and premium package development.</p>
+<p><strong>Phase 1 — Infrastructure &amp; Core</strong>
+Design a 6-table schema, configure Cognito Auth, and build basic UI for data entry.</p>
+<p><strong>Phase 2 — AI &amp; Voice Integration</strong>
+Deploy <code>aiEngine</code> in conjunction with Transcribe and Bedrock. Optimize automatic image resizing flow via S3 triggers.</p>
+<p><strong>Phase 3 — Social &amp; Gamification</strong>
+Build a friend system, leaderboards, and pet evolution logic (Minh Long Dragon) based on real-world movement sequences.</p>
+<p><strong>Phase 4 — Stabilization &amp; Scaling</strong>
+Handle Table Discovery bugs using CDK overrides, deploy production in the Sydney region (ap-southeast-2).</p>
 <hr>
-<h3 id="5-schedule--milestones">5. Schedule &amp; Milestones</h3>
-<table>
-  <thead>
-      <tr>
-          <th>Phase</th>
-          <th>Duration</th>
-          <th>Key Content</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Month 0 — Pre-production</strong></td>
-          <td>1 month</td>
-          <td>UI/UX planning on Figma, migration from Flutter to React Native, Architecture design on draw.io, AWS service evaluation</td>
-      </tr>
-      <tr>
-          <td><strong>Month 1 — Infrastructure</strong></td>
-          <td>1 month</td>
-          <td>Amplify Gen 2 initialization, Cognito + Google OAuth config, defining 8 DynamoDB models, building core UI (Home, Add Food, Kitchen)</td>
-      </tr>
-      <tr>
-          <td><strong>Month 2 — Development</strong></td>
-          <td>1 month</td>
-          <td>AppSync GraphQL connection, implementing <code>processNutrition</code> and <code>friendRequest</code>, building Fridge interface, S3 + <code>resizeImage</code> integration</td>
-      </tr>
-      <tr>
-          <td><strong>Month 3 — Launch</strong></td>
-          <td>1 month</td>
-          <td><code>aiEngine</code> implementation (10 Bedrock tasks), gamification, 3-environment E2E testing, JWT + <code>discoverTables()</code> bug fixes, production release</td>
-      </tr>
-      <tr>
-          <td><strong>Post-Launch</strong></td>
-          <td>Continuous</td>
-          <td>Performance optimization, user feedback, iOS EAS Build pipeline, first-year scaling</td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-<h3 id="6-budget-estimate">6. Budget Estimate</h3>
-<p>Calculated for <strong>1,000 active users × 3 sessions/day × 30 days</strong> = 90,000 AI interactions/month.</p>
-<h4 id="monthly-infrastructure-cost">Monthly Infrastructure Cost</h4>
-<table>
-  <thead>
-      <tr>
-          <th>Component</th>
-          <th>Cost</th>
-          <th>Notes</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Amazon S3</td>
-          <td>$2.03</td>
-          <td>3GB storage + 5GB transfer out + PUT/GET requests</td>
-      </tr>
-      <tr>
-          <td>AWS Lambda</td>
-          <td>$0.26</td>
-          <td>270K requests, avg 0.2s, 512MB ARM64</td>
-      </tr>
-      <tr>
-          <td>AppSync GraphQL</td>
-          <td>$0.34</td>
-          <td>270K operations @ $4/million</td>
-      </tr>
-      <tr>
-          <td>Amazon DynamoDB</td>
-          <td>$0.47</td>
-          <td>2GB storage + 810K reads + 180K writes</td>
-      </tr>
-      <tr>
-          <td>Amazon Cognito</td>
-          <td>$5.50</td>
-          <td>1,000 MAU @ $0.0055/MAU (Lite plan)</td>
-      </tr>
-      <tr>
-          <td>CloudWatch</td>
-          <td>$1.00</td>
-          <td>5 custom metrics + API logging</td>
-      </tr>
-      <tr>
-          <td>CloudTrail</td>
-          <td>$0.05</td>
-          <td>50,000 management events</td>
-      </tr>
-      <tr>
-          <td>Secrets Manager</td>
-          <td>$1.20</td>
-          <td>3 secrets (API keys, JWT key, DB config)</td>
-      </tr>
-      <tr>
-          <td>AWS KMS</td>
-          <td>$1.00</td>
-          <td>1 customer-managed key</td>
-      </tr>
-      <tr>
-          <td>AWS Textract</td>
-          <td>$3.60</td>
-          <td>2,400 label scans @ $0.0015/page</td>
-      </tr>
-      <tr>
-          <td><strong>Amazon Bedrock (AI)</strong></td>
-          <td><strong>$45.42</strong></td>
-          <td>90K calls: input tokens ($16.70) + output tokens ($28.73)</td>
-      </tr>
-      <tr>
-          <td><strong>Total</strong></td>
-          <td><strong>$60.87/month</strong></td>
-          <td><strong>$730.44/year</strong></td>
-      </tr>
-  </tbody>
-</table>
-<h4 id="comparison-of-bedrock-qwen3-vl-235b-prices-by-region">Comparison of Bedrock (Qwen3-VL 235B) prices by region</h4>
-<table>
-  <thead>
-      <tr>
-          <th>Region</th>
-          <th>Input</th>
-          <th>Output</th>
-          <th>Difference</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>US East (Virginia)</td>
-          <td>$0.00053/1K tokens</td>
-          <td>$0.00266/1K tokens</td>
-          <td>Baseline</td>
-      </tr>
-      <tr>
-          <td>Asia Pacific (Tokyo)</td>
-          <td>$0.00064/1K tokens</td>
-          <td>$0.00322/1K tokens</td>
-          <td>+21%</td>
-      </tr>
-      <tr>
-          <td>Asia Pacific (Mumbai)</td>
-          <td>$0.00062/1K tokens</td>
-          <td>$0.00313/1K tokens</td>
-          <td>+18%</td>
-      </tr>
-      <tr>
-          <td>Asia Pacific (Sydney)</td>
-          <td><em>(Used for production)</em></td>
-          <td><em>(Used for production)</em></td>
-          <td>ap-southeast-2</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Software cost:</strong> $0 — all development tools are open source. Apple Developer account ($99/year) required if distributed on iOS.</p>
-<hr>
-<h3 id="7-risk-assessment">7. Risk Assessment</h3>
-<table>
-  <thead>
-      <tr>
-          <th>Risk</th>
-          <th>Impact</th>
-          <th>Probability</th>
-          <th>Mitigation Strategy</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Bedrock costs exceeding budget</strong></td>
-          <td>Medium</td>
-          <td>Medium</td>
-          <td>Cache AI results in DynamoDB, rate limit requests, set AWS Budget alert at $80/month</td>
-      </tr>
-      <tr>
-          <td><strong>Cognito/JWT authentication errors</strong></td>
-          <td>High</td>
-          <td>Low</td>
-          <td>Full E2E testing for federation flows, backup local AsyncStorage session, handle <code>UserNotConfirmedException</code> and <code>NotAuthorizedException</code></td>
-      </tr>
-      <tr>
-          <td><strong>AI hallucination</strong></td>
-          <td>Medium</td>
-          <td>Medium</td>
-          <td>Prompt templates with mandatory JSON schema, allow users to verify and edit, maintain ~200 verified Vietnamese dishes in DynamoDB</td>
-      </tr>
-      <tr>
-          <td><strong>iOS build hurdles</strong></td>
-          <td>Low</td>
-          <td>High</td>
-          <td>Prioritize Android for MVP, use EAS Build cloud for iOS, plan macOS CI runners in later stages</td>
-      </tr>
-      <tr>
-          <td><strong>Inaccurate DynamoDB table discovery</strong></td>
-          <td>Medium</td>
-          <td>Low</td>
-          <td><strong>Root Cause:</strong> <code>friendRequest</code> Lambda used <code>discoverTables()</code> via <code>ListTables</code>, returning wrong table names when multiple environments exist. <strong>Fix:</strong> Inject precise table names via CDK escape hatch — <code>cfnFriendRequestFn.addPropertyOverride('Environment.Variables.USER_TABLE_NAME', backend.data.resources.tables['user'].tableName)</code>, CDK auto-resolves correct ARN suffix on deploy</td>
-      </tr>
-      <tr>
-          <td><strong>Bedrock capacity limits</strong></td>
-          <td>Low</td>
-          <td>Low</td>
-          <td>Currently using ap-southeast-2; backup us-east-1 if needed</td>
-      </tr>
-  </tbody>
-</table>
-<h4 id="contingency-plan">Contingency Plan</h4>
+<h3 id="5-schedule--milestones-dragon-journey">5. Schedule &amp; Milestones (Dragon Journey)</h3>
+<p>The gamification system is designed with a 180-day journey:</p>
 <ul>
-<li>When AI/Bedrock fails: fallback to manual entry or fuzzy match on ~200 pre-loaded Vietnamese dishes.</li>
-<li>When backend deployment fails: rollback via CloudFormation/Amplify across 3 environments.</li>
-<li>When Qwen3-VL costs escalate: switch to Claude Haiku or Llama on Bedrock.</li>
+<li>
+<p><strong>Egg (Days 0-35)</strong>: Starting state.</p>
+</li>
+<li>
+<p><strong>Newborn (Days 36-71)</strong>: Hatching stage.</p>
+</li>
+<li>
+<p><strong>Teenager (Days 72-107)</strong>: Size growth.</p>
+</li>
+<li>
+<p><strong>Adult (Days 108-143)</strong>: Peak energy.</p>
+</li>
+<li>
+<p><strong>Legendary (Days 144+)</strong>: Ultimate state with special privileges.</p>
+</li>
 </ul>
 <hr>
-<h3 id="8-expected-outcomes">8. Expected Outcomes</h3>
+<h3 id="6-risk-assessment--handling">6. Risk Assessment &amp; Handling</h3>
+<p>| Risks | Handling Methods |</p>
+<p>|&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;-|</p>
+<p>| <strong>Table Discovery Error</strong> | Inject the table name incorrectly via the Escape Hatches CDK (<code>addPropertyOverride</code>). |</p>
+<p>| <strong>ESCENT AI Costs</strong> | Set Budget Alert to $80 and cache search results in DynamoDB. |</p>
+<p>| <strong>Hallucination (AI Error)</strong> | Use Prompt Engineering with mandatory JSON Schema and allow manual editing. |</p>
+<p>| <strong>VPC Latency</strong> | Move Lambda AI processing outside the VPC (Public) to optimize bandwidth. |</p>
+<hr>
+<h3 id="7-expected-results">7. Expected Results</h3>
+<ul>
+<li>
+<p><strong>Performance</strong>: Food posting time reduced from 3 minutes to 10 seconds thanks to AI.</p>
+</li>
+<li>
+<p><strong>Accuracy</strong>: Achieve 95% accuracy for Vietnamese dishes thanks to the advanced Vision AI model.</p>
+</li>
+<li>
+<p><strong>Scalability</strong>: Ready to handle 10,000+ users with near-zero maintenance costs when idle.</p>
+</li>
+</ul>
+<hr>
+<h3 id="8-next-steps">8. Next Steps</h3>
+<ul>
+<li>
+<p><strong>Expanding the Vietnamese Dishes DB</strong>: Aim to reach 1,000+ verified dishes by the end of the year. - <strong>EAS Build for iOS</strong>: Completed the application packaging pipeline for the App Store.</p>
+</li>
+<li>
+<p><strong>Premium Package</strong>: Launched advanced analytics features (Weekly Insights) to create sustainable revenue streams.</p>
+</li>
+</ul>
+<p>Issue: Fallback to manual data entry or fuzzy matching on approximately 200 pre-loaded Vietnamese dishes.</p>
+<ul>
+<li>
+<p>When backend deployment fails: Rollback via CloudFormation/Amplify across 3 environments.</p>
+</li>
+<li>
+<p>When Qwen3-VL costs escalate: Switch to Claude Haiku or Llama on Bedrock.</p>
+</li>
+</ul>
+<hr>
+<h3 id="9-expected-results">9. Expected Results</h3>
 <h4 id="technical-improvements">Technical Improvements</h4>
 <ul>
-<li>Logging time reduced from ~3 minutes (manual) to ~10 seconds (AI via photo/voice).</li>
-<li>Serverless infrastructure ready to handle 10,000+ concurrent users with nearly zero idle costs ($0.47/month basic DynamoDB).</li>
-<li>Hybrid AI strategy (DynamoDB fuzzy match + Bedrock AI fallback) balances cost-efficiency and data accuracy.</li>
+<li>
+<p>Logging time reduced from approximately 3 minutes (manual entry) to approximately 10 seconds (AI via image/voice).</p>
+</li>
+<li>
+<p>Serverless infrastructure ready to handle 10,000+ concurrent users with near-zero idle costs ($0.47/month for basic DynamoDB).</p>
+</li>
+<li>
+<p>Hybrid AI strategy (DynamoDB fuzzy match + Bedrock AI backup) balances cost efficiency and data accuracy.</p>
+</li>
 </ul>
-<h4 id="long-term-value">Long-term Value</h4>
+<h4 id="long-term-value">Long-Term Value</h4>
 <ul>
-<li>Building a database of verified Vietnamese dishes, expanding naturally through user and AI contributions — currently ~200 items and growing.</li>
-<li>Reusable AI architectural patterns (prompt templates, Lambda orchestration, Bedrock integration) applicable to future health features.</li>
-<li>Social platform with gamification (evolving pets, day streaks, challenges) drives daily usage and long-term user retention.</li>
+<li>
+<p>Building a verified Vietnamese food database, naturally expanding through user and AI contributions — currently ~200 dishes and growing.</p>
+</li>
+<li>
+<p>Reusable AI architecture patterns (prompt templates, Lambda orchestration, Bedrock integration) applicable to future health features.</p>
+</li>
+<li>
+<p>Social platform with gamification (pet evolution, daily streaks, challenges) promotes daily usage habits and long-term user retention.</p>
+</li>
 </ul>
 <hr>
-<h3 id="9-next-steps">9. Next Steps</h3>
-<p><strong>iOS Pipeline</strong> — Transition from Android-first MVP to iOS via EAS Build cloud runners; activate macOS CI runner when user volume justifies the cost.</p>
-<p><strong>Vietnamese food database expansion</strong> — From the initial ~200 seed items, collect AI-generated entries (<code>source: &quot;AI Generated&quot;</code> → <code>verified: false</code>) for team review; goal of 1,000+ verified dishes after the first year.</p>
-<p><strong>Premium Package</strong> — Validate pricing model (conversion rate high enough to cover $60.87/month baseline), release unlimited image analysis, weekly AI coach reports, and advanced macro charts.</p>
-<p><strong>Observability</strong> — Connect 4 CloudWatch custom metrics to a centralized dashboard + set Budget alarm at $80/month threshold.</p>
-<p><strong>Fallback Bedrock cross-region</strong> — If Qwen3-VL capacity at <code>ap-southeast-2</code> is limited, add backup route to Claude Haiku <code>us-east-1</code> to ensure SLA.</p>
+<h3 id="10-next-steps">10. Next Steps</h3>
+<p><strong>iOS Pipeline</strong> — Migrating from Android-first MVP to iOS via EAS. Build cloud runners; activate macOS CI runner when user numbers are sufficient to offset costs.</p>
+<p><strong>Expanding the Vietnamese Dish Database</strong> — From an initial ~200 seeded items, collect AI-generated entries (<code>source: &quot;AI Generated&quot;</code> → <code>verified: false</code>) for the review team; the goal is 1,000+ verified dishes after the first year.</p>
+<p><strong>Observability</strong> — Connect 4 CloudWatch custom metrics to a centralized dashboard + set a Budget alarm at $80/month.</p>
+<p><strong>Fallback Bedrock Cross-Region</strong> — If the Qwen3-VL capacity at <code>ap-southeast-2</code> is limited, add a backup route to Claude Haiku <code>us-east-1</code> to ensure SLA.</p>
 
 
 
@@ -2682,19 +2467,19 @@ UX improvements based on user feedback, gamification upgrades, prompt engineerin
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1776415703"></script>
-    <script src="/js/perfect-scrollbar.min.js?1776415703"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1776415703"></script>
-    <script src="/js/jquery.sticky.js?1776415703"></script>
-    <script src="/js/featherlight.min.js?1776415703"></script>
-    <script src="/js/highlight.pack.js?1776415703"></script>
+    <script src="/js/clipboard.min.js?1776441028"></script>
+    <script src="/js/perfect-scrollbar.min.js?1776441028"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1776441028"></script>
+    <script src="/js/jquery.sticky.js?1776441028"></script>
+    <script src="/js/featherlight.min.js?1776441028"></script>
+    <script src="/js/highlight.pack.js?1776441028"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1776415703"></script>
-    <script src="/js/learn.js?1776415703"></script>
-    <script src="/js/hugo-learn.js?1776415703"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1776441028"></script>
+    <script src="/js/learn.js?1776441028"></script>
+    <script src="/js/hugo-learn.js?1776441028"></script>
 
-    <link href="/mermaid/mermaid.css?1776415703" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1776415703"></script>
+    <link href="/mermaid/mermaid.css?1776441028" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1776441028"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

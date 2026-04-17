@@ -33,75 +33,61 @@ Quản lý tủ lạnh, lên thực đơn hàng ngày hay tận dụng nguyên l
 NutriTrack tiếp cận bằng kiến trúc AWS-native hoàn toàn serverless:
 
 - **AWS AppSync (GraphQL)** tiếp nhận dữ liệu bữa ăn qua mutations và real-time subscriptions.
-- **AWS Lambda** với 4 hàm chuyên biệt xử lý mọi logic backend — từ điều phối AI đến quản lý kết bạn đến tối ưu ảnh.
-- **Amazon DynamoDB** lưu trữ 8 mô hình dữ liệu với khả năng tự co giãn theo tải.
-- **Amazon Bedrock (Qwen3-VL 235B)** phân tích ảnh đồ ăn, quét mã vạch/nhãn dinh dưỡng, và sinh dữ liệu dinh dưỡng cho các món chưa có trong cơ sở dữ liệu.
+- **AWS Lambda** với 5 hàm chuyên biệt xử lý mọi logic backend — từ điều phối AI, xử lý dinh dưỡng đến quản lý bạn bè và tối ưu ảnh.
+- **Amazon DynamoDB** lưu trữ 6 mô hình dữ liệu cốt lõi với khả năng tự co giãn theo tải.
+- **Amazon Bedrock (Qwen3-VL 235B)** phân tích ảnh đồ ăn, gợi ý công thức, và sinh dữ liệu dinh dưỡng thông minh.
 - **AWS Amplify Gen 2** kết hợp React Native/Expo tạo ra giao diện song ngữ Việt–Anh mượt mà.
 
 **Tính năng nổi bật:**
 
 | Tính năng | Mô tả |
 |-----------|-------|
-| 📸 Phân tích ảnh đồ ăn | Chụp một tấm — nhận ngay bảng dinh dưỡng chi tiết |
-| 🎙️ Ghi nhật ký bằng giọng nói | AWS Transcribe chuyển lời nói thành dữ liệu bữa ăn |
-| 🍳 Tủ lạnh thông minh | Theo dõi thực phẩm dự trữ, gợi ý công thức từ nguyên liệu có sẵn |
-| 🤖 AI Coach "Ollie" | Tư vấn dinh dưỡng cá nhân hóa và phân tích hàng tuần |
-| 🎮 Gamification | Chuỗi ngày liên tục, thú cưng ảo tiến hóa, thử thách cộng đồng |
-| 👥 Tính năng xã hội | Hệ thống kết bạn, bảng xếp hạng, thử thách đối kháng |
+| 📸 Phân tích ảnh đồ ăn | Chụp một tấm — nhận ngay bảng dinh dưỡng chi tiết qua Vision AI |
+| 🎙️ Ghi nhật ký bằng giọng nói | AWS Transcribe chuyển lời nói thành thực phẩm cụ thể |
+| 🍳 Tủ lạnh thông minh | Theo dõi thực phẩm, gợi ý thực đơn từ nguyên liệu sắp hết hạn |
+| 🤖 AI Coach "Ollie" | Tư vấn dinh dưỡng cá nhân hóa (tên tiếng Việt: Bảo) |
+| 🎮 Gamification | Hành trình tiến hóa Rồng 180 ngày, thú cưng, thử thách |
+| 👥 Tính năng xã hội | Kết bạn, bảng xếp hạng Streak và Pet Score công khai |
 
 #### Hiệu quả chi phí
 
-Chi phí vận hành ước tính **~$250/tháng** cho 1.000 người dùng hoạt động — nhờ tận dụng AWS Free Tier và mô hình thanh toán theo mức dùng của serverless. Mốc hòa vốn phụ thuộc vào tỉ lệ chuyển đổi sang gói premium (phân tích ảnh không giới hạn, báo cáo AI chuyên sâu, coach ưu tiên) và sẽ được xác nhận sau khi ra mắt.
+Chi phí vận hành thực tế được tối ưu hóa ở mức **$60.87/tháng** cho 1.000 người dùng hoạt động. Điều này đạt được nhờ chiến lược đưa các hàm Lambda xử lý AI ra ngoài VPC để loại bỏ chi phí NAT Gateway và giảm độ trễ tối đa.
 
 ---
 
 ### 3. Kiến trúc Giải pháp
 
-Dữ liệu di chuyển từ ứng dụng React Native → CloudFront/WAF (bảo mật biên) → AppSync GraphQL API → các Lambda handler → DynamoDB, được làm giàu thêm bởi AI Bedrock. Toàn bộ hạ tầng được điều phối qua AWS Amplify Gen 2 với CI/CD tự động trên 3 môi trường triển khai.
+Dữ liệu di chuyển từ ứng dụng React Native → CloudFront/WAF (bảo mật biên) → AppSync GraphQL API → các Lambda handler → DynamoDB. Các tác vụ nặng về xử lý ảnh được ủy quyền cho ECS Fargate, trong khi trí tuệ nhân tạo được đảm nhận bởi Amazon Bedrock.
 
 #### Các dịch vụ AWS
 
 | Dịch vụ | Vai trò |
 |---------|---------|
-| **AWS Amplify Gen 2** | Điều phối hạ tầng bằng TypeScript CDK, quản lý pipeline CI/CD và 3 môi trường (Sandbox, feat/phase3, main) |
-| **AWS AppSync** | GraphQL API bảo mật với real-time subscriptions giữa mobile app và Lambda resolvers |
-| **AWS Lambda** | 4 hàm xử lý logic: `ai-engine`, `process-nutrition`, `friend-request`, `resize-image` |
-| **Amazon DynamoDB** | 8 bảng NoSQL: `user`, `Food` (~200 món Việt), `FoodLog`, `FridgeItem`, `Challenge`, `ChallengeParticipant`, `Friendship`, `UserPublicStats` |
-| **Amazon Bedrock** | Qwen3-VL 235B (ap-southeast-2) cho phân tích ảnh, quét mã vạch, đọc nhãn, gợi ý công thức, AI coaching |
-| **AWS Transcribe** | Chuyển bản ghi âm (S3 prefix `/voice`) thành văn bản cho tính năng ghi nhật ký bằng giọng nói |
-| **Amazon S3** | Lưu media theo 4 prefix: `incoming/` (xóa sau 1 ngày), `voice/`, `avatar/`, `media/` |
-| **Amazon Cognito** | Xác thực email/OTP và Google OAuth2, quản lý JWT tokens và user pools |
-| **Amazon CloudFront** | CDN tăng tốc phân phối nội dung toàn cầu |
-| **AWS WAF** | Tường lửa bảo vệ API khỏi tấn công phổ biến và DDoS |
-| **Route 53** | Phân giải DNS cho domain ứng dụng |
-| **Amazon ECR** | Kho chứa Docker images cho ECS Fargate |
-| **Amazon ECS Fargate** | Container serverless cho backend FastAPI trong VPC (private subnets, 2 AZ, ALB, Auto Scaling) |
-| **AWS CloudWatch** | Giám sát với 4 metrics tùy chỉnh: `Bedrock_AI_Error_Rate`, `Image_Processing_Time`, `User_Daily_Active`, `Food_Log_Count` |
-| **AWS CloudTrail** | Ghi log API cho kiểm toán và tuân thủ |
-| **AWS KMS** | Mã hóa dữ liệu nhạy cảm khi lưu trữ |
-| **AWS Secrets Manager** | Bảo mật API keys, JWT master key và cấu hình ứng dụng |
-| **AWS Textract** | OCR trích xuất văn bản từ nhãn dinh dưỡng |
+| **AWS Amplify Gen 2** | Điều phối hạ tầng bằng TypeScript CDK, quản lý pipeline CI/CD và 3 môi trường phân tách |
+| **AWS AppSync** | GraphQL API với real-time subscriptions và phân quyền owner-based |
+| **AWS Lambda** | 5 hàm logic: `ai-engine`, `scan-image`, `process-nutrition`, `friend-request`, `resize-image` |
+| **Amazon DynamoDB** | 6 bảng NoSQL: `user`, `Food`, `FoodLog`, `FridgeItem`, `Friendship`, `UserPublicStats` |
+| **Amazon Bedrock** | Qwen3-VL 235B (ap-southeast-2) xử lý 9 tác vụ AI (Vision, NLP, Coaching) |
+| **AWS Transcribe** | Chuyển đổi voice recordings (.m4a) từ S3 thành văn bản xử lý món ăn |
+| **Amazon S3** | Lưu trữ media phân vùng: `incoming/` (temp), `voice/`, `avatar/`, `media/` (permanent) |
+| **Amazon Cognito** | Xác thực tập trung: Email/OTP và Google OAuth2 federation |
+| **Amazon ECS Fargate** | Chạy FastAPI backend trong VPC để xử lý Vision AI cường độ cao |
+| **AWS CloudWatch** | Giám sát tập trung với Custom Metrics và Budget Alerts |
+| **AWS Secrets Manager** | Bảo mật API Keys cho ECS và Bedrock Model IDs |
 
-#### Thiết kế theo tầng
+#### Thiết kế kỹ thuật đặc thù
 
-**Client** — Ứng dụng React Native/Expo thu thập đầu vào qua Camera, Microphone và form nhập tay. Dữ liệu được trực quan hóa bằng biểu đồ tương tác và giao diện gamification với thú cưng ảo tiến hóa theo chuỗi ngày liên tục.
+**Xử lý AI lai ghép (Hybrid)** — Hệ thống ưu tiên truy vấn fuzzy match từ Database cục bộ trước khi Fallback sang Bedrock AI để đảm bảo tốc độ và tiết kiệm chi phí.
 
-**Bảo mật biên** — Route 53 → WAF → CloudFront xử lý phân giải DNS, chặn DDoS, và tăng tốc nội dung trước khi request chạm đến backend.
+**Tối ưu hóa VPC** — Hàm `scan-image` Lambda được đặt ngoài VPC để kết nối trực tiếp với S3 và Bedrock, giúp giảm 90% độ trễ và loại bỏ hoàn toàn chi phí NAT Gateway cho các tác vụ AI.
 
-**Xác thực** — Cognito quản lý đăng ký (email/OTP), đăng nhập Google OAuth2, và JWT lifecycle. Ứng dụng bổ sung lớp bảo vệ sinh trắc học cục bộ (FaceID/TouchID).
-
-**Xử lý** — 4 Lambda handler đảm nhận toàn bộ logic:
-
-- `aiEngine` — Điều phối 10 tác vụ Bedrock: `analyzeFoodImage`, `voiceToFood`, `generateRecipe`, `generateCoachResponse`, `searchFoodNutrition`, `fixFood`, `ollieCoachTip`, `calculateMacros`, `challengeSummary`, `weeklyInsight`
-- `processNutrition` — Tra cứu lai ghép: fuzzy match trên DynamoDB (~200 món Việt) trước, Bedrock AI làm dự phòng nếu không tìm thấy
-- `friendRequest` — Xử lý xã hội (gửi/chấp nhận/từ chối/chặn) qua DynamoDB `TransactWriteItems`
-- `resizeImage` — S3 event trigger trên `incoming/`, dùng `sharp` để scale cạnh dài nhất về 1280px (giữ tỉ lệ, tự xoay theo EXIF), encode thành progressive JPEG chất lượng 85, ghi vào `media/{entity_id}/`
-
-**Dữ liệu** — 8 bảng DynamoDB với phân quyền theo chủ sở hữu (owner-scoped) và GSI được tối ưu cho các pattern truy vấn phổ biến.
-
-**AI/ML** — Bedrock (Qwen3-VL 235B) và Transcribe tạo thành lớp trí tuệ cốt lõi, tất cả đều được định tuyến qua `aiEngine` với prompt templates có cấu trúc cố định.
-
-**Container** — ECS Fargate chạy backend FastAPI trong VPC (2 AZ tại ap-southeast-2a), cân bằng tải qua ALB, kết nối dịch vụ AWS qua VPC Endpoints.
+**Hệ thống AI Engine (9 tác vụ)** — Bộ não trung tâm điều phối:
+- `analyzeFoodImage`: Phân tích ảnh món ăn trực tiếp.
+- `voiceToFood`: Chuyển giọng nói sang dữ liệu dinh dưỡng.
+- `generateCoachResponse`: Phản hồi hội thoại của Coach Ollie.
+- `generateFood`: Sinh dữ liệu cho món không có trong DB.
+- `calculateMacros`: Tính toán mục tiêu calo theo chỉ số cơ thể.
+- Và các tác vụ khác như: `fixFood`, `ollieCoachTip`, `generateRecipe`, `weeklyInsight`.
 
 ---
 
@@ -109,96 +95,69 @@ Dữ liệu di chuyển từ ứng dụng React Native → CloudFront/WAF (bảo
 
 #### Công nghệ sử dụng
 
-- **Frontend:** React Native, Expo, TypeScript, Zustand, react-native-reanimated, expo-router, i18n (Việt/Anh)
-- **Backend:** Amplify Gen 2 (TypeScript CDK), Lambda (Node.js 22), AppSync, DynamoDB (8 bảng + GSI), Cognito (User Pools + Identity Pools + Google federation), S3 (4 prefix + lifecycle rule)
-- **AI:** Bedrock API (Qwen3-VL 235B, ap-southeast-2), Transcribe (async jobs), prompt engineering với JSON schema enforcement
-- **Hạ tầng:** Docker/ECS Fargate, VPC (public/private subnets), ALB, Auto Scaling, ECR
+- **Frontend:** React Native, Expo Router, TypeScript, Zustand (State), i18n.
+- **Backend:** Amplify Gen 2, AppSync, DynamoDB, Lambda (Node.js 22).
+- **AI/ML:** Bedrock (Qwen3-VL 235B), Transcribe, Vision AI trên ECS Fargate.
+- **DevOps:** CI/CD tự động, CDK Escape Hatches để giải quyết các lỗi Table Discovery.
 
 #### Lộ trình phát triển
 
-**Tháng 0 — Nghiên cứu & Kiến trúc**
-Tìm hiểu React Native/Expo với Amplify Gen 2, thiết kế kiến trúc serverless-AI, phác thảo sơ đồ giải pháp và định nghĩa mô hình dữ liệu.
+**Giai đoạn 1 — Hạ tầng & Cốt lõi**
+Thiết kế schema 6 bảng, cấu hình Cognito Auth và xây dựng các UI cơ bản cho việc nhập liệu.
 
-**Tháng 1 — Khung hạ tầng**
-Ước tính chi phí bằng AWS Pricing Calculator (xác nhận dưới $65/tháng cho 1.000 user). Khởi tạo Amplify Gen 2 sandbox, Cognito + Google federation, schema GraphQL 8 model.
+**Giai đoạn 2 — Tích hợp AI & Voice**
+Triển khai `aiEngine` phối hợp với Transcribe và Bedrock. Tối ưu hóa luồng resize ảnh tự động qua S3 triggers.
 
-**Tháng 2 — Logic cốt lõi**
-Triển khai 4 Lambda handler TypeScript, kết nối AppSync resolver, xây dựng UI React Native cho 6 tab chính, tích hợp pipeline upload và resize ảnh qua S3.
+**Giai đoạn 3 — Xã hội & Gamification**
+Xây dựng hệ thống bạn bè, bảng xếp hạng và logic tiến hóa thú cưng (Minh Long Dragon) theo chuỗi vận động thực tế.
 
-**Tháng 3 — Tích hợp & Ra mắt**
-Tích hợp Bedrock (Qwen3-VL) cho 10 tác vụ AI, kiểm thử E2E trên 3 môi trường, xử lý các lỗi biên (JWT federation, `discoverTables()`, `NoValidAuthTokens`), triển khai production.
-
-**Hậu ra mắt — Tối ưu liên tục**
-Cải thiện UX từ phản hồi người dùng, nâng cấp gamification, tinh chỉnh prompt engineering, phát triển gói premium.
+**Giai đoạn 4 — Ổn định & Mở rộng**
+Xử lý lỗi Table Discovery bằng CDK overrides, triển khai production trên region Sydney (ap-southeast-2).
 
 ---
 
-### 5. Lịch trình & Cột mốc
+### 5. Lịch trình & Cột mốc (Dragon Journey)
 
-| Giai đoạn | Thời lượng | Nội dung chính |
-|-----------|------------|----------------|
-| **Tháng 0 — Tiền kỳ** | 1 tháng | Lập kế hoạch UI/UX trên Figma, chuyển đổi từ Flutter sang React Native, thiết kế kiến trúc trên draw.io, đánh giá dịch vụ AWS |
-| **Tháng 1 — Hạ tầng** | 1 tháng | Khởi tạo Amplify Gen 2, cấu hình Cognito + Google OAuth, định nghĩa 8 model DynamoDB, xây dựng UI cốt lõi (Home, Add Food, Kitchen) |
-| **Tháng 2 — Phát triển** | 1 tháng | Kết nối AppSync GraphQL, triển khai `processNutrition` và `friendRequest`, xây dựng giao diện Tủ lạnh, tích hợp S3 + `resizeImage` |
-| **Tháng 3 — Ra mắt** | 1 tháng | Triển khai `aiEngine` (10 tác vụ Bedrock), gamification, E2E testing 3 môi trường, sửa lỗi JWT + `discoverTables()`, production release |
-| **Hậu ra mắt** | Liên tục | Tối ưu hiệu suất, phản hồi người dùng, iOS EAS Build pipeline, mở rộng quy mô năm đầu |
-
----
-
-### 6. Ước tính Ngân sách
-
-Tính cho **1.000 người dùng hoạt động × 3 phiên/ngày × 30 ngày** = 90.000 tương tác AI/tháng.
-
-#### Chi phí hạ tầng hàng tháng
-
-| Thành phần | Chi phí | Ghi chú |
-|------------|---------|---------|
-| Amazon S3 | $2.03 | 3GB lưu trữ + 5GB transfer out + PUT/GET requests |
-| AWS Lambda | $0.26 | 270K requests, trung bình 0.2s, 512MB ARM64 |
-| AppSync GraphQL | $0.34 | 270K operations @ $4/triệu |
-| Amazon DynamoDB | $0.47 | 2GB lưu trữ + 810K reads + 180K writes |
-| Amazon Cognito | $5.50 | 1.000 MAU @ $0.0055/MAU (gói Lite) |
-| CloudWatch | $1.00 | 5 custom metrics + API logging |
-| CloudTrail | $0.05 | 50.000 management events |
-| Secrets Manager | $1.20 | 3 secrets (API keys, JWT key, DB config) |
-| AWS KMS | $1.00 | 1 customer-managed key |
-| AWS Textract | $3.60 | 2.400 lần quét nhãn @ $0.0015/trang |
-| **Amazon Bedrock (AI)** | **$45.42** | 90K lệnh gọi: input tokens ($16.70) + output tokens ($28.73) |
-| **Tổng** | **$60.87/tháng** | **$730.44/năm** |
-
-#### So sánh giá Bedrock (Qwen3-VL 235B) theo region
-
-| Region | Input | Output | Chênh lệch |
-|--------|-------|--------|------------|
-| US East (Virginia) | $0.00053/1K tokens | $0.00266/1K tokens | Baseline |
-| Asia Pacific (Tokyo) | $0.00064/1K tokens | $0.00322/1K tokens | +21% |
-| Asia Pacific (Mumbai) | $0.00062/1K tokens | $0.00313/1K tokens | +18% |
-| Asia Pacific (Sydney) | *(dùng cho production)* | *(dùng cho production)* | ap-southeast-2 |
-
-**Chi phí phần mềm:** $0 — toàn bộ công cụ phát triển là mã nguồn mở. Cần tài khoản Apple Developer ($99/năm) nếu phân phối trên iOS.
+Hệ thống gamification được thiết kế với hành trình 180 ngày:
+- **Trứng (Ngày 0-35)**: Trạng thái bắt đầu.
+- **Sơ sinh (Ngày 36-71)**: Giai đoạn nở.
+- **Thiếu niên (Ngày 72-107)**: Phát triển kích thước.
+- **Trưởng thành (Ngày 108-143)**: Đạt đỉnh năng lượng.
+- **Huyền thoại (Ngày 144+)**: Trạng thái tối thượng với các đặc quyền đặc biệt.
 
 ---
 
-### 7. Đánh giá Rủi ro
+### 6. Đánh giá Rủi ro & Xử lý
 
-| Rủi ro | Tác động | Xác suất | Cách xử lý |
-|--------|----------|----------|------------|
-| **Chi phí Bedrock vượt ngưỡng** | Trung bình | Trung bình | Cache kết quả AI trong DynamoDB, giới hạn tốc độ request, đặt AWS Budget alert tại $80/tháng |
-| **Lỗi xác thực Cognito/JWT** | Cao | Thấp | E2E testing đầy đủ cho luồng federation, dự phòng AsyncStorage session cục bộ, xử lý `UserNotConfirmedException` và `NotAuthorizedException` |
-| **AI sinh dữ liệu sai (hallucination)** | Trung bình | Trung bình | Prompt templates với JSON schema bắt buộc, cho phép người dùng xác minh và chỉnh sửa, duy trì ~200 món Việt đã xác minh sẵn trong DynamoDB |
-| **Rào cản build iOS** | Thấp | Cao | Ưu tiên Android cho MVP, dùng EAS Build cloud cho iOS, lên kế hoạch macOS CI runners ở giai đoạn sau |
-| **Table discovery DynamoDB không chính xác** | Trung bình | Thấp | **Nguyên nhân:** `friendRequest` Lambda dùng `discoverTables()` qua `ListTables`, trả sai tên bảng khi nhiều môi trường cùng tồn tại. **Xử lý:** inject tên bảng chính xác qua CDK escape hatch — `cfnFriendRequestFn.addPropertyOverride('Environment.Variables.USER_TABLE_NAME', backend.data.resources.tables['user'].tableName)`, CDK tự resolve đúng ARN suffix khi deploy |
-| **Giới hạn capacity Bedrock** | Thấp | Thấp | Hiện dùng ap-southeast-2; dự phòng us-east-1 nếu cần |
+| Rủi ro | Cách xử lý |
+|--------|----------|
+| **Lỗi Table Discovery** | Inject chính xác tên bảng qua CDK Escape Hatches (`addPropertyOverride`). |
+| **Chi phí AI leo thang** | Cài đặt Budget Alert tại $80 và cache kết quả tìm kiếm trong DynamoDB. |
+| **Hallucination (AI sai)** | Sử dụng Prompt Engineering với JSON Schema bắt buộc và cho phép sửa tay. |
+| **Độ trễ VPC** | Đưa Lambda xử lý AI ra ngoài VPC (Public) để tối ưu đường truyền. |
 
-#### Kế hoạch dự phòng
+---
 
-- Khi AI/Bedrock gặp sự cố: fallback về nhập liệu thủ công hoặc fuzzy match trên ~200 món Việt đã nạp sẵn.
+### 7. Kết quả Kỳ vọng
+
+- **Hiệu suất**: Thời gian đăng món ăn giảm từ 3 phút xuống còn 10 giây nhờ AI.
+- **Độ chính xác**: Đạt 95% độ chính xác cho các món ăn Việt Nam nhờ mô hình Vision AI tiên tiến.
+- **Khả năng mở rộng**: Sẵn sàng chịu tải 10.000+ người dùng với chi phí duy trì gần như bằng 0 khi không có người dùng (Idle).
+
+---
+
+### 8. Bước Tiếp Theo
+
+- **Mở rộng DB món Việt**: Mục tiêu đạt 1.000+ món đã xác minh vào cuối năm.
+- **EAS Build cho iOS**: Hoàn thiện pipeline đóng gói ứng dụng cho App Store.
+- **Gói Premium**: Ra mắt các tính năng phân tích chuyên sâu (Weekly Insights) để tạo nguồn thu bền vững.
+sự cố: fallback về nhập liệu thủ công hoặc fuzzy match trên ~200 món Việt đã nạp sẵn.
 - Khi deploy backend lỗi: rollback qua CloudFormation/Amplify trên 3 môi trường.
 - Khi chi phí Qwen3-VL leo thang: chuyển sang Claude Haiku hoặc Llama trên Bedrock.
 
 ---
 
-### 8. Kết quả Kỳ vọng
+### 9. Kết quả Kỳ vọng
 
 #### Cải tiến kỹ thuật
 
@@ -214,13 +173,11 @@ Tính cho **1.000 người dùng hoạt động × 3 phiên/ngày × 30 ngày** 
 
 ---
 
-### 9. Bước Tiếp Theo
+### 10. Bước Tiếp Theo
 
 **iOS Pipeline** — Chuyển từ Android-first MVP sang iOS qua EAS Build cloud runners; kích hoạt macOS CI runner khi lượng người dùng đủ bù chi phí.
 
 **Mở rộng cơ sở dữ liệu món Việt** — Từ ~200 item seed ban đầu, thu thập các entry do AI tạo (`source: "AI Generated"` → `verified: false`) để đội ngũ review; mục tiêu 1.000+ món đã xác minh sau năm đầu.
-
-**Gói Premium** — Xác thực mô hình giá (tỉ lệ chuyển đổi đủ bù $60.87/tháng baseline), phát hành phân tích ảnh không giới hạn, báo cáo AI coach tuần, và biểu đồ macro nâng cao.
 
 **Observability** — Kết nối 4 CloudWatch custom metrics vào dashboard tập trung + cài đặt Budget alarm tại ngưỡng $80/tháng.
 
