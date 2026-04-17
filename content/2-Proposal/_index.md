@@ -45,24 +45,14 @@ NutriTrack adopts a completely serverless AWS-native architecture:
 **Key Features:**
 
 | Feature | Description |
-
-|-----------|-------|
-
+| ----------- | ------- |
 | 📸 Food Image Analysis | Take a picture — instantly receive a detailed nutrition chart via Vision AI |
-
 | 🎙️ Voice Logging | AWS Transcribe converts speech into specific food items |
-
 | 🍳 Smart Refrigerator | Tracks food, suggests menus from ingredients nearing their expiration date |
-
-| 🤖 AI Coach "Ollie" | Personalized nutrition advice (Vietnamese name: Bảo) |
-
+| 🤖 AI Coach "Ollie" | Personalized nutrition advice |
 | 🎮 Gamification | 180-day Dragon evolution journey, pets, challenges |
-
 | 👥 Social Features | Make friends, public Streak and Pet Score leaderboards |
 
-#### Cost-Effectiveness
-
-The actual operating cost is optimized at **$60.87/month** for 1,000 active users. This is achieved by the strategy of moving the Lambda functions processing AI outside the VPC to eliminate NAT Gateway costs and minimize latency.
 
 ---
 
@@ -70,31 +60,22 @@ The actual operating cost is optimized at **$60.87/month** for 1,000 active user
 
 Data migrates from React Native application → CloudFront/WAF (edge-to-edge security) → AppSync GraphQL API → Lambda handlers → DynamoDB. Heavy image processing tasks are delegated to ECS Fargate, while artificial intelligence is handled by Amazon Bedrock.
 
+![NutriTrack Architecture](/images/architect.jpg)
+
 #### AWS Services
 
 | Service | Role |
-
-|---------|---------|
-
+| --------- | --------- |
 | **AWS Amplify Gen 2** | Infrastructure orchestration using TypeScript CDK, CI/CD pipeline management, and 3 decoupled environments |
-
 | **AWS AppSync** | GraphQL API with real-time subscriptions and owner-based authorization |
-
 | **AWS Lambda** | 5 logic functions: `ai-engine`, `scan-image`, `process-nutrition`, `friend-request`, `resize-image` |
 | **Amazon DynamoDB** | 6 NoSQL tables: `user`, `Food`, `FoodLog`, `FridgeItem`, `Friendship`, `UserPublicStats` |
-
 | **Amazon Bedrock** | Qwen3-VL 235B (ap-southeast-2) handles 9 AI tasks (Vision, NLP, Coaching) |
-
 | **AWS Transcribe** | Converts voice recordings (.m4a) from S3 to text for food processing |
-
 | **Amazon S3** | Partitioned media storage: `incoming/` (temp), `voice/`, `avatar/`, `media/` (permanent) |
-
 | **Amazon Cognito** | Centralized authentication: Email/OTP and Google OAuth2 federation |
-
 | **Amazon ECS Fargate** | Runs FastAPI backend in VPC for high-intensity Vision AI processing |
-
 | **AWS CloudWatch** | Centralized monitoring with Custom Metrics and Budget Alerts |
-
 | **AWS Secrets Manager** | Secure API Keys for ECS and Bedrock Model IDs |
 
 #### Specific Engineering Design
@@ -162,15 +143,10 @@ The gamification system is designed with a 180-day journey:
 ### 6. Risk Assessment & Handling
 
 | Risks | Handling Methods |
-
-|--------|----------|
-
+| -------- | ---------- |
 | **Table Discovery Error** | Inject the table name incorrectly via the Escape Hatches CDK (`addPropertyOverride`). |
-
 | **ESCENT AI Costs** | Set Budget Alert to $80 and cache search results in DynamoDB. |
-
 | **Hallucination (AI Error)** | Use Prompt Engineering with mandatory JSON Schema and allow manual editing. |
-
 | **VPC Latency** | Move Lambda AI processing outside the VPC (Public) to optimize bandwidth. |
 
 ---

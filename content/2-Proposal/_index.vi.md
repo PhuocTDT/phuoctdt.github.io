@@ -41,7 +41,7 @@ NutriTrack tiếp cận bằng kiến trúc AWS-native hoàn toàn serverless:
 **Tính năng nổi bật:**
 
 | Tính năng | Mô tả |
-|-----------|-------|
+| --- | --- |
 | 📸 Phân tích ảnh đồ ăn | Chụp một tấm — nhận ngay bảng dinh dưỡng chi tiết qua Vision AI |
 | 🎙️ Ghi nhật ký bằng giọng nói | AWS Transcribe chuyển lời nói thành thực phẩm cụ thể |
 | 🍳 Tủ lạnh thông minh | Theo dõi thực phẩm, gợi ý thực đơn từ nguyên liệu sắp hết hạn |
@@ -49,9 +49,6 @@ NutriTrack tiếp cận bằng kiến trúc AWS-native hoàn toàn serverless:
 | 🎮 Gamification | Hành trình tiến hóa Rồng 180 ngày, thú cưng, thử thách |
 | 👥 Tính năng xã hội | Kết bạn, bảng xếp hạng Streak và Pet Score công khai |
 
-#### Hiệu quả chi phí
-
-Chi phí vận hành thực tế được tối ưu hóa ở mức **$60.87/tháng** cho 1.000 người dùng hoạt động. Điều này đạt được nhờ chiến lược đưa các hàm Lambda xử lý AI ra ngoài VPC để loại bỏ chi phí NAT Gateway và giảm độ trễ tối đa.
 
 ---
 
@@ -130,7 +127,7 @@ Hệ thống gamification được thiết kế với hành trình 180 ngày:
 ### 6. Đánh giá Rủi ro & Xử lý
 
 | Rủi ro | Cách xử lý |
-|--------|----------|
+| --- | --- |
 | **Lỗi Table Discovery** | Inject chính xác tên bảng qua CDK Escape Hatches (`addPropertyOverride`). |
 | **Chi phí AI leo thang** | Cài đặt Budget Alert tại $80 và cache kết quả tìm kiếm trong DynamoDB. |
 | **Hallucination (AI sai)** | Sử dụng Prompt Engineering với JSON Schema bắt buộc và cho phép sửa tay. |

@@ -12,21 +12,21 @@
     <title>Proposal :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1776441028" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1776441028" rel="stylesheet">
-    <link href="/css/hybrid.css?1776441028" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1776441028" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1776441028" rel="stylesheet">
-    <link href="/css/auto-complete.css?1776441028" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1776441028" rel="stylesheet">
-    <link href="/css/theme.css?1776441028" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1776441028" rel="stylesheet">
+    <link href="/css/nucleus.css?1776448115" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1776448115" rel="stylesheet">
+    <link href="/css/hybrid.css?1776448115" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1776448115" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1776448115" rel="stylesheet">
+    <link href="/css/auto-complete.css?1776448115" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1776448115" rel="stylesheet">
+    <link href="/css/theme.css?1776448115" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1776448115" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1776441028" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1776448115" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1776441028"></script>
+    <script src="/js/jquery-3.3.1.min.js?1776448115"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1776441028"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1776441028"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1776448115"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1776448115"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1776441028"></script>
+<script type="text/javascript" src="/js/search.js?1776448115"></script>
 
     
   </div>
@@ -1543,33 +1543,99 @@
 </li>
 </ul>
 <p><strong>Key Features:</strong></p>
-<p>| Feature | Description |</p>
-<p>|&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;-|</p>
-<p>| 📸 Food Image Analysis | Take a picture — instantly receive a detailed nutrition chart via Vision AI |</p>
-<p>| 🎙️ Voice Logging | AWS Transcribe converts speech into specific food items |</p>
-<p>| 🍳 Smart Refrigerator | Tracks food, suggests menus from ingredients nearing their expiration date |</p>
-<p>| 🤖 AI Coach &ldquo;Ollie&rdquo; | Personalized nutrition advice (Vietnamese name: Bảo) |</p>
-<p>| 🎮 Gamification | 180-day Dragon evolution journey, pets, challenges |</p>
-<p>| 👥 Social Features | Make friends, public Streak and Pet Score leaderboards |</p>
-<h4 id="cost-effectiveness">Cost-Effectiveness</h4>
-<p>The actual operating cost is optimized at <strong>$60.87/month</strong> for 1,000 active users. This is achieved by the strategy of moving the Lambda functions processing AI outside the VPC to eliminate NAT Gateway costs and minimize latency.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>📸 Food Image Analysis</td>
+          <td>Take a picture — instantly receive a detailed nutrition chart via Vision AI</td>
+      </tr>
+      <tr>
+          <td>🎙️ Voice Logging</td>
+          <td>AWS Transcribe converts speech into specific food items</td>
+      </tr>
+      <tr>
+          <td>🍳 Smart Refrigerator</td>
+          <td>Tracks food, suggests menus from ingredients nearing their expiration date</td>
+      </tr>
+      <tr>
+          <td>🤖 AI Coach &ldquo;Ollie&rdquo;</td>
+          <td>Personalized nutrition advice</td>
+      </tr>
+      <tr>
+          <td>🎮 Gamification</td>
+          <td>180-day Dragon evolution journey, pets, challenges</td>
+      </tr>
+      <tr>
+          <td>👥 Social Features</td>
+          <td>Make friends, public Streak and Pet Score leaderboards</td>
+      </tr>
+  </tbody>
+</table>
 <hr>
 <h3 id="3-solution-architecture">3. Solution Architecture</h3>
 <p>Data migrates from React Native application → CloudFront/WAF (edge-to-edge security) → AppSync GraphQL API → Lambda handlers → DynamoDB. Heavy image processing tasks are delegated to ECS Fargate, while artificial intelligence is handled by Amazon Bedrock.</p>
+<p><img src="/images/architect.jpg" alt="NutriTrack Architecture"></p>
 <h4 id="aws-services">AWS Services</h4>
-<p>| Service | Role |</p>
-<p>|&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;|</p>
-<p>| <strong>AWS Amplify Gen 2</strong> | Infrastructure orchestration using TypeScript CDK, CI/CD pipeline management, and 3 decoupled environments |</p>
-<p>| <strong>AWS AppSync</strong> | GraphQL API with real-time subscriptions and owner-based authorization |</p>
-<p>| <strong>AWS Lambda</strong> | 5 logic functions: <code>ai-engine</code>, <code>scan-image</code>, <code>process-nutrition</code>, <code>friend-request</code>, <code>resize-image</code> |
-| <strong>Amazon DynamoDB</strong> | 6 NoSQL tables: <code>user</code>, <code>Food</code>, <code>FoodLog</code>, <code>FridgeItem</code>, <code>Friendship</code>, <code>UserPublicStats</code> |</p>
-<p>| <strong>Amazon Bedrock</strong> | Qwen3-VL 235B (ap-southeast-2) handles 9 AI tasks (Vision, NLP, Coaching) |</p>
-<p>| <strong>AWS Transcribe</strong> | Converts voice recordings (.m4a) from S3 to text for food processing |</p>
-<p>| <strong>Amazon S3</strong> | Partitioned media storage: <code>incoming/</code> (temp), <code>voice/</code>, <code>avatar/</code>, <code>media/</code> (permanent) |</p>
-<p>| <strong>Amazon Cognito</strong> | Centralized authentication: Email/OTP and Google OAuth2 federation |</p>
-<p>| <strong>Amazon ECS Fargate</strong> | Runs FastAPI backend in VPC for high-intensity Vision AI processing |</p>
-<p>| <strong>AWS CloudWatch</strong> | Centralized monitoring with Custom Metrics and Budget Alerts |</p>
-<p>| <strong>AWS Secrets Manager</strong> | Secure API Keys for ECS and Bedrock Model IDs |</p>
+<table>
+  <thead>
+      <tr>
+          <th>Service</th>
+          <th>Role</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>AWS Amplify Gen 2</strong></td>
+          <td>Infrastructure orchestration using TypeScript CDK, CI/CD pipeline management, and 3 decoupled environments</td>
+      </tr>
+      <tr>
+          <td><strong>AWS AppSync</strong></td>
+          <td>GraphQL API with real-time subscriptions and owner-based authorization</td>
+      </tr>
+      <tr>
+          <td><strong>AWS Lambda</strong></td>
+          <td>5 logic functions: <code>ai-engine</code>, <code>scan-image</code>, <code>process-nutrition</code>, <code>friend-request</code>, <code>resize-image</code></td>
+      </tr>
+      <tr>
+          <td><strong>Amazon DynamoDB</strong></td>
+          <td>6 NoSQL tables: <code>user</code>, <code>Food</code>, <code>FoodLog</code>, <code>FridgeItem</code>, <code>Friendship</code>, <code>UserPublicStats</code></td>
+      </tr>
+      <tr>
+          <td><strong>Amazon Bedrock</strong></td>
+          <td>Qwen3-VL 235B (ap-southeast-2) handles 9 AI tasks (Vision, NLP, Coaching)</td>
+      </tr>
+      <tr>
+          <td><strong>AWS Transcribe</strong></td>
+          <td>Converts voice recordings (.m4a) from S3 to text for food processing</td>
+      </tr>
+      <tr>
+          <td><strong>Amazon S3</strong></td>
+          <td>Partitioned media storage: <code>incoming/</code> (temp), <code>voice/</code>, <code>avatar/</code>, <code>media/</code> (permanent)</td>
+      </tr>
+      <tr>
+          <td><strong>Amazon Cognito</strong></td>
+          <td>Centralized authentication: Email/OTP and Google OAuth2 federation</td>
+      </tr>
+      <tr>
+          <td><strong>Amazon ECS Fargate</strong></td>
+          <td>Runs FastAPI backend in VPC for high-intensity Vision AI processing</td>
+      </tr>
+      <tr>
+          <td><strong>AWS CloudWatch</strong></td>
+          <td>Centralized monitoring with Custom Metrics and Budget Alerts</td>
+      </tr>
+      <tr>
+          <td><strong>AWS Secrets Manager</strong></td>
+          <td>Secure API Keys for ECS and Bedrock Model IDs</td>
+      </tr>
+  </tbody>
+</table>
 <h4 id="specific-engineering-design">Specific Engineering Design</h4>
 <p><strong>Hybrid AI Processing</strong> — The system prioritizes fuzzy match queries from the local database before fallback to Bedrock AI to ensure speed and cost savings.</p>
 <p><strong>VPC Optimization</strong> — The Lambda <code>scan-image</code> function is placed outside the VPC to connect directly to S3 and Bedrock, reducing latency by 90% and completely eliminating NAT Gateway costs for AI tasks.</p>
@@ -1631,12 +1697,32 @@ Handle Table Discovery bugs using CDK overrides, deploy production in the Sydney
 </ul>
 <hr>
 <h3 id="6-risk-assessment--handling">6. Risk Assessment &amp; Handling</h3>
-<p>| Risks | Handling Methods |</p>
-<p>|&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;-|</p>
-<p>| <strong>Table Discovery Error</strong> | Inject the table name incorrectly via the Escape Hatches CDK (<code>addPropertyOverride</code>). |</p>
-<p>| <strong>ESCENT AI Costs</strong> | Set Budget Alert to $80 and cache search results in DynamoDB. |</p>
-<p>| <strong>Hallucination (AI Error)</strong> | Use Prompt Engineering with mandatory JSON Schema and allow manual editing. |</p>
-<p>| <strong>VPC Latency</strong> | Move Lambda AI processing outside the VPC (Public) to optimize bandwidth. |</p>
+<table>
+  <thead>
+      <tr>
+          <th>Risks</th>
+          <th>Handling Methods</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Table Discovery Error</strong></td>
+          <td>Inject the table name incorrectly via the Escape Hatches CDK (<code>addPropertyOverride</code>).</td>
+      </tr>
+      <tr>
+          <td><strong>ESCENT AI Costs</strong></td>
+          <td>Set Budget Alert to $80 and cache search results in DynamoDB.</td>
+      </tr>
+      <tr>
+          <td><strong>Hallucination (AI Error)</strong></td>
+          <td>Use Prompt Engineering with mandatory JSON Schema and allow manual editing.</td>
+      </tr>
+      <tr>
+          <td><strong>VPC Latency</strong></td>
+          <td>Move Lambda AI processing outside the VPC (Public) to optimize bandwidth.</td>
+      </tr>
+  </tbody>
+</table>
 <hr>
 <h3 id="7-expected-results">7. Expected Results</h3>
 <ul>
@@ -2467,19 +2553,19 @@ Handle Table Discovery bugs using CDK overrides, deploy production in the Sydney
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1776441028"></script>
-    <script src="/js/perfect-scrollbar.min.js?1776441028"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1776441028"></script>
-    <script src="/js/jquery.sticky.js?1776441028"></script>
-    <script src="/js/featherlight.min.js?1776441028"></script>
-    <script src="/js/highlight.pack.js?1776441028"></script>
+    <script src="/js/clipboard.min.js?1776448115"></script>
+    <script src="/js/perfect-scrollbar.min.js?1776448115"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1776448115"></script>
+    <script src="/js/jquery.sticky.js?1776448115"></script>
+    <script src="/js/featherlight.min.js?1776448115"></script>
+    <script src="/js/highlight.pack.js?1776448115"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1776441028"></script>
-    <script src="/js/learn.js?1776441028"></script>
-    <script src="/js/hugo-learn.js?1776441028"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1776448115"></script>
+    <script src="/js/learn.js?1776448115"></script>
+    <script src="/js/hugo-learn.js?1776448115"></script>
 
-    <link href="/mermaid/mermaid.css?1776441028" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1776441028"></script>
+    <link href="/mermaid/mermaid.css?1776448115" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1776448115"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
