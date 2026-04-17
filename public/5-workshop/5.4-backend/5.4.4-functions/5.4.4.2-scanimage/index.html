@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.154.3">
@@ -12,21 +12,21 @@
     <title>Function scan-image :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1776414906" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1776414906" rel="stylesheet">
-    <link href="/css/hybrid.css?1776414906" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1776414906" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1776414906" rel="stylesheet">
-    <link href="/css/auto-complete.css?1776414906" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1776414906" rel="stylesheet">
-    <link href="/css/theme.css?1776414906" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1776414906" rel="stylesheet">
+    <link href="/css/nucleus.css?1776416191" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1776416191" rel="stylesheet">
+    <link href="/css/hybrid.css?1776416191" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1776416191" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1776416191" rel="stylesheet">
+    <link href="/css/auto-complete.css?1776416191" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1776416191" rel="stylesheet">
+    <link href="/css/theme.css?1776416191" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1776416191" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1776414906" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1776416191" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1776414906"></script>
+    <script src="/js/jquery-3.3.1.min.js?1776416191"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1776414906"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1776414906"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1776416191"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1776416191"></script>
 <script type="text/javascript">
     
-        var baseurl = "http:\/\/localhost\/";
+        var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1776414906"></script>
+<script type="text/javascript" src="/js/search.js?1776416191"></script>
 
     
   </div>
@@ -844,13 +844,13 @@
 
 
 
-<li data-nav-id="/5-workshop/5.4-backend/5.4.2-data/" title="Data Layer (Data)" class="dd-item 
+<li data-nav-id="/5-workshop/5.4-backend/5.4.2-data/" title="Data Layer" class="dd-item 
         
         
         
         ">
   <a href="/5-workshop/5.4-backend/5.4.2-data/">
-     <b> 5.4.2. </b> Data Layer (Data)
+     <b> 5.4.2. </b> Data Layer
     
     <i class="fas fa-check read-icon"></i>
     
@@ -1383,7 +1383,7 @@
                 
                 
                 
-                <option id="en" value="http://localhost/5-workshop/5.4-backend/5.4.4-functions/5.4.4.2-scanimage/" selected>English</option>
+                <option id="en" value="http://localhost:1313/5-workshop/5.4-backend/5.4.4-functions/5.4.4.2-scanimage/" selected>English</option>
                 
                 
                 
@@ -1397,7 +1397,7 @@
                 
                 
                 
-                <option id="vi" value="http://localhost/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.2-scanimage/">Tiếng Việt
+                <option id="vi" value="http://localhost:1313/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.2-scanimage/">Tiếng Việt
                 </option>
                 
                 
@@ -1524,38 +1524,486 @@
 
 	<p>This function acts as a proxy (intermediary) to send image analysis requests from AppSync to the <strong>ECS Fargate</strong> cluster via an Application Load Balancer.</p>
 <h3 id="1-resource-configuration-resourcets">1. Resource Configuration (<code>resource.ts</code>)</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">defineFunction</span>, <span style="color:#a6e22e">secret</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@aws-amplify/backend&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">defineFunction</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@aws-amplify/backend&#39;</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scanImage</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">defineFunction</span>({
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;scan-image&#39;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./handler.ts&#39;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">runtime</span>: <span style="color:#66d9ef">22</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">memoryMB</span>: <span style="color:#66d9ef">256</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">timeoutSeconds</span>: <span style="color:#66d9ef">15</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">environment</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ECS_BASE_URL</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;http://nutritrack-api-vpc-alb-xxxx.ap-southeast-2.elb.amazonaws.com&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">NUTRITRACK_API_KEY</span>: <span style="color:#66d9ef">secret</span>(<span style="color:#e6db74">&#39;NUTRITRACK_API_KEY&#39;</span>),
-</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">memoryMB</span>: <span style="color:#66d9ef">1024</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">timeoutSeconds</span>: <span style="color:#66d9ef">300</span>,
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><h3 id="2-handler-logic-handlerts">2. Handler Logic (<code>handler.ts</code>)</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#66d9ef">type</span> { <span style="color:#a6e22e">AppSyncResolverHandler</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;aws-lambda&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">S3Client</span>, <span style="color:#a6e22e">GetObjectCommand</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/client-s3&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">SecretsManagerClient</span>, <span style="color:#a6e22e">GetSecretValueCommand</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/client-secrets-manager&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">createHmac</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;crypto&#34;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handler</span>: <span style="color:#66d9ef">AppSyncResolverHandler</span>&lt;<span style="color:#f92672">any</span>, <span style="color:#a6e22e">any</span>&gt; <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">event</span>) <span style="color:#f92672">=&gt;</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">image_key</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">arguments</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">baseUrl</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">ECS_BASE_URL</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">REGION</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ap-southeast-2&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">s3Client</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">S3Client</span>({ <span style="color:#a6e22e">region</span>: <span style="color:#66d9ef">REGION</span> });
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secretsClient</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SecretsManagerClient</span>({ <span style="color:#a6e22e">region</span>: <span style="color:#66d9ef">REGION</span> });
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Forward request to ECS Fargate via ALB
-</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">baseUrl</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/scan`</span>, {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;application/json&#39;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Authorization&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Bearer </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">NUTRITRACK_API_KEY</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">STORAGE_BUCKET</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">STORAGE_BUCKET_NAME</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ECS_BASE_URL</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">ECS_BASE_URL</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">IS_DEBUG</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DEBUG</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">NODE_ENV</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;development&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">debug</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">message</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">data?</span>: <span style="color:#66d9ef">any</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">IS_DEBUG</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`[scan-image] </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">message</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>, <span style="color:#a6e22e">data</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Cache secrets across warm Lambda invocations
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">cachedSecrets</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">apiKey</span>: <span style="color:#66d9ef">string</span>; <span style="color:#a6e22e">internalToken</span>: <span style="color:#66d9ef">string</span> } <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getSecrets</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span><span style="color:#f92672">&lt;</span>{ <span style="color:#a6e22e">apiKey</span>: <span style="color:#66d9ef">string</span>; <span style="color:#a6e22e">internalToken</span>: <span style="color:#66d9ef">string</span> }<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cachedSecrets</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cachedSecrets</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">resp</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">secretsClient</span>.<span style="color:#a6e22e">send</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GetSecretValueCommand</span>({ <span style="color:#a6e22e">SecretId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;nutritrack/prod/api-keys&#34;</span> })
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secret</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">SecretString</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;{}&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">cachedSecrets</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">apiKey</span>: <span style="color:#66d9ef">secret.NUTRITRACK_API_KEY</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">internalToken</span>: <span style="color:#66d9ef">secret.NUTRITRACK_INTERNAL_TOKEN</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cachedSecrets</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Generate HS256 JWT using Node.js built-in crypto (no external JWT library needed)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">generateJWT</span>(<span style="color:#a6e22e">secret</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">b64url</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">buf</span>: <span style="color:#66d9ef">Buffer</span>) <span style="color:#f92672">=&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#e6db74">&#34;base64&#34;</span>).<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/\+/g</span>, <span style="color:#e6db74">&#34;-&#34;</span>).<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/\//g</span>, <span style="color:#e6db74">&#34;_&#34;</span>).<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/=/g</span>, <span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">header</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b64url</span>(<span style="color:#a6e22e">Buffer</span>.<span style="color:#66d9ef">from</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">alg</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;HS256&#34;</span>, <span style="color:#a6e22e">typ</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;JWT&#34;</span> })));
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">now</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">floor</span>(Date.<span style="color:#a6e22e">now</span>() <span style="color:#f92672">/</span> <span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">payload</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b64url</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Buffer</span>.<span style="color:#66d9ef">from</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">service</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;backend&#34;</span>, <span style="color:#a6e22e">iat</span>: <span style="color:#66d9ef">now</span>, <span style="color:#a6e22e">exp</span>: <span style="color:#66d9ef">now</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">300</span> }))
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">header</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">payload</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b64url</span>(<span style="color:#a6e22e">createHmac</span>(<span style="color:#e6db74">&#34;sha256&#34;</span>, <span style="color:#a6e22e">secret</span>).<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">data</span>).<span style="color:#a6e22e">digest</span>());
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">sig</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ACTION_TO_ENDPOINT</span>: <span style="color:#66d9ef">Record</span>&lt;<span style="color:#f92672">string</span>, <span style="color:#a6e22e">string</span>&gt; <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">analyzeFoodImage</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/analyze-food?method=tools&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">analyzeFoodLabel</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/analyze-label&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">scanBarcode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/scan-barcode&#34;</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Poll /jobs/{jobId} until completed or failed
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">pollJob</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">jobId</span>: <span style="color:#66d9ef">string</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">authHeader</span>: <span style="color:#66d9ef">string</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">internalToken</span>: <span style="color:#66d9ef">string</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">signal</span>: <span style="color:#66d9ef">AbortSignal</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">stickyCookie?</span>: <span style="color:#66d9ef">string</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pollIntervalMs</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3000</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">maxWaitMs</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">270</span><span style="color:#a6e22e">_000</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">any</span>&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pollUrl</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">ECS_BASE_URL</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/jobs/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">jobId</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">start</span> <span style="color:#f92672">=</span> Date.<span style="color:#a6e22e">now</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (Date.<span style="color:#a6e22e">now</span>() <span style="color:#f92672">-</span> <span style="color:#a6e22e">start</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">maxWaitMs</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;Job polling timeout — analysis took too long&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Wait before polling
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">void</span>&gt;((<span style="color:#a6e22e">resolve</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">pollIntervalMs</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">signal</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;abort&#34;</span>, () <span style="color:#f92672">=&gt;</span> { <span style="color:#a6e22e">clearTimeout</span>(<span style="color:#a6e22e">t</span>); <span style="color:#a6e22e">resolve</span>(); }, { <span style="color:#a6e22e">once</span>: <span style="color:#66d9ef">true</span> });
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">signal</span>.<span style="color:#a6e22e">aborted</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;AbortError&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pollHeaders</span>: <span style="color:#66d9ef">Record</span>&lt;<span style="color:#f92672">string</span>, <span style="color:#a6e22e">string</span>&gt; <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Authorization</span>: <span style="color:#66d9ef">authHeader</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;X-Nutri-Internal-Token&#34;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">internalToken</span>,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">stickyCookie</span>) <span style="color:#a6e22e">pollHeaders</span>[<span style="color:#e6db74">&#34;Cookie&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">stickyCookie</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">resp</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">pollUrl</span>, {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">headers</span>: <span style="color:#66d9ef">pollHeaders</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">signal</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">body</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">text</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Job poll failed (</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">): </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">body</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">job</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Poll result&#34;</span>, { <span style="color:#a6e22e">status</span>: <span style="color:#66d9ef">job.status</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">job</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;completed&#34;</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">job</span>.<span style="color:#a6e22e">result</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">job</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;failed&#34;</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#a6e22e">job</span>.<span style="color:#a6e22e">error</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;ECS job failed&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// status === &#34;processing&#34; → keep polling
+</span></span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">GENFOODMacros</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">protein_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">carbs_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fat_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">saturated_fat_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">polyunsaturated_fat_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">monounsaturated_fat_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fiber_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sugar_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sodium_mg</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">cholesterol_mg</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">potassium_mg</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">GENFOODMicronutrients</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">calcium_mg</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">iron_mg</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">vitamin_a_ug</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">vitamin_c_mg</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">GENFOODServing</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">default_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">unit</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">portions?</span>: <span style="color:#66d9ef">Record</span>&lt;<span style="color:#f92672">string</span>, <span style="color:#a6e22e">number</span>&gt;;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">GENFOODIngredient</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">weight_g</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">GENFOOD</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">food_id</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">macros</span>: <span style="color:#66d9ef">GENFOODMacros</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">micronutrients</span>: <span style="color:#66d9ef">GENFOODMicronutrients</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">serving</span>: <span style="color:#66d9ef">GENFOODServing</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ingredients</span>: <span style="color:#66d9ef">GENFOODIngredient</span>[];
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">verified</span>: <span style="color:#66d9ef">boolean</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">source</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">EMPTY_MACROS</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">saturated_fat_g</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">polyunsaturated_fat_g</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">monounsaturated_fat_g</span>: <span style="color:#66d9ef">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fiber_g</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">sugar_g</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">sodium_mg</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">cholesterol_mg</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">potassium_mg</span>: <span style="color:#66d9ef">0</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">EMPTY_MICRONUTRIENTS</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">calcium_mg</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">iron_mg</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">vitamin_a_ug</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">vitamin_c_mg</span>: <span style="color:#66d9ef">0</span> };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Food photo: job.result.data.dishes[0]
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">normalizeFoodToGENFOOD</span>(<span style="color:#a6e22e">ecsResult</span>: <span style="color:#66d9ef">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">GENFOOD</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dish</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ecsResult</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">data</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">dishes</span><span style="color:#f92672">?</span>.[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">dish</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;No food detected in image&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">dish</span>.<span style="color:#a6e22e">nutritions</span> <span style="color:#f92672">||</span> {};
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">food_id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;custom_gen_temp&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">dish.vi_name</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">dish</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Unknown Food&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">dish.name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Unknown Food&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">macros</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">calories</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">protein_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">protein</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">carbs_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">carbs</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fat_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">fat</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      ...<span style="color:#a6e22e">EMPTY_MACROS</span>,
 </span></span><span style="display:flex;"><span>    },
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span>: <span style="color:#66d9ef">JSON.stringify</span>({ <span style="color:#a6e22e">image_key</span> })
-</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">micronutrients</span>: <span style="color:#66d9ef">EMPTY_MICRONUTRIENTS</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">serving</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">default_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">dish</span>.<span style="color:#a6e22e">weight</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">dish</span>.<span style="color:#a6e22e">serving_value</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">unit</span>: <span style="color:#66d9ef">dish.serving_unit</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;serving&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">portions</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">small</span>: <span style="color:#66d9ef">0.7</span>, <span style="color:#a6e22e">medium</span>: <span style="color:#66d9ef">1.0</span>, <span style="color:#a6e22e">large</span>: <span style="color:#66d9ef">1.3</span> },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ingredients</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">dish</span>.<span style="color:#a6e22e">ingredients</span> <span style="color:#f92672">||</span> []).<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">ing</span>: <span style="color:#66d9ef">any</span>) <span style="color:#f92672">=&gt;</span> ({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">ing.name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Ingredient&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">ing.name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Ingredient&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">weight_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">weight</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    })),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">verified</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">source</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ECS Scan&#34;</span>,
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Nutrition label: job.result.data.labels[0]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// label.nutrition = [{ nutrient: &#34;Chất đạm&#34;, value: 6.9, unit: &#34;g&#34; }, ...]
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">normalizeLabelToGENFOOD</span>(<span style="color:#a6e22e">ecsResult</span>: <span style="color:#66d9ef">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">GENFOOD</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">label</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ecsResult</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">data</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">labels</span><span style="color:#f92672">?</span>.[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">label</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;No nutrition label detected in image&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nutrition</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">nutrient</span>: <span style="color:#66d9ef">string</span>; <span style="color:#a6e22e">value</span>: <span style="color:#66d9ef">number</span> }[] <span style="color:#f92672">=</span> <span style="color:#a6e22e">label</span>.<span style="color:#a6e22e">nutrition</span> <span style="color:#f92672">||</span> [];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">findNutrient</span> <span style="color:#f92672">=</span> (...<span style="color:#a6e22e">keywords</span>: <span style="color:#66d9ef">string</span>[]) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nutrition</span>.<span style="color:#a6e22e">find</span>((<span style="color:#a6e22e">it</span>) <span style="color:#f92672">=&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">keywords</span>.<span style="color:#a6e22e">some</span>((<span style="color:#a6e22e">k</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">it</span>.<span style="color:#a6e22e">nutrient</span>.<span style="color:#a6e22e">toLowerCase</span>().<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">k</span>))
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Number(<span style="color:#a6e22e">item</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">value</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">food_id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;custom_label_temp&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">label.name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Sản phẩm&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">label.name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Product&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">macros</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">findNutrient</span>(<span style="color:#e6db74">&#34;năng lượng&#34;</span>, <span style="color:#e6db74">&#34;energy&#34;</span>, <span style="color:#e6db74">&#34;calori&#34;</span>, <span style="color:#e6db74">&#34;kcal&#34;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">protein_g</span>: <span style="color:#66d9ef">findNutrient</span>(<span style="color:#e6db74">&#34;đạm&#34;</span>, <span style="color:#e6db74">&#34;protein&#34;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">carbs_g</span>: <span style="color:#66d9ef">findNutrient</span>(<span style="color:#e6db74">&#34;carbohydrate&#34;</span>, <span style="color:#e6db74">&#34;glucid&#34;</span>, <span style="color:#e6db74">&#34;tinh bột&#34;</span>, <span style="color:#e6db74">&#34;đường bột&#34;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fat_g</span>: <span style="color:#66d9ef">findNutrient</span>(<span style="color:#e6db74">&#34;béo&#34;</span>, <span style="color:#e6db74">&#34;fat&#34;</span>, <span style="color:#e6db74">&#34;lipid&#34;</span>),
+</span></span><span style="display:flex;"><span>      ...<span style="color:#a6e22e">EMPTY_MACROS</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">micronutrients</span>: <span style="color:#66d9ef">EMPTY_MICRONUTRIENTS</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">serving</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">default_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">label</span>.<span style="color:#a6e22e">serving_value</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">unit</span>: <span style="color:#66d9ef">label.serving_unit</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;g&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">portions</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">small</span>: <span style="color:#66d9ef">0.7</span>, <span style="color:#a6e22e">medium</span>: <span style="color:#66d9ef">1.0</span>, <span style="color:#a6e22e">large</span>: <span style="color:#66d9ef">1.3</span> },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ingredients</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">label</span>.<span style="color:#a6e22e">ingredients</span> <span style="color:#f92672">||</span> []).<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>) <span style="color:#f92672">=&gt;</span> ({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">name</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">name</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">weight_g</span>: <span style="color:#66d9ef">0</span>,
+</span></span><span style="display:flex;"><span>    })),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">verified</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">source</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ECS Label Scan&#34;</span>,
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Barcode: job.result.data = { found: bool, food: { product_name, nutritions: { calories, protein, fat, carbs } } }
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">normalizeBarcodeToGENFOOD</span>(<span style="color:#a6e22e">ecsResult</span>: <span style="color:#66d9ef">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">GENFOOD</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ecsResult</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">data</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">found</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;Barcode not found or product not in database&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">food</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">food</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">food</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;No product data for barcode&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">food</span>.<span style="color:#a6e22e">nutritions</span> <span style="color:#f92672">||</span> {};
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">food_id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`barcode_</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">food</span>.<span style="color:#a6e22e">barcode</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;unknown&#34;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">food.product_name</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">food</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Sản phẩm&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">food.product_name</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">food</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;Product&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">macros</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">calories</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">protein_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">protein</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">carbs_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">carbs</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fat_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">fat</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fiber_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">fiber</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">sugar_g</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">sugar</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">sodium_mg</span>: <span style="color:#66d9ef">Number</span>(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">sodium</span>) <span style="color:#f92672">?</span> Number(<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">sodium</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">1000</span> : <span style="color:#66d9ef">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">saturated_fat_g</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">polyunsaturated_fat_g</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">monounsaturated_fat_g</span>: <span style="color:#66d9ef">0</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">cholesterol_mg</span>: <span style="color:#66d9ef">0</span>, <span style="color:#a6e22e">potassium_mg</span>: <span style="color:#66d9ef">0</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">micronutrients</span>: <span style="color:#66d9ef">EMPTY_MICRONUTRIENTS</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">serving</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">default_g</span>: <span style="color:#66d9ef">100</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">unit</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;g&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">portions</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">small</span>: <span style="color:#66d9ef">0.7</span>, <span style="color:#a6e22e">medium</span>: <span style="color:#66d9ef">1.0</span>, <span style="color:#a6e22e">large</span>: <span style="color:#66d9ef">1.3</span> },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ingredients</span><span style="color:#f92672">:</span> [],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">verified</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">source</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Barcode (</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">source</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;database&#34;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">)`</span>,
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">normalizeEcsResult</span>(<span style="color:#a6e22e">action</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">ecsResult</span>: <span style="color:#66d9ef">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">GENFOOD</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">action</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;analyzeFoodLabel&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">normalizeLabelToGENFOOD</span>(<span style="color:#a6e22e">ecsResult</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;scanBarcode&#34;</span><span style="color:#f92672">:</span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">normalizeBarcodeToGENFOOD</span>(<span style="color:#a6e22e">ecsResult</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>                 <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">normalizeFoodToGENFOOD</span>(<span style="color:#a6e22e">ecsResult</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handler</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">event</span>: <span style="color:#66d9ef">any</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">action</span>, <span style="color:#a6e22e">payload</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">arguments</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Handler invoked&#34;</span>, { <span style="color:#a6e22e">action</span>, <span style="color:#a6e22e">hasPayload</span><span style="color:#f92672">:</span> <span style="color:#f92672">!!</span><span style="color:#a6e22e">payload</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Validate action
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">ACTION_TO_ENDPOINT</span>[<span style="color:#a6e22e">action</span>]) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Unknown action: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">action</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Parse payload
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">s3Key</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">parsed</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">payload</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;{}&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">s3Key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">parsed</span>.<span style="color:#a6e22e">s3Key</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Invalid payload JSON&#34;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Validate s3Key
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">s3Key</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">s3Key</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#34;string&#34;</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Missing or invalid s3Key in payload&#34;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">s3Key</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;..&#34;</span>)) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Invalid s3Key: path traversal not allowed&#34;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Downloading image from S3&#34;</span>, { <span style="color:#a6e22e">s3Key</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Download image from S3
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">s3Response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">s3Client</span>.<span style="color:#a6e22e">send</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GetObjectCommand</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Bucket</span>: <span style="color:#66d9ef">STORAGE_BUCKET</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Key</span>: <span style="color:#66d9ef">s3Key</span>,
+</span></span><span style="display:flex;"><span>      })
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Stream body to buffer
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chunks</span>: <span style="color:#66d9ef">Uint8Array</span>[] <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">stream</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s3Response</span>.<span style="color:#a6e22e">Body</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">stream</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;Failed to read S3 object&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">await</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chunk</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">stream</span> <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">any</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">chunks</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">chunk</span> <span style="color:#66d9ef">instanceof</span> <span style="color:#a6e22e">Buffer</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">chunk</span> : <span style="color:#66d9ef">Buffer.from</span>(<span style="color:#a6e22e">chunk</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">imageBuffer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Buffer</span>.<span style="color:#a6e22e">concat</span>(<span style="color:#a6e22e">chunks</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">contentType</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s3Response</span>.<span style="color:#a6e22e">ContentType</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;image/jpeg&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Image downloaded&#34;</span>, { <span style="color:#a6e22e">size</span>: <span style="color:#66d9ef">imageBuffer.length</span>, <span style="color:#a6e22e">contentType</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Get API key + generate JWT for ECS auth
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secrets</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getSecrets</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">secrets</span>.<span style="color:#a6e22e">apiKey</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ECS API key not configured&#34;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">generateJWT</span>(<span style="color:#a6e22e">secrets</span>.<span style="color:#a6e22e">apiKey</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">authHeader</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`Bearer </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">token</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">internalToken</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">secrets</span>.<span style="color:#a6e22e">internalToken</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Build FormData with Blob
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">blob</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Blob</span>([<span style="color:#a6e22e">imageBuffer</span>], { <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">contentType</span> });
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">form</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormData</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;file&#34;</span>, <span style="color:#a6e22e">blob</span>, <span style="color:#e6db74">&#34;upload.jpg&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Call ECS — POST to get job_id (async response, HTTP 202)
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">endpoint</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ACTION_TO_ENDPOINT</span>[<span style="color:#a6e22e">action</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ecsUrl</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">ECS_BASE_URL</span><span style="color:#e6db74">}${</span><span style="color:#a6e22e">endpoint</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Calling ECS&#34;</span>, { <span style="color:#a6e22e">ecsUrl</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">controller</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AbortController</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 290s total: ~3s init + up to 270s polling + buffer
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">timeout</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setTimeout</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">abort</span>(), <span style="color:#ae81ff">290</span><span style="color:#a6e22e">_000</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">jobId</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">stickyCookie</span>: <span style="color:#66d9ef">string</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">undefined</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">initResponse</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">ecsUrl</span>, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;POST&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">body</span>: <span style="color:#66d9ef">form</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">Authorization</span>: <span style="color:#66d9ef">authHeader</span>, <span style="color:#e6db74">&#34;X-Nutri-Internal-Token&#34;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">internalToken</span> },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">signal</span>: <span style="color:#66d9ef">controller.signal</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">initResponse</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">errorBody</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">initResponse</span>.<span style="color:#a6e22e">text</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">errorDetail</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Analysis failed&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">errorJson</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">errorBody</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">errorDetail</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">errorJson</span>.<span style="color:#a6e22e">detail</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">errorDetail</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">// Ignore parse errors
+</span></span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`ECS error: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">errorDetail</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">initBody</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">initResponse</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">jobId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">initBody</span>.<span style="color:#a6e22e">job_id</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">jobId</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ECS did not return a job_id&#34;</span>,
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Read ALB sticky cookie to ensure polls go to same ECS task
+</span></span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">setCookie</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">initResponse</span>.<span style="color:#a6e22e">headers</span>.<span style="color:#66d9ef">get</span>(<span style="color:#e6db74">&#34;set-cookie&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">stickyCookie</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setCookie</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">setCookie</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;;&#34;</span>)[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">:</span> <span style="color:#66d9ef">undefined</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Job accepted&#34;</span>, { <span style="color:#a6e22e">jobId</span>, <span style="color:#a6e22e">status</span>: <span style="color:#66d9ef">initBody.status</span> });
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Don&#39;t clear timeout yet — still need it for polling
+</span></span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Poll for result
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">ecsResult</span>: <span style="color:#66d9ef">any</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ecsResult</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">pollJob</span>(<span style="color:#a6e22e">jobId</span>, <span style="color:#a6e22e">authHeader</span>, <span style="color:#a6e22e">internalToken</span>, <span style="color:#a6e22e">controller</span>.<span style="color:#a6e22e">signal</span>, <span style="color:#a6e22e">stickyCookie</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">clearTimeout</span>(<span style="color:#a6e22e">timeout</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Job completed&#34;</span>, { <span style="color:#a6e22e">jobId</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Normalize response based on action type
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">genfood</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">normalizeEcsResult</span>(<span style="color:#a6e22e">action</span>, <span style="color:#a6e22e">ecsResult</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">text</span>: <span style="color:#66d9ef">JSON.stringify</span>(<span style="color:#a6e22e">genfood</span>),
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">errorMessage</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">error</span> <span style="color:#66d9ef">instanceof</span> Error <span style="color:#f92672">?</span> <span style="color:#a6e22e">error.message</span> : <span style="color:#66d9ef">String</span>(<span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;[scan-image] Error:&#34;</span>, <span style="color:#a6e22e">errorMessage</span>, <span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">errorMessage</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;NoSuchKey&#34;</span>)) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Image not found in S3&#34;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">errorMessage</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;AbortError&#34;</span>) <span style="color:#f92672">||</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">errorMessage</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;timeout&#34;</span>)
+</span></span><span style="display:flex;"><span>    ) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Image processing service unavailable (timeout)&#34;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">errorMessage</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;ECONNREFUSED&#34;</span>)) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Image processing service unavailable (connection refused)&#34;</span>,
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">error</span>: <span style="color:#66d9ef">errorMessage</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><hr>
 <p><a href="/5-workshop/5.4-backend/5.4.4-functions/">Back to functions list</a></p>
@@ -2337,19 +2785,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1776414906"></script>
-    <script src="/js/perfect-scrollbar.min.js?1776414906"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1776414906"></script>
-    <script src="/js/jquery.sticky.js?1776414906"></script>
-    <script src="/js/featherlight.min.js?1776414906"></script>
-    <script src="/js/highlight.pack.js?1776414906"></script>
+    <script src="/js/clipboard.min.js?1776416191"></script>
+    <script src="/js/perfect-scrollbar.min.js?1776416191"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1776416191"></script>
+    <script src="/js/jquery.sticky.js?1776416191"></script>
+    <script src="/js/featherlight.min.js?1776416191"></script>
+    <script src="/js/highlight.pack.js?1776416191"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1776414906"></script>
-    <script src="/js/learn.js?1776414906"></script>
-    <script src="/js/hugo-learn.js?1776414906"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1776416191"></script>
+    <script src="/js/learn.js?1776416191"></script>
+    <script src="/js/hugo-learn.js?1776416191"></script>
 
-    <link href="/mermaid/mermaid.css?1776414906" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1776414906"></script>
+    <link href="/mermaid/mermaid.css?1776416191" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1776416191"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

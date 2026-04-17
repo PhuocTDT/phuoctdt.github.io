@@ -1,7 +1,7 @@
 ---
 title: "AWS re:Invent 2025 Recap - Hạ tầng & Bảo mật"
 date: 2026-01-27T15:59:18+07:00
-weight: 3
+weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---

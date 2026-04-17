@@ -13,22 +13,45 @@ Using Amazon Cognito for identity management.
 ## `auth/resource.ts`
 
 ```typescript
-import { defineAuth } from "@aws-amplify/backend";
+import { defineAuth, secret } from "@aws-amplify/backend";
 
 export const auth = defineAuth({
+
   loginWith: {
     email: true,
     externalProviders: {
       google: {
-        clientId: secret("GOOGLE_CLIENT_ID"),
-        clientSecret: secret("GOOGLE_CLIENT_SECRET"),
+        clientId: secret('GOOGLE_CLIENT_ID'),
+        clientSecret: secret('GOOGLE_CLIENT_SECRET'),
+        scopes: ['email', 'profile', 'openid']
       },
-      callbackUrls: ["http://localhost:3000/", "nutritrack://"],
-      logoutUrls: ["http://localhost:3000/", "nutritrack://"],
+      callbackUrls: [
+        'nutritrack://',
+        'http://localhost:8081/',
+        'https://nutri-track.link/',
+        'https://feat-phase3-frontend-integration.d1glc6vvop0xlb.amplifyapp.com/'
+      ],
+      logoutUrls: [
+        'nutritrack://',
+        'http://localhost:8081/',
+        'https://nutri-track.link/',
+        'https://feat-phase3-frontend-integration.d1glc6vvop0xlb.amplifyapp.com/'
+      ]
+    }
+  },
+
+  userAttributes: {
+    email: {
+      required: true
     },
+    preferredUsername: {
+      required: false
+    }
   },
 });
+
 ```
+
 ![cognito-user-pool.png](/images/cognito-user-pool.png)
 ---
 

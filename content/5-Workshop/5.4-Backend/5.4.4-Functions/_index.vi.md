@@ -18,7 +18,7 @@ Sử dụng SDK của Amazon Bedrock để gọi mô hình Qwen3-VL.
 
 ### 3. `process-nutrition` — Xử lý Dinh dưỡng
 Tính toán Macros từ kết quả AI và ghi vào DynamoDB.
-- **Th thư mục**: `amplify/functions/process-nutrition/`
+- **Thư mục**: `amplify/process-nutrition/`
 
 ### 4. `resize-image` — Tối ưu Hình ảnh
 Sử dụng thư viện `sharp` (qua Lambda Layer) để tạo Thumbnail.
@@ -30,7 +30,7 @@ Xử lý các Mutation yêu cầu kết bạn và cập nhật bảng Friendship
 
 ## Cách định nghĩa Function trong Amplify Gen 2
 
-Trong Amplify Gen 2, mỗi Lambda function thường bao gồm hai tệp cốt lõi nằm trong thư mục riêng của nó (ví dụ: `amplify/functions/my-func/`):
+Trong Amplify Gen 2, mỗi Lambda function thường bao gồm hai tệp cốt lõi nằm trong thư mục riêng của nó (ví dụ: `amplify/my-func/`):
 
 1.  **`resource.ts`**: Định nghĩa tài nguyên (tên, thời gian timeout, bộ nhớ, quyền truy cập).
 2.  **`handler.ts`**: Chứa mã nguồn thực thi chính của hàm.

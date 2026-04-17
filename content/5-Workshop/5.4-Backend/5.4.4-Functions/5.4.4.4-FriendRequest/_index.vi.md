@@ -28,7 +28,7 @@ export const friendRequest = defineFunction({
 });
 ```
 
-### 2. Mã nguồn xử lý (`handler.ts`)
+### 3. Mã nguồn xử lý (`handler.ts`)
 
 ```typescript
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';

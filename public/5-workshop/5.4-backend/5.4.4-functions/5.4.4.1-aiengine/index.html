@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.154.3">
@@ -12,21 +12,21 @@
     <title>Function ai-engine (Bedrock) :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1776414906" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1776414906" rel="stylesheet">
-    <link href="/css/hybrid.css?1776414906" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1776414906" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1776414906" rel="stylesheet">
-    <link href="/css/auto-complete.css?1776414906" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1776414906" rel="stylesheet">
-    <link href="/css/theme.css?1776414906" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1776414906" rel="stylesheet">
+    <link href="/css/nucleus.css?1776416373" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1776416373" rel="stylesheet">
+    <link href="/css/hybrid.css?1776416373" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1776416373" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1776416373" rel="stylesheet">
+    <link href="/css/auto-complete.css?1776416373" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1776416373" rel="stylesheet">
+    <link href="/css/theme.css?1776416373" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1776416373" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1776414906" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1776416373" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1776414906"></script>
+    <script src="/js/jquery-3.3.1.min.js?1776416373"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1776414906"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1776414906"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1776416373"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1776416373"></script>
 <script type="text/javascript">
     
-        var baseurl = "http:\/\/localhost\/";
+        var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1776414906"></script>
+<script type="text/javascript" src="/js/search.js?1776416373"></script>
 
     
   </div>
@@ -844,13 +844,13 @@
 
 
 
-<li data-nav-id="/5-workshop/5.4-backend/5.4.2-data/" title="Data Layer (Data)" class="dd-item 
+<li data-nav-id="/5-workshop/5.4-backend/5.4.2-data/" title="Data Layer" class="dd-item 
         
         
         
         ">
   <a href="/5-workshop/5.4-backend/5.4.2-data/">
-     <b> 5.4.2. </b> Data Layer (Data)
+     <b> 5.4.2. </b> Data Layer
     
     <i class="fas fa-check read-icon"></i>
     
@@ -1383,7 +1383,7 @@
                 
                 
                 
-                <option id="en" value="http://localhost/5-workshop/5.4-backend/5.4.4-functions/5.4.4.1-aiengine/" selected>English</option>
+                <option id="en" value="http://localhost:1313/5-workshop/5.4-backend/5.4.4-functions/5.4.4.1-aiengine/" selected>English</option>
                 
                 
                 
@@ -1397,7 +1397,7 @@
                 
                 
                 
-                <option id="vi" value="http://localhost/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.1-aiengine/">Tiếng Việt
+                <option id="vi" value="http://localhost:1313/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.1-aiengine/">Tiếng Việt
                 </option>
                 
                 
@@ -1540,38 +1540,617 @@
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><h3 id="3-handler-logic-handlerts">3. Handler Logic (<code>handler.ts</code>)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">BedrockRuntimeClient</span>, <span style="color:#a6e22e">InvokeModelCommand</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/client-bedrock-runtime&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">TranscribeClient</span>, <span style="color:#a6e22e">StartTranscriptionJobCommand</span>, <span style="color:#a6e22e">GetTranscriptionJobCommand</span>, <span style="color:#a6e22e">DeleteTranscriptionJobCommand</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/client-transcribe&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">S3Client</span>, <span style="color:#a6e22e">DeleteObjectCommand</span>, <span style="color:#a6e22e">GetObjectCommand</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/client-s3&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">DynamoDBClient</span>, <span style="color:#a6e22e">ListTablesCommand</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/client-dynamodb&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">DynamoDBDocumentClient</span>, <span style="color:#a6e22e">QueryCommand</span>, <span style="color:#a6e22e">ScanCommand</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/lib-dynamodb&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">randomUUID</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;crypto&#34;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">client</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">BedrockRuntimeClient</span>({ <span style="color:#a6e22e">region</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;us-east-1&#34;</span> });
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">REGION</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ap-southeast-2&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">bedrockClient</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">BedrockRuntimeClient</span>({ <span style="color:#a6e22e">region</span>: <span style="color:#66d9ef">REGION</span> });
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">transcribeClient</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TranscribeClient</span>({ <span style="color:#a6e22e">region</span>: <span style="color:#66d9ef">REGION</span> });
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">s3Client</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">S3Client</span>({ <span style="color:#a6e22e">region</span>: <span style="color:#66d9ef">REGION</span> });
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dbClient</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DynamoDBClient</span>({ <span style="color:#a6e22e">region</span>: <span style="color:#66d9ef">REGION</span> });
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">docClient</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">DynamoDBDocumentClient</span>.<span style="color:#66d9ef">from</span>(<span style="color:#a6e22e">dbClient</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handler</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">event</span>: <span style="color:#66d9ef">any</span>) <span style="color:#f92672">=&gt;</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">prompt</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">arguments</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">QWEN_MODEL_ID</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">QWEN_MODEL_ID</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;qwen.qwen3-vl-235b-a22b&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">STORAGE_BUCKET</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">STORAGE_BUCKET_NAME</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">IS_DEBUG</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DEBUG</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">NODE_ENV</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;development&#34;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">modelId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;anthropic.claude-3-haiku-20240307-v1:0&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">contentType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;application/json&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">accept</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;application/json&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span>: <span style="color:#66d9ef">JSON.stringify</span>({
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">anthropic_version</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bedrock-2023-05-31&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">max_tokens</span>: <span style="color:#66d9ef">1000</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">messages</span><span style="color:#f92672">:</span> [
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;user&#34;</span>,
-</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> [{ <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;text&#34;</span>, <span style="color:#a6e22e">text</span>: <span style="color:#66d9ef">prompt</span> }],
-</span></span><span style="display:flex;"><span>        },
-</span></span><span style="display:flex;"><span>      ],
-</span></span><span style="display:flex;"><span>    }),
-</span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">command</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">InvokeModelCommand</span>(<span style="color:#a6e22e">input</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">command</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TextDecoder</span>().<span style="color:#a6e22e">decode</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">body</span>));
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">content</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">text</span>;
-</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Error calling AI Engine&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Simple debug logger - respects DEBUG env var
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">debug</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">message</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">data?</span>: <span style="color:#66d9ef">any</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">IS_DEBUG</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`[ai-engine] </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">message</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>, <span style="color:#a6e22e">data</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>);
 </span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ═══════════════════════════════════════════════════════════════
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// PROMPTS (from docs/prompts)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// ═══════════════════════════════════════════════════════════════
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">GEN_FOOD_SYSTEM_PROMPT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`You are Ollie, an expert AI nutrition assistant for the NutriTrack app.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">A user has searched for a food, dish, or meal that is NOT in our local database, or provided an image. Your job is to analyze the food and estimate its ingredients, standard portion size, macros, and micronutrients.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">RULES:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. Break down the meal into its core raw ingredients. (e.g., &#34;Boiled Potatoes and Pan seared chicken&#34; -&gt; Potatoes, Chicken Breast, Olive Oil, etc.).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. Estimate a standard, medium portion size for the ENTIRE dish/meal.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. Provide estimated macros and micronutrients reflecting that portion size.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. CALORIES: Ensure (Protein*4 + Carbs*4 + Fat*9) roughly matches the total calories.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">5. Provide the food name and ingredients in BOTH Vietnamese (name_vi) and English (name_en).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">6. Tone: Vietnamese casual (ê, nhé, nha), encouraging, practical. Use emojis sparingly (💪🔥).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">7. Output STRICT JSON format only. NO markdown blocks (\`\`\`json), no conversational text.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EDGE CASE:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- If the input is clearly NOT a food, beverage, or edible item: return exactly:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{&#34;error&#34;: &#34;not_food&#34;, &#34;message_vi&#34;: &#34;Vui lòng nhập một món ăn hoặc nguyên liệu hợp lệ.&#34;, &#34;message_en&#34;: &#34;Please enter a valid food or ingredient.&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">OUTPUT SCHEMA:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;food_id&#34;: &#34;custom_gen_temp&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;name_vi&#34;: &#34;Tên tiếng Việt&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;name_en&#34;: &#34;English Name&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;macros&#34;: { &#34;calories&#34;: 0, &#34;protein_g&#34;: 0, &#34;carbs_g&#34;: 0, &#34;fat_g&#34;: 0, &#34;saturated_fat_g&#34;: 0, &#34;polyunsaturated_fat_g&#34;: 0, &#34;monounsaturated_fat_g&#34;: 0, &#34;fiber_g&#34;: 0, &#34;sugar_g&#34;: 0, &#34;sodium_mg&#34;: 0, &#34;cholesterol_mg&#34;: 0, &#34;potassium_mg&#34;: 0 },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;micronutrients&#34;: { &#34;calcium_mg&#34;: 0, &#34;iron_mg&#34;: 0, &#34;vitamin_a_ug&#34;: 0, &#34;vitamin_c_mg&#34;: 0 },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;serving&#34;: { &#34;default_g&#34;: 0, &#34;unit&#34;: &#34;bowl | plate | serving | piece&#34;, &#34;portions&#34;: { &#34;small&#34;: 0.7, &#34;medium&#34;: 1.0, &#34;large&#34;: 1.3 } },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;ingredients&#34;: [ { &#34;name_vi&#34;: &#34;Tên nguyên liệu&#34;, &#34;name_en&#34;: &#34;Ingredient Name&#34;, &#34;weight_g&#34;: 0 } ],
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;verified&#34;: false, &#34;source&#34;: &#34;AI Generated&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">FIX_FOOD_SYSTEM_PROMPT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`You are Ollie, an expert AI nutritionist for NutriTrack.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Your task is to correct a logged food item based on user instructions.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">RULES:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. ARITHMETIC: If ingredients or weights change, recalculate ALL macros/micronutrients.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. CALORIES: Ensure (Protein*4 + Carbs*4 + Fat*9) roughly matches the new total.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. PERSONALITY: Professional, polite, and helpful nutritionist (tư vấn viên dinh dưỡng lịch sự, chuyên nghiệp).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. Output STRICT JSON format only. NO markdown blocks (\`\`\`json).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EDGE CASE:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- If request is nonsense/non-food: return {&#34;error&#34;: &#34;not_food&#34;, &#34;message_vi&#34;: &#34;Vui lòng nhập yêu cầu sửa món chính xác để Ollie có thể hỗ trợ bạn nhé!&#34;, &#34;message_en&#34;: &#34;Please enter a valid correction request!&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">OUTPUT SCHEMA: Same as GEN_FOOD (with &#34;source&#34;: &#34;AI Fixed&#34;).`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">VOICE_SYSTEM_PROMPT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`You are Ollie, an expert AI nutrition assistant for NutriTrack.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">You understand both Vietnamese (casual) and English.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">YOUR TASK:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">When the user describes a meal, a specific dish, or just raw ingredients via voice or text, analyze the components and log it. Even if the user is vague, you MUST estimate the nutritional profile.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">RULES:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. DETECT language (vi or en).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. IDENTIFY items: Can be a complete dish (e.g., &#34;Phở bò&#34;) or raw ingredients (e.g., &#34;200g thịt bò&#34;).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. ESTIMATION: You MUST estimate standard portions if not provided and provide nutritional breakdown (macros) for the entire input and each ingredient/item. Never return 0 for macros unless the item has no calories.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. PORTION: small | medium | large. Default: &#34;medium&#34;.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">5. RESPONSE: If user speaks Vietnamese → respond/clarify in polite and professional Vietnamese (lịch sự, rõ ràng). Avoid casual particles like &#39;ê&#39;, &#39;nha&#39;, &#39;nè&#39;.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">6. Output STRICT JSON format only. NO markdown blocks (\`\`\`json).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ERROR HANDLING:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Unintelligible or Non-food input: return action=&#34;clarify&#34;. NEVER log non-food items.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Example: &#34;Cho tớ cái máy bay&#34; -&gt; action=&#34;clarify&#34;, clarification_question_vi=&#34;Món này không thể tiêu thụ được, quý khách vui lòng chọn món ăn khác nhé!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">OUTPUT SCHEMA:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;action&#34;: &#34;log&#34; | &#34;clarify&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;detected_language&#34;: &#34;vi&#34; | &#34;en&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;meal_type&#34;: &#34;breakfast | lunch | dinner | snack&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;confidence&#34;: 0.0 to 1.0,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;clarification_question_vi&#34;: &#34;Câu hỏi tiếng Việt hoặc null&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;clarification_question_en&#34;: &#34;English question or null&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;food_data&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;food_id&#34;: &#34;custom_gen_temp&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;name_vi&#34;: &#34;Tên món/nguyên liệu&#34;, &#34;name_en&#34;: &#34;Dish/Ingredient Name&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;macros&#34;: { &#34;calories&#34;: 0, &#34;protein_g&#34;: 0, &#34;carbs_g&#34;: 0, &#34;fat_g&#34;: 0, &#34;saturated_fat_g&#34;: 0, &#34;fiber_g&#34;: 0, &#34;sugar_g&#34;: 0, &#34;sodium_mg&#34;: 0 },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;serving&#34;: { &#34;default_g&#34;: 0, &#34;unit&#34;: &#34;bowl | plate | piece | g | ml&#34;, &#34;portions&#34;: {&#34;small&#34;: 0.7, &#34;medium&#34;: 1.0, &#34;large&#34;: 1.3} },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;ingredients&#34;: [ {&#34;name_vi&#34;: &#34;tên nguyên liệu&#34;, &#34;name_en&#34;: &#34;ingredient name&#34;, &#34;weight_g&#34;: 0, &#34;calories&#34;: 0, &#34;protein_g&#34;: 0, &#34;carbs_g&#34;: 0, &#34;fat_g&#34;: 0} ]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">OLLIE_COACH_SYSTEM_PROMPT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`You are Ollie, a Vietnamese AI nutrition coach in the NutriTrack app.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">PERSONALITY:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 👔 Professional, polite, and encouraging health consultant.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 💪 Motivating and providing scientific-backed evidence.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 🌐 LANGUAGE: Follow the user&#39;s language. If they speak English, reply in English. If they speak Vietnamese, reply in professional and respectful Vietnamese.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 🎯 Actionable: give specific, practical advice.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- ✨ Celebrate milestones with a supportive tone.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">RULES:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. MAX 2 sentences per response. Short and punchy.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. Use 1-2 emojis max. Don&#39;t overdo it.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. Reference the user&#39;s ACTUAL data (streak, calories, protein).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. Be specific: &#34;ăn thêm 2 trứng luộc&#34; not &#34;ăn thêm protein&#34;.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">5. Output STRICT JSON format only. NO markdown blocks (\`\`\`json), no conversational text.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EDGE CASE:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- If stats are missing or absurd, provide a generic encouraging message. skip specific numbers.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">OUTPUT FORMAT — always return a single JSON object:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;tip_vi&#34;: &#34;Lời khuyên của Ollie (Vietnamese casual)&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;tip_en&#34;: &#34;Ollie&#39;s tip in English (energetic)&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;mood&#34;: &#34;celebrate | encourage | suggest | neutral&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;suggested_food_vi&#34;: &#34;Món gợi ý (nếu có)&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;suggested_food_en&#34;: &#34;Suggested food (if any)&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">RECIPE_SYSTEM_PROMPT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`You are Ollie, a Vietnamese cooking coach in the NutriTrack app.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">YOUR TASK:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Suggest 1-3 recipes based on fridge inventory and goals.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">RULES:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. USE EXPIRING ITEMS FIRST — essential for food waste reduction.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. NUTRITION GOAL: high_protein | low_carb | balanced | low_calorie.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. REALISTIC: Home-cookable in ≤45 minutes.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. TONE: Professional, encouraging, and respectful (lịch sự, hướng dẫn tận tình).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">5. Output STRICT JSON format only. NO markdown blocks (\`\`\`json).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EDGE CASE:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- If inventory is non-food: return {&#34;recipes&#34;: [], &#34;overall_tip_vi&#34;: &#34;Mình chỉ giúp tạo công thức nấu ăn thui nha! 🍳&#34;, &#34;overall_tip_en&#34;: &#34;I can only help with recipes! 🍳&#34;, &#34;error&#34;: &#34;not_food&#34;}.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">OUTPUT SCHEMA:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;recipes&#34;: [
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;dish_name_vi&#34;: &#34;Tên món&#34;, &#34;dish_name_en&#34;: &#34;Dish Name&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;why_this_vi&#34;: &#34;Lý do chọn cực thuyết phục&#34;, &#34;why_this_en&#34;: &#34;Why this dish&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;cooking_time_min&#34;: 30, &#34;difficulty&#34;: &#34;easy | medium | hard&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;ingredients_from_fridge&#34;: [ {&#34;name&#34;: &#34;thịt&#34;, &#34;weight_g&#34;: 200} ],
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;need_to_buy&#34;: [&#34;nước mắm&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;macros&#34;: {&#34;calories&#34;: 420, &#34;protein_g&#34;: 35, &#34;carbs_g&#34;: 30, &#34;fat_g&#34;: 18},
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;steps_vi&#34;: [&#34;Bước 1: ...&#34;], &#34;steps_en&#34;: [&#34;Step 1: ...&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;tip_vi&#34;: &#34;Mẹo nấu&#34;, &#34;tip_en&#34;: &#34;Cooking tip&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ],
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;overall_tip_vi&#34;: &#34;Lời khuyên tổng quát&#34;, &#34;overall_tip_en&#34;: &#34;Overall tip&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">MACRO_CALCULATOR_SYSTEM_PROMPT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`You are Ollie, an expert AI nutritionist for NutriTrack.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Calculate daily targets based on biometrics, goals, and lifestyle.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">RULES:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. CALCULATION: Use Mifflin-St Jeor for TDEE.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. GOALS: Deficit (-500) for weight loss, Surplus (+300) for gain.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. MACROS: Ensure (Protein*4 + Carbs*4 + Fat*9) equals daily_calories.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. TONE: Professional and encouraging health consultant. Avoid casual Gen-Z slang.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">5. Output STRICT JSON format only. NO markdown blocks (\`\`\`json).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EDGE CASE:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- If biometrics are absurd: return 2000 cal default and ask to update profile &#34;để thông tin chính xác hơn&#34;.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">OUTPUT SCHEMA:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;daily_calories&#34;: 2000,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;daily_protein_g&#34;: 150, &#34;daily_carbs_g&#34;: 150, &#34;daily_fat_g&#34;: 65,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;reasoning_vi&#34;: &#34;Lý do tính toán (lịch sự, rõ ràng)&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;reasoning_en&#34;: &#34;Calculation reasoning (professional)&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">WEEKLY_INSIGHT_SYSTEM_PROMPT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`You are Ollie, an expert AI nutritionist and Gen-Z coach for NutriTrack.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Analyze user food logs and biometrics to provide a &#34;Weekly Insight&#34;.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">RULES:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. PROGRESS: Acknowledge wins, identify one key pattern.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. ADVICE: One clear, easyToAction tip for next week.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. TONE: Professional, supportive, and informative. Avoid slang like &#39;á&#39;, &#39;nhen&#39;, &#39;xịn&#39;.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. LENGTH: Exactly 3 sentences.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">5. Output STRICT JSON format only. NO markdown blocks (\`\`\`json).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">OUTPUT SCHEMA:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;insight_vi&#34;: &#34;Nhận xét tuần này bằng tiếng Việt (chuyên nghiệp)&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;insight_en&#34;: &#34;Insight in English (professional)&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;status&#34;: &#34;success | insufficient_data&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">AI_COACH_SYSTEM_PROMPT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`You are Ollie, a professional Vietnamese AI health and nutrition consultant for NutriTrack.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">You are a knowledgeable advisor who is polite, respectful, and evidence-based. Avoid casual slang or acting like a Gen-Z peer.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">SCOPE:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Nutrition, food, healthy eating, exercise, health stats, wellness.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Politely decline off-topic questions (e.g. &#34;Món này không thể tiêu thụ được, quý khách vui lòng chọn món ăn khác nhé!&#34;).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">TONE:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Respectful and warm Vietnamese: dùng &#34;bạn&#34; / &#34;mình&#34;, tránh tiếng lóng Gen-Z.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Professional but approachable — như một chuyên gia dinh dưỡng tận tâm, không phải bạn bè ngang hàng.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Ngắn gọn, tập trung vào điều người dùng thực sự hỏi.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Khuyến khích nhẹ nhàng, không phán xét.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">RULES:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. LANGUAGE: You MUST match the user&#39;s language prefix from the prompt below. This rule is absolute.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. MEAL SUGGESTION: Suggest 1-3 meals. Prioritize expiring items from fridge.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. CONTEXT RULES: Use USER CONTEXT data ONLY when the user asks about nutrition/meals/health/progress. For casual conversation (greetings, small talk), respond naturally without mentioning stats or numbers.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. CARDS: Use specific delimiters (===FOOD_CARD_START=== etc.) placed at the end.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">5. Reply in natural conversational text. NEVER output raw JSON objects in the message body.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">6. NEVER use markdown code fences (\`\`\`json, \`\`\`, etc.). Write plain text only.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">7. NEVER expose internal data structures, field names, or API responses to the user.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">CARD TEMPLATES (Place at the END of response):
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">===FOOD_CARD_START===
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{&#34;name&#34;: &#34;Tên món&#34;, &#34;description&#34;: &#34;Lý do chọn&#34;, &#34;calories&#34;: 450, &#34;protein_g&#34;: 30, &#34;carbs_g&#34;: 40, &#34;fat_g&#34;: 10, &#34;time&#34;: &#34;25 phút&#34;, &#34;emoji&#34;: &#34;🍱&#34;, &#34;ingredients&#34;: [{&#34;name&#34;: &#34;Gạo&#34;, &#34;amount&#34;: &#34;1 chén&#34;}], &#34;steps&#34;: [{&#34;title&#34;: &#34;Nấu cơm&#34;, &#34;instruction&#34;: &#34;Vo gạo nấu&#34;}]}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">===FOOD_CARD_END===
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">===EXERCISE_CARD_START===
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{&#34;name&#34;: &#34;Tên bài tập&#34;, &#34;description&#34;: &#34;Ưu điểm&#34;, &#34;duration_minutes&#34;: 30, &#34;calories_burned&#34;: 250, &#34;emoji&#34;: &#34;🏃&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">===EXERCISE_CARD_END===
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">===STATS_CARD_START===
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{&#34;calories_consumed&#34;: 1800, &#34;calories_target&#34;: 2000, &#34;protein_g&#34;: 85, &#34;carbs_g&#34;: 210, &#34;fat_g&#34;: 60, &#34;summary&#34;: &#34;Ngon lành! Ráng ăn thêm đạm nhé.&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">===STATS_CARD_END===
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Append this at the very end of your message: &#34;Ghi chú: Thông tin công thức/dinh dưỡng chỉ mang tính tham khảo, bạn có thể tùy chỉnh để phù hợp với khẩu vị cá nhân.&#34;`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ═══════════════════════════════════════════════════════════════
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// HELPERS
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// ═══════════════════════════════════════════════════════════════
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">waitForTranscription</span>(<span style="color:#a6e22e">jobName</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">string</span>&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">25</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Promise</span>(<span style="color:#a6e22e">r</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">r</span>, <span style="color:#ae81ff">2000</span>));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">transcribeClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GetTranscriptionJobCommand</span>({ <span style="color:#a6e22e">TranscriptionJobName</span>: <span style="color:#66d9ef">jobName</span> }));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">TranscriptionJob</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">TranscriptionJobStatus</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;COMPLETED&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">transcriptUri</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">TranscriptionJob</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">Transcript</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">TranscriptFileUri</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">transcriptUri</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;No transcript URI&#39;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">transcriptUri</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">json</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">results</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">transcripts</span><span style="color:#f92672">?</span>.[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">?</span>.<span style="color:#a6e22e">transcript</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;FAILED&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Transcription failed: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">TranscriptionJob</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">FailureReason</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Transcription timed out&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">callQwen</span>(<span style="color:#a6e22e">messages</span>: <span style="color:#66d9ef">any</span>[], <span style="color:#a6e22e">maxTokens</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">string</span>&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">body</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">messages</span>, <span style="color:#a6e22e">max_tokens</span>: <span style="color:#66d9ef">maxTokens</span> });
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">command</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">InvokeModelCommand</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">modelId</span>: <span style="color:#66d9ef">QWEN_MODEL_ID</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">contentType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;application/json&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">accept</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;application/json&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">body</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">bedrockClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">command</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">responseBody</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TextDecoder</span>().<span style="color:#a6e22e">decode</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">body</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span>: <span style="color:#66d9ef">string</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">responseBody</span>.<span style="color:#a6e22e">choices</span><span style="color:#f92672">?</span>.[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">?</span>.<span style="color:#a6e22e">message</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">content</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">||</span> <span style="color:#a6e22e">responseBody</span>.<span style="color:#a6e22e">output</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">message</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">content</span><span style="color:#f92672">?</span>.[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">?</span>.<span style="color:#a6e22e">text</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">||</span> <span style="color:#a6e22e">responseBody</span>.<span style="color:#a6e22e">content</span><span style="color:#f92672">?</span>.[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">?</span>.<span style="color:#a6e22e">text</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">text</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#39;Empty Qwen response. Raw body:&#39;</span>, <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">responseBody</span>).<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">500</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">text</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ═══════════════════════════════════════════════════════════════
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// HANDLER
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// ═══════════════════════════════════════════════════════════════
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handler</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">event</span>: <span style="color:#66d9ef">any</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">action</span>, <span style="color:#a6e22e">payload</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">arguments</span> <span style="color:#f92672">||</span> {};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">payload</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">payload</span>) <span style="color:#f92672">:</span> {};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ── Image Analysis (Qwen3-VL vision) ──
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">action</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;analyzeFoodImage&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">s3Key</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">STORAGE_BUCKET</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;STORAGE_BUCKET_NAME not configured&#39;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">s3Key</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">s3Key</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#39;..&#39;</span>)) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Invalid s3Key&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Read image from S3, convert to base64 (avoids large payload through AppSync)
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">s3Obj</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">s3Client</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GetObjectCommand</span>({ <span style="color:#a6e22e">Bucket</span>: <span style="color:#66d9ef">STORAGE_BUCKET</span>, <span style="color:#a6e22e">Key</span>: <span style="color:#66d9ef">s3Key</span> }));
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chunks</span>: <span style="color:#66d9ef">Uint8Array</span>[] <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">await</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chunk</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">s3Obj</span>.<span style="color:#a6e22e">Body</span> <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">any</span>) <span style="color:#a6e22e">chunks</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">chunk</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">imageBuffer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Buffer</span>.<span style="color:#a6e22e">concat</span>(<span style="color:#a6e22e">chunks</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">base64</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">imageBuffer</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#e6db74">&#39;base64&#39;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">contentType</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s3Obj</span>.<span style="color:#a6e22e">ContentType</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;image/jpeg&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">callQwen</span>([
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;system&#34;</span>, <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">GEN_FOOD_SYSTEM_PROMPT</span> },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;user&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>                        { <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;image_url&#34;</span>, <span style="color:#a6e22e">image_url</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`data:</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">contentType</span><span style="color:#e6db74">}</span><span style="color:#e6db74">;base64,</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">base64</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> } },
+</span></span><span style="display:flex;"><span>                        { <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;text&#34;</span>, <span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Analyze this food image and estimate its nutritional profile. Use Vietnamese (tiếng Việt) for name_vi and all ingredient name_vi fields. Return ONLY the JSON object.&#34;</span> },
+</span></span><span style="display:flex;"><span>                    ],
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>            ]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// File stays in incoming/ for food-detail display.
+</span></span></span><span style="display:flex;"><span>            <span style="color:#75715e">// S3 lifecycle rule (expirationInDays: 1 on incoming/) handles cleanup automatically.
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">text</span> });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ── Conversational AI Coach ──
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">action</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;generateCoachResponse&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">userMessage</span>, <span style="color:#a6e22e">chatHistory</span>, <span style="color:#a6e22e">contextString</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Deterministic language detection: check for Vietnamese diacritical marks.
+</span></span></span><span style="display:flex;"><span>            <span style="color:#75715e">// This is far more reliable than asking the model to detect language from a
+</span></span></span><span style="display:flex;"><span>            <span style="color:#75715e">// mixed context that contains Vietnamese food names.
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">VI_PATTERN</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/[àáâãèéêìíòóôõùúýăđơưạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỷỹỵ]/i</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">isVietnamese</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">VI_PATTERN</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">userMessage</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">detectedLang</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">isVietnamese</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;vi&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;en&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">langInstruction</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">detectedLang</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;vi&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;MANDATORY: Reply ENTIRELY in Vietnamese (professional and polite: nhé, vui lòng). Do NOT use casual slang or Gen-Z particles like &#34;ê&#34;, &#34;nha&#34;, &#34;nè&#34;, &#34;á&#34;.&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;MANDATORY: Reply ENTIRELY in English. Do NOT use any Vietnamese words, even in food names.&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">messages</span>: <span style="color:#66d9ef">any</span>[] <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;system&#34;</span>, <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">AI_COACH_SYSTEM_PROMPT</span> },
+</span></span><span style="display:flex;"><span>            ];
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">msg</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">chatHistory</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">messages</span>.<span style="color:#a6e22e">push</span>({
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">role</span>: <span style="color:#66d9ef">msg.role</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;user&#39;</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;user&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;assistant&#39;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">msg.parts</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">text</span>
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Context as system message so food names don&#39;t skew language detection.
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">contextString</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">messages</span>.<span style="color:#a6e22e">push</span>({
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;system&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`USER CONTEXT (background data only):</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">contextString</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Explicit language instruction as final system message — overrides everything.
+</span></span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">messages</span>.<span style="color:#a6e22e">push</span>({
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;system&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">langInstruction</span>
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">messages</span>.<span style="color:#a6e22e">push</span>({
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;user&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">userMessage</span>
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">callQwen</span>(<span style="color:#a6e22e">messages</span>, <span style="color:#ae81ff">2000</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">text</span> });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ── Food Search / Generation (DB miss → AI) ──
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">action</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;generateFood&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">foodName</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">callQwen</span>([
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;system&#34;</span>, <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">GEN_FOOD_SYSTEM_PROMPT</span> },
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Analyze the following unknown food and estimate its nutritional profile:</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nFood Query: &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">foodName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nReturn ONLY the JSON object.`</span> },
+</span></span><span style="display:flex;"><span>            ]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">text</span> });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ── Fix/Correct a Food Item ──
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">action</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;fixFood&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">currentFoodJson</span>, <span style="color:#a6e22e">correctionQuery</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">callQwen</span>([
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;system&#34;</span>, <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">FIX_FOOD_SYSTEM_PROMPT</span> },
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Please fix the following food item based on the user&#39;s request:</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nCurrent Food Data:</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">currentFoodJson</span>, <span style="color:#66d9ef">null</span>, <span style="color:#ae81ff">2</span>)<span style="color:#e6db74">}</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nCorrection Request: &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">correctionQuery</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nReturn ONLY the new JSON object.`</span> },
+</span></span><span style="display:flex;"><span>            ]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">text</span> });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ── Voice → Food (Transcribe + Qwen) ──
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">action</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;voiceToFood&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">s3Key</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">STORAGE_BUCKET</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;STORAGE_BUCKET_NAME not configured&#39;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">s3Key</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">s3Key</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#e6db74">&#39;voice/&#39;</span>) <span style="color:#f92672">||</span> <span style="color:#a6e22e">s3Key</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#39;..&#39;</span>)) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Invalid s3Key&#39;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">jobName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`nutritrack-voice-</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">randomUUID</span>()<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Map file extension → AWS Transcribe MediaFormat enum
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ext</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s3Key</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;.&#39;</span>).<span style="color:#a6e22e">pop</span>()<span style="color:#f92672">?</span>.<span style="color:#a6e22e">toLowerCase</span>() <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;m4a&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mediaFormat</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ext</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;webm&#39;</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;webm&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">:</span> <span style="color:#a6e22e">ext</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;mp3&#39;</span>  <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;mp3&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">:</span> <span style="color:#a6e22e">ext</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;wav&#39;</span>  <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;wav&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">:</span> <span style="color:#a6e22e">ext</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;flac&#39;</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;flac&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;mp4&#39;</span>; <span style="color:#75715e">// m4a, mp4 → &#39;mp4&#39;
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">s3Uri</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`s3://</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">STORAGE_BUCKET</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">s3Key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">transcribeClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">StartTranscriptionJobCommand</span>({
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">TranscriptionJobName</span>: <span style="color:#66d9ef">jobName</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Use specific language — IdentifyLanguage produces empty transcripts with WebM
+</span></span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">LanguageCode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;vi-VN&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">MediaFormat</span>: <span style="color:#66d9ef">mediaFormat</span> <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">any</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">Media</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">MediaFileUri</span>: <span style="color:#66d9ef">s3Uri</span> },
+</span></span><span style="display:flex;"><span>            }));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">transcript</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">waitForTranscription</span>(<span style="color:#a6e22e">jobName</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Cleanup: xóa Transcribe job và voice file khỏi S3 (ephemeral)
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">Promise</span>.<span style="color:#a6e22e">allSettled</span>([
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">transcribeClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DeleteTranscriptionJobCommand</span>({ <span style="color:#a6e22e">TranscriptionJobName</span>: <span style="color:#66d9ef">jobName</span> })),
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">s3Client</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DeleteObjectCommand</span>({ <span style="color:#a6e22e">Bucket</span>: <span style="color:#66d9ef">STORAGE_BUCKET</span>, <span style="color:#a6e22e">Key</span>: <span style="color:#66d9ef">s3Key</span> })),
+</span></span><span style="display:flex;"><span>            ]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">`[voiceToFood] jobName=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">jobName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">, transcriptLength=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">transcript</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span><span style="color:#e6db74">}</span><span style="color:#e6db74">, s3Key=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">s3Key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">transcript</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Empty transcription&#39;</span> });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">qwenResult</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">callQwen</span>([
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;system&#34;</span>, <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">VOICE_SYSTEM_PROMPT</span> },
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`User said: &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">transcript</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nAnalyze and return JSON following the output format.`</span> },
+</span></span><span style="display:flex;"><span>            ]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// ==========================================
+</span></span></span><span style="display:flex;"><span>            <span style="color:#75715e">// RECALCULATE with DB Data (Phase 1)
+</span></span></span><span style="display:flex;"><span>            <span style="color:#75715e">// ==========================================
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aiResponse</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">qwenResult</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">aiResponse</span>.<span style="color:#a6e22e">action</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;log&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">aiResponse</span>.<span style="color:#a6e22e">food_data</span>) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">foodData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aiResponse</span>.<span style="color:#a6e22e">food_data</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ingredients</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">foodData</span>.<span style="color:#a6e22e">ingredients</span> <span style="color:#f92672">||</span> [];
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tableName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">discoverTableName</span>();
+</span></span><span style="display:flex;"><span>                    
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">totalCalories</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">totalProtein</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">totalCarbs</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">totalFat</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">processedIngredients</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ing</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">ingredients</span>) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">searchName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">name_vi</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">name_en</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">name</span>;
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dbMatch</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">findFoodInDB</span>(<span style="color:#a6e22e">searchName</span>, <span style="color:#a6e22e">tableName</span>);
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">dbMatch</span>) {
+</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nutrition</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calculateNutrition</span>(<span style="color:#a6e22e">dbMatch</span>, <span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">weight_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">processedIngredients</span>.<span style="color:#a6e22e">push</span>({
+</span></span><span style="display:flex;"><span>                                ...<span style="color:#a6e22e">ing</span>,
+</span></span><span style="display:flex;"><span>                                <span style="color:#a6e22e">food_id</span>: <span style="color:#66d9ef">dbMatch.food_id</span>,
+</span></span><span style="display:flex;"><span>                                <span style="color:#a6e22e">name_vi_db</span>: <span style="color:#66d9ef">dbMatch.name_vi</span>,
+</span></span><span style="display:flex;"><span>                                <span style="color:#a6e22e">name_en_db</span>: <span style="color:#66d9ef">dbMatch.name_en</span>,
+</span></span><span style="display:flex;"><span>                                <span style="color:#a6e22e">matched</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                                <span style="color:#a6e22e">source</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;database&#39;</span>,
+</span></span><span style="display:flex;"><span>                                ...<span style="color:#a6e22e">nutrition</span>
+</span></span><span style="display:flex;"><span>                            });
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">totalCalories</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">nutrition</span>.<span style="color:#a6e22e">calories</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">totalProtein</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">nutrition</span>.<span style="color:#a6e22e">protein_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">totalCarbs</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">nutrition</span>.<span style="color:#a6e22e">carbs_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">totalFat</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">nutrition</span>.<span style="color:#a6e22e">fat_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>                        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">processedIngredients</span>.<span style="color:#a6e22e">push</span>({
+</span></span><span style="display:flex;"><span>                                ...<span style="color:#a6e22e">ing</span>,
+</span></span><span style="display:flex;"><span>                                <span style="color:#a6e22e">matched</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>                                <span style="color:#a6e22e">source</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ai_estimated&#39;</span>
+</span></span><span style="display:flex;"><span>                            });
+</span></span><span style="display:flex;"><span>                            <span style="color:#75715e">// Keep AI estimated values
+</span></span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">totalCalories</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">calories</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">totalProtein</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">protein_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">totalCarbs</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">carbs_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">totalFat</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">fat_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// Only overwrite macros if recalculated total is meaningful (&gt;0),
+</span></span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// otherwise keep Qwen&#39;s original food_data.macros estimates
+</span></span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hasRecalculatedData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">totalCalories</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">totalProtein</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">totalCarbs</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">totalFat</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">hasRecalculatedData</span>) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">aiResponse</span>.<span style="color:#a6e22e">food_data</span>.<span style="color:#a6e22e">macros</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>                            ...<span style="color:#a6e22e">aiResponse</span>.<span style="color:#a6e22e">food_data</span>.<span style="color:#a6e22e">macros</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">Math.round</span>(<span style="color:#a6e22e">totalCalories</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">protein_g</span>: <span style="color:#66d9ef">Math.round</span>(<span style="color:#a6e22e">totalProtein</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">carbs_g</span>: <span style="color:#66d9ef">Math.round</span>(<span style="color:#a6e22e">totalCarbs</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">fat_g</span>: <span style="color:#66d9ef">Math.round</span>(<span style="color:#a6e22e">totalFat</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>                        };
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">aiResponse</span>.<span style="color:#a6e22e">food_data</span>.<span style="color:#a6e22e">ingredients</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">processedIngredients</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">aiResponse</span>.<span style="color:#a6e22e">db_verified</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">processedIngredients</span>.<span style="color:#a6e22e">some</span>(<span style="color:#a6e22e">i</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">matched</span>);
+</span></span><span style="display:flex;"><span>                    
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ 
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>, 
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">transcript</span>, 
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">text</span>: <span style="color:#66d9ef">JSON.stringify</span>(<span style="color:#a6e22e">aiResponse</span>) 
+</span></span><span style="display:flex;"><span>                    });
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">calcError</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Recalculation error:&#39;</span>, <span style="color:#a6e22e">calcError</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">transcript</span>, <span style="color:#a6e22e">text</span>: <span style="color:#66d9ef">qwenResult</span> });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ── Helper functions for DB Lookup ──
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">discoverTableName</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">string</span>&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">dbClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ListTablesCommand</span>({}));
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">TableNames</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">find</span>((<span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">name</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#e6db74">&#39;Food-&#39;</span>)) <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">normalize</span>(<span style="color:#a6e22e">text</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">text</span>) <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">toLowerCase</span>().<span style="color:#a6e22e">trim</span>().<span style="color:#a6e22e">normalize</span>(<span style="color:#e6db74">&#39;NFD&#39;</span>).<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/[\u0300-\u036f]/g</span>, <span style="color:#e6db74">&#39;&#39;</span>).<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/đ/g</span>, <span style="color:#e6db74">&#39;d&#39;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">findFoodInDB</span>(<span style="color:#a6e22e">query</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">tableName</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">any</span> <span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">null</span>&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">tableName</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">query</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">q</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">toLowerCase</span>().<span style="color:#a6e22e">trim</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 1. Exact match (name_vi or name_en) - GSI
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">qVi</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueryCommand</span>({
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">tableName</span>, <span style="color:#a6e22e">IndexName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;name_vi&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">KeyConditionExpression</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;name_vi = :name&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">ExpressionAttributeValues</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;:name&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">query</span> }
+</span></span><span style="display:flex;"><span>            }));
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">qVi</span>.<span style="color:#a6e22e">Items</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">length</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">qVi</span>.<span style="color:#a6e22e">Items</span>[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">qEn</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueryCommand</span>({
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">tableName</span>, <span style="color:#a6e22e">IndexName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;name_en&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">KeyConditionExpression</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;name_en = :name&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">ExpressionAttributeValues</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;:name&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">query</span> }
+</span></span><span style="display:flex;"><span>            }));
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">qEn</span>.<span style="color:#a6e22e">Items</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">length</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">qEn</span>.<span style="color:#a6e22e">Items</span>[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 2. Partial match (contains) - Broad search
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scanAny</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ScanCommand</span>({
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">tableName</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">FilterExpression</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;contains(name_vi, :q) OR contains(name_en, :q) OR contains(aliases_vi, :q) OR contains(aliases_en, :q)&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">ExpressionAttributeValues</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;:q&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">query</span> }
+</span></span><span style="display:flex;"><span>            }));
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">scanAny</span>.<span style="color:#a6e22e">Items</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">length</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Return shortest name match first (most likely to be the core item)
+</span></span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">scanAny</span>.<span style="color:#a6e22e">Items</span>.<span style="color:#a6e22e">sort</span>((<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">name_vi</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">name_vi</span>.<span style="color:#a6e22e">length</span>)[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculateNutrition</span>(<span style="color:#a6e22e">dbFood</span>: <span style="color:#66d9ef">any</span>, <span style="color:#a6e22e">weightG</span>: <span style="color:#66d9ef">number</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">dbFood</span>.<span style="color:#a6e22e">macros</span> <span style="color:#f92672">||</span> {};
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">r</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">weightG</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">100</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">Math.round</span>((<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">calories</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">protein_g</span>: <span style="color:#66d9ef">Math.round</span>((<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">protein_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">carbs_g</span>: <span style="color:#66d9ef">Math.round</span>((<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">carbs_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">fat_g</span>: <span style="color:#66d9ef">Math.round</span>((<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">fat_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>            };
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ── Ollie Coach Tip (quick nudge) ──
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">action</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;ollieCoachTip&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">promptTemplate</span>, <span style="color:#a6e22e">context</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">callQwen</span>([
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;system&#34;</span>, <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">OLLIE_COACH_SYSTEM_PROMPT</span> },
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">promptTemplate</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">context</span> },
+</span></span><span style="display:flex;"><span>            ]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">text</span> });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ── Recipe Generator ──
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">action</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;generateRecipe&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">inventoryText</span>, <span style="color:#a6e22e">expiringText</span>, <span style="color:#a6e22e">nutritionGoal</span>, <span style="color:#a6e22e">servings</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">callQwen</span>([
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;system&#34;</span>, <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">RECIPE_SYSTEM_PROMPT</span> },
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`User&#39;s fridge inventory:</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">inventoryText</span><span style="color:#e6db74">}</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nExpiring soon (MUST USE):</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">expiringText</span><span style="color:#e6db74">}</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nNutrition goal: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">nutritionGoal</span><span style="color:#e6db74">}</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nNumber of servings: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">servings</span><span style="color:#e6db74">}</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nSuggest 1-3 recipes. Return JSON only.`</span> },
+</span></span><span style="display:flex;"><span>            ]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">text</span> });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ── Macro Calculator ──
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">action</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;calculateMacros&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">userProfileJson</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">callQwen</span>([
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;system&#34;</span>, <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">MACRO_CALCULATOR_SYSTEM_PROMPT</span> },
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Calculate daily nutritional targets for the following user profile:</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">userProfileJson</span>, <span style="color:#66d9ef">null</span>, <span style="color:#ae81ff">2</span>)<span style="color:#e6db74">}</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nReturn ONLY the JSON object.`</span> },
+</span></span><span style="display:flex;"><span>            ]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">text</span> });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ── Weekly Insight ──
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">action</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;weeklyInsight&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">userProfileJson</span>, <span style="color:#a6e22e">weeklySummaryJson</span>, <span style="color:#a6e22e">notablePatterns</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">callQwen</span>([
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;system&#34;</span>, <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">WEEKLY_INSIGHT_SYSTEM_PROMPT</span> },
+</span></span><span style="display:flex;"><span>                { <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Analyze this user&#39;s weekly data and generate the Weekly Insight:</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nUser Profile:</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">userProfileJson</span>, <span style="color:#66d9ef">null</span>, <span style="color:#ae81ff">2</span>)<span style="color:#e6db74">}</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nWeekly Summary:</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">weeklySummaryJson</span>, <span style="color:#66d9ef">null</span>, <span style="color:#ae81ff">2</span>)<span style="color:#e6db74">}</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nNotable Patterns:</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">notablePatterns</span><span style="color:#e6db74">}</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">n</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">nReturn ONLY the JSON object.`</span> },
+</span></span><span style="display:flex;"><span>            ]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">text</span> });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Unknown action: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">action</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>: <span style="color:#66d9ef">any</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#39;Bedrock Lambda Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">error</span>: <span style="color:#66d9ef">error.message</span> });
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><hr>
 <p><a href="/5-workshop/5.4-backend/5.4.4-functions/">Back to functions list</a></p>
@@ -2350,19 +2929,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1776414906"></script>
-    <script src="/js/perfect-scrollbar.min.js?1776414906"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1776414906"></script>
-    <script src="/js/jquery.sticky.js?1776414906"></script>
-    <script src="/js/featherlight.min.js?1776414906"></script>
-    <script src="/js/highlight.pack.js?1776414906"></script>
+    <script src="/js/clipboard.min.js?1776416373"></script>
+    <script src="/js/perfect-scrollbar.min.js?1776416373"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1776416373"></script>
+    <script src="/js/jquery.sticky.js?1776416373"></script>
+    <script src="/js/featherlight.min.js?1776416373"></script>
+    <script src="/js/highlight.pack.js?1776416373"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1776414906"></script>
-    <script src="/js/learn.js?1776414906"></script>
-    <script src="/js/hugo-learn.js?1776414906"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1776416373"></script>
+    <script src="/js/learn.js?1776416373"></script>
+    <script src="/js/hugo-learn.js?1776416373"></script>
 
-    <link href="/mermaid/mermaid.css?1776414906" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1776414906"></script>
+    <link href="/mermaid/mermaid.css?1776416373" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1776416373"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

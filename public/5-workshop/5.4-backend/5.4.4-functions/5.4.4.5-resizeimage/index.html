@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.154.3">
@@ -12,21 +12,21 @@
     <title>Function resize-image :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1776414906" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1776414906" rel="stylesheet">
-    <link href="/css/hybrid.css?1776414906" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1776414906" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1776414906" rel="stylesheet">
-    <link href="/css/auto-complete.css?1776414906" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1776414906" rel="stylesheet">
-    <link href="/css/theme.css?1776414906" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1776414906" rel="stylesheet">
+    <link href="/css/nucleus.css?1776416373" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1776416373" rel="stylesheet">
+    <link href="/css/hybrid.css?1776416373" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1776416373" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1776416373" rel="stylesheet">
+    <link href="/css/auto-complete.css?1776416373" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1776416373" rel="stylesheet">
+    <link href="/css/theme.css?1776416373" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1776416373" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1776414906" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1776416373" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1776414906"></script>
+    <script src="/js/jquery-3.3.1.min.js?1776416373"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1776414906"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1776414906"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1776416373"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1776416373"></script>
 <script type="text/javascript">
     
-        var baseurl = "http:\/\/localhost\/";
+        var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1776414906"></script>
+<script type="text/javascript" src="/js/search.js?1776416373"></script>
 
     
   </div>
@@ -844,13 +844,13 @@
 
 
 
-<li data-nav-id="/5-workshop/5.4-backend/5.4.2-data/" title="Data Layer (Data)" class="dd-item 
+<li data-nav-id="/5-workshop/5.4-backend/5.4.2-data/" title="Data Layer" class="dd-item 
         
         
         
         ">
   <a href="/5-workshop/5.4-backend/5.4.2-data/">
-     <b> 5.4.2. </b> Data Layer (Data)
+     <b> 5.4.2. </b> Data Layer
     
     <i class="fas fa-check read-icon"></i>
     
@@ -1383,7 +1383,7 @@
                 
                 
                 
-                <option id="en" value="http://localhost/5-workshop/5.4-backend/5.4.4-functions/5.4.4.5-resizeimage/" selected>English</option>
+                <option id="en" value="http://localhost:1313/5-workshop/5.4-backend/5.4.4-functions/5.4.4.5-resizeimage/" selected>English</option>
                 
                 
                 
@@ -1397,7 +1397,7 @@
                 
                 
                 
-                <option id="vi" value="http://localhost/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.5-resizeimage/">Tiếng Việt
+                <option id="vi" value="http://localhost:1313/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.5-resizeimage/">Tiếng Việt
                 </option>
                 
                 
@@ -1562,8 +1562,62 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> decodeURIComponent(<span style="color:#a6e22e">record</span>.<span style="color:#a6e22e">s3</span>.<span style="color:#66d9ef">object</span>.<span style="color:#a6e22e">key</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/\+/g</span>, <span style="color:#e6db74">&#39; &#39;</span>));
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Path format: incoming/{entity_id}/{filename}
-</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Logic for resizing and saving to media/ path...
-</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Processing image: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">parts</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">key</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;/&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">parts</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">parts</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;incoming&#39;</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">warn</span>(<span style="color:#e6db74">`Skip — unexpected path format: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// entity_id is everything between &#39;incoming/&#39; and the filename
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">entityId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">parts</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">parts</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;/&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">originalFilename</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">parts</span>[<span style="color:#a6e22e">parts</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">baseName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">originalFilename</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/\.[^.]+$/</span>, <span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">destKey</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`media/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">entityId</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">baseName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.jpg`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Processing: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">key</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> → </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">destKey</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 1. Validate content type
+</span></span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">head</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">s3Client</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HeadObjectCommand</span>({ <span style="color:#a6e22e">Bucket</span>: <span style="color:#66d9ef">bucket</span>, <span style="color:#a6e22e">Key</span>: <span style="color:#66d9ef">key</span> }));
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">contentType</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">head</span>.<span style="color:#a6e22e">ContentType</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>[<span style="color:#e6db74">&#39;image/jpeg&#39;</span>, <span style="color:#e6db74">&#39;image/png&#39;</span>, <span style="color:#e6db74">&#39;image/webp&#39;</span>, <span style="color:#e6db74">&#39;image/heic&#39;</span>, <span style="color:#e6db74">&#39;image/heif&#39;</span>].<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">contentType</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">`Unsupported content type: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">contentType</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> for </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 2. Read original image
+</span></span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">s3Obj</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">s3Client</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GetObjectCommand</span>({ <span style="color:#a6e22e">Bucket</span>: <span style="color:#66d9ef">bucket</span>, <span style="color:#a6e22e">Key</span>: <span style="color:#66d9ef">key</span> }));
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chunks</span>: <span style="color:#66d9ef">Uint8Array</span>[] <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">await</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chunk</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">s3Obj</span>.<span style="color:#a6e22e">Body</span> <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">any</span>) <span style="color:#a6e22e">chunks</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">chunk</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">originalBuffer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Buffer</span>.<span style="color:#a6e22e">concat</span>(<span style="color:#a6e22e">chunks</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 3. Resize — scale down to MAX_DIMENSION on the longest side, keep aspect ratio
+</span></span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">resizedBuffer</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">sharp</span>(<span style="color:#a6e22e">originalBuffer</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">rotate</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">resize</span>(<span style="color:#a6e22e">MAX_DIMENSION</span>, <span style="color:#a6e22e">MAX_DIMENSION</span>, { <span style="color:#a6e22e">fit</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;inside&#39;</span>, <span style="color:#a6e22e">withoutEnlargement</span>: <span style="color:#66d9ef">true</span> })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">jpeg</span>({ <span style="color:#a6e22e">quality</span>: <span style="color:#66d9ef">JPEG_QUALITY</span>, <span style="color:#a6e22e">progressive</span>: <span style="color:#66d9ef">true</span> })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">toBuffer</span>();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">originalKB</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">round</span>(<span style="color:#a6e22e">originalBuffer</span>.<span style="color:#a6e22e">byteLength</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1024</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">resizedKB</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">round</span>(<span style="color:#a6e22e">resizedBuffer</span>.<span style="color:#a6e22e">byteLength</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1024</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Resized: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">originalKB</span><span style="color:#e6db74">}</span><span style="color:#e6db74">KB → </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">resizedKB</span><span style="color:#e6db74">}</span><span style="color:#e6db74">KB`</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 4. Save compressed version to media/ (for food-detail display)
+</span></span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">s3Client</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PutObjectCommand</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Bucket</span>: <span style="color:#66d9ef">bucket</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Key</span>: <span style="color:#66d9ef">destKey</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Body</span>: <span style="color:#66d9ef">resizedBuffer</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ContentType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;image/jpeg&#39;</span>,
+</span></span><span style="display:flex;"><span>      }));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// NOTE: Do NOT delete from incoming/ — aiEngine reads from that path and
+</span></span></span><span style="display:flex;"><span>      <span style="color:#75715e">// food-detail also uses the incoming/ key for its presigned URL.
+</span></span></span><span style="display:flex;"><span>      <span style="color:#75715e">// The S3 lifecycle rule (expirationInDays: 1 on incoming/) handles cleanup.
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Done: compressed image saved to </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">destKey</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">`Error processing </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:`</span>, <span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><hr>
@@ -2346,19 +2400,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1776414906"></script>
-    <script src="/js/perfect-scrollbar.min.js?1776414906"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1776414906"></script>
-    <script src="/js/jquery.sticky.js?1776414906"></script>
-    <script src="/js/featherlight.min.js?1776414906"></script>
-    <script src="/js/highlight.pack.js?1776414906"></script>
+    <script src="/js/clipboard.min.js?1776416373"></script>
+    <script src="/js/perfect-scrollbar.min.js?1776416373"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1776416373"></script>
+    <script src="/js/jquery.sticky.js?1776416373"></script>
+    <script src="/js/featherlight.min.js?1776416373"></script>
+    <script src="/js/highlight.pack.js?1776416373"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1776414906"></script>
-    <script src="/js/learn.js?1776414906"></script>
-    <script src="/js/hugo-learn.js?1776414906"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1776416373"></script>
+    <script src="/js/learn.js?1776416373"></script>
+    <script src="/js/hugo-learn.js?1776416373"></script>
 
-    <link href="/mermaid/mermaid.css?1776414906" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1776414906"></script>
+    <link href="/mermaid/mermaid.css?1776416373" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1776416373"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

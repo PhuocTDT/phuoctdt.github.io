@@ -40,6 +40,7 @@ export const storage = defineStorage({
   })
 });
 ```
+
 ![s3-bucket-console.png](/images/s3-bucket-console.png)
 ![s3-prefixes.png](/images/s3-prefixes.png)
 

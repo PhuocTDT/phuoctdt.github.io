@@ -1,5 +1,6 @@
 ---
 title: "Lớp Dữ liệu (Data)"
+menuTitle: "Lớp Dữ liệu (Data)"
 date: 2026-01-09T16:03:43+07:00
 weight: 42
 chapter: false
@@ -308,6 +309,7 @@ export const data = defineData({
   },
 });
 ```
+
 ![appsync-console-schema.png](/images/appsync-console-schema.png)
 ![appsync-queries-playground.png](/images/appsync-queries-playground.png)
 

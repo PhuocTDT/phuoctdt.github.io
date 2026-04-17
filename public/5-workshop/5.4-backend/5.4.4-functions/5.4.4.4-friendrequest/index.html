@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.154.3">
@@ -12,21 +12,21 @@
     <title>Function friend-request :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1776414906" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1776414906" rel="stylesheet">
-    <link href="/css/hybrid.css?1776414906" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1776414906" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1776414906" rel="stylesheet">
-    <link href="/css/auto-complete.css?1776414906" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1776414906" rel="stylesheet">
-    <link href="/css/theme.css?1776414906" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1776414906" rel="stylesheet">
+    <link href="/css/nucleus.css?1776416373" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1776416373" rel="stylesheet">
+    <link href="/css/hybrid.css?1776416373" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1776416373" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1776416373" rel="stylesheet">
+    <link href="/css/auto-complete.css?1776416373" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1776416373" rel="stylesheet">
+    <link href="/css/theme.css?1776416373" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1776416373" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1776414906" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1776416373" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1776414906"></script>
+    <script src="/js/jquery-3.3.1.min.js?1776416373"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1776414906"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1776414906"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1776416373"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1776416373"></script>
 <script type="text/javascript">
     
-        var baseurl = "http:\/\/localhost\/";
+        var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1776414906"></script>
+<script type="text/javascript" src="/js/search.js?1776416373"></script>
 
     
   </div>
@@ -844,13 +844,13 @@
 
 
 
-<li data-nav-id="/5-workshop/5.4-backend/5.4.2-data/" title="Data Layer (Data)" class="dd-item 
+<li data-nav-id="/5-workshop/5.4-backend/5.4.2-data/" title="Data Layer" class="dd-item 
         
         
         
         ">
   <a href="/5-workshop/5.4-backend/5.4.2-data/">
-     <b> 5.4.2. </b> Data Layer (Data)
+     <b> 5.4.2. </b> Data Layer
     
     <i class="fas fa-check read-icon"></i>
     
@@ -1383,7 +1383,7 @@
                 
                 
                 
-                <option id="en" value="http://localhost/5-workshop/5.4-backend/5.4.4-functions/5.4.4.4-friendrequest/" selected>English</option>
+                <option id="en" value="http://localhost:1313/5-workshop/5.4-backend/5.4.4-functions/5.4.4.4-friendrequest/" selected>English</option>
                 
                 
                 
@@ -1397,7 +1397,7 @@
                 
                 
                 
-                <option id="vi" value="http://localhost/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.4-friendrequest/">Tiếng Việt
+                <option id="vi" value="http://localhost:1313/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.4-friendrequest/">Tiếng Việt
                 </option>
                 
                 
@@ -1563,7 +1563,7 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Table names injected by CDK at deploy time
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Table names injected by CDK at deploy time — correct for each environment (sandbox + branch deploy)
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">USER_TABLE</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">USER_TABLE_NAME</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">FRIENDSHIP_TABLE</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FRIENDSHIP_TABLE_NAME</span>;
 </span></span><span style="display:flex;"><span>
@@ -1573,7 +1573,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">userTable</span>: <span style="color:#66d9ef">USER_TABLE</span>, <span style="color:#a6e22e">friendshipTable</span>: <span style="color:#66d9ef">FRIENDSHIP_TABLE</span> };
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- Actions ---
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ─── Actions ───
 </span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">FriendAction</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sendRequest&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;acceptRequest&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;declineRequest&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;removeFriend&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;blockFriend&#39;</span>;
 </span></span><span style="display:flex;"><span>
@@ -1629,15 +1629,293 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- sendRequest Logic ---
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sendRequest</span>(<span style="color:#a6e22e">caller</span>: <span style="color:#66d9ef">CallerIdentity</span>, <span style="color:#a6e22e">friendCode</span>: <span style="color:#66d9ef">string</span>) {
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Logic to find user by friend_code and create friendship records...
-</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// (Full implementation logic included here as per the Vietnamese version)
-</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Request sent&#34;</span> };
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ─── sendRequest ───
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Caller enters a friend_code → lookup user → create 2 Friendship records
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sendRequest</span>(<span style="color:#a6e22e">caller</span>: <span style="color:#66d9ef">CallerIdentity</span>, <span style="color:#a6e22e">friendCode</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">friendCode</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;friend_code is required&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">userTable</span>, <span style="color:#a6e22e">friendshipTable</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">getTableNames</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 1. Lookup friend by friend_code
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">friendUser</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">findUserByFriendCode</span>(<span style="color:#a6e22e">userTable</span>, <span style="color:#a6e22e">friendCode</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">friendUser</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Không tìm thấy người dùng với mã này&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">friendUser</span>.<span style="color:#a6e22e">user_id</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">caller</span>.<span style="color:#a6e22e">sub</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Không thể kết bạn với chính mình&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 2. Get caller&#39;s profile for display name
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">callerUser</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getUserById</span>(<span style="color:#a6e22e">userTable</span>, <span style="color:#a6e22e">caller</span>.<span style="color:#a6e22e">sub</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">callerUser</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Caller profile not found&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 3. Check for existing friendship (no duplicates)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">existing</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">findExistingFriendship</span>(<span style="color:#a6e22e">friendshipTable</span>, <span style="color:#a6e22e">caller</span>.<span style="color:#a6e22e">owner</span>, <span style="color:#a6e22e">friendUser</span>.<span style="color:#a6e22e">user_id</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">existing</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">existing</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;accepted&#39;</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Đã là bạn bè rồi&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">existing</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;pending&#39;</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Đã gửi lời mời rồi&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">existing</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;blocked&#39;</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Không thể gửi lời mời&#39;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 4. Check pending limit (max 20)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pendingCount</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">countPendingRequests</span>(<span style="color:#a6e22e">friendshipTable</span>, <span style="color:#a6e22e">caller</span>.<span style="color:#a6e22e">owner</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">pendingCount</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">20</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Đã đạt giới hạn 20 lời mời đang chờ&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 5. Get friend&#39;s Amplify owner identity from their user record
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Amplify sets owner as &#34;sub::cognitoUsername&#34; — read it directly from DB
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">friendOwner</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">friendUser</span>.<span style="color:#a6e22e">owner</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">friendOwner</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Friend user record missing owner field&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 6. Create 2 Friendship records atomically
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">now</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">toISOString</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sentId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">randomUUID</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">receivedId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">randomUUID</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TransactWriteCommand</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">TransactItems</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Put</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">friendshipTable</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">Item</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">sentId</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">owner</span>: <span style="color:#66d9ef">caller.owner</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">friend_id</span>: <span style="color:#66d9ef">friendUser.user_id</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">friend_code</span>: <span style="color:#66d9ef">friendCode</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">friend_name</span>: <span style="color:#66d9ef">friendUser.display_name</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">friendUser</span>.<span style="color:#a6e22e">email</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;User&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">friend_avatar</span>: <span style="color:#66d9ef">friendUser.avatar_url</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;pending&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">direction</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;sent&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">linked_id</span>: <span style="color:#66d9ef">receivedId</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">createdAt</span>: <span style="color:#66d9ef">now</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">updatedAt</span>: <span style="color:#66d9ef">now</span>,
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Put</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">friendshipTable</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">Item</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">receivedId</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">owner</span>: <span style="color:#66d9ef">friendOwner</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">friend_id</span>: <span style="color:#66d9ef">caller.sub</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">friend_code</span>: <span style="color:#66d9ef">callerUser.friend_code</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">friend_name</span>: <span style="color:#66d9ef">callerUser.display_name</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">callerUser</span>.<span style="color:#a6e22e">email</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;User&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">friend_avatar</span>: <span style="color:#66d9ef">callerUser.avatar_url</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;pending&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">direction</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;received&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">linked_id</span>: <span style="color:#66d9ef">sentId</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">createdAt</span>: <span style="color:#66d9ef">now</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">updatedAt</span>: <span style="color:#66d9ef">now</span>,
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  }));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">friend_name</span>: <span style="color:#66d9ef">friendUser.display_name</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">friendUser</span>.<span style="color:#a6e22e">email</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">friendship_id</span>: <span style="color:#66d9ef">sentId</span>,
+</span></span><span style="display:flex;"><span>  };
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// ... Additional helper functions (acceptRequest, declineRequest, etc.)
-</span></span></span></code></pre></div><hr>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ─── acceptRequest ───
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Caller accepts a received request → update both records to accepted
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">acceptRequest</span>(<span style="color:#a6e22e">caller</span>: <span style="color:#66d9ef">CallerIdentity</span>, <span style="color:#a6e22e">friendshipId</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">friendshipId</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;friendship_id is required&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">friendshipTable</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">getTableNames</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 1. Get the received record
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">receivedRecord</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getFriendshipById</span>(<span style="color:#a6e22e">friendshipTable</span>, <span style="color:#a6e22e">friendshipId</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">receivedRecord</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Friendship record not found&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Verify the caller owns this record (compare sub part of owner)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ownerSub</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">receivedRecord</span>.<span style="color:#a6e22e">owner</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;::&#39;</span>)[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">ownerSub</span> <span style="color:#f92672">!==</span> <span style="color:#a6e22e">caller</span>.<span style="color:#a6e22e">sub</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Unauthorized&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">receivedRecord</span>.<span style="color:#a6e22e">direction</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;received&#39;</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Can only accept received requests&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">receivedRecord</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;pending&#39;</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Request is not pending&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">linkedId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">receivedRecord</span>.<span style="color:#a6e22e">linked_id</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">linkedId</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Linked friendship record not found&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 2. Update both records atomically
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">now</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">toISOString</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TransactWriteCommand</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">TransactItems</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Update</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">friendshipTable</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">Key</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">friendshipId</span> },
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">UpdateExpression</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;SET #s = :status, updatedAt = :now&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">ExpressionAttributeNames</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;#s&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;status&#39;</span> },
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">ExpressionAttributeValues</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;:status&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;accepted&#39;</span>, <span style="color:#e6db74">&#39;:now&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">now</span> },
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Update</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">friendshipTable</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">Key</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">linkedId</span> },
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">UpdateExpression</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;SET #s = :status, updatedAt = :now&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">ExpressionAttributeNames</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;#s&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;status&#39;</span> },
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">ExpressionAttributeValues</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;:status&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;accepted&#39;</span>, <span style="color:#e6db74">&#39;:now&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">now</span> },
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  }));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span> };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ─── declineRequest ───
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">declineRequest</span>(<span style="color:#a6e22e">caller</span>: <span style="color:#66d9ef">CallerIdentity</span>, <span style="color:#a6e22e">friendshipId</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">friendshipId</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;friendship_id is required&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">friendshipTable</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">getTableNames</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">record</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getFriendshipById</span>(<span style="color:#a6e22e">friendshipTable</span>, <span style="color:#a6e22e">friendshipId</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">record</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Friendship record not found&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ownerSub</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">record</span>.<span style="color:#a6e22e">owner</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;::&#39;</span>)[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">ownerSub</span> <span style="color:#f92672">!==</span> <span style="color:#a6e22e">caller</span>.<span style="color:#a6e22e">sub</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Unauthorized&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">linkedId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">record</span>.<span style="color:#a6e22e">linked_id</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Delete both records
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">transactItems</span>: <span style="color:#66d9ef">any</span>[] <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    { <span style="color:#a6e22e">Delete</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">friendshipTable</span>, <span style="color:#a6e22e">Key</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">friendshipId</span> } } },
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">linkedId</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">transactItems</span>.<span style="color:#a6e22e">push</span>({ <span style="color:#a6e22e">Delete</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">friendshipTable</span>, <span style="color:#a6e22e">Key</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">linkedId</span> } } });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TransactWriteCommand</span>({ <span style="color:#a6e22e">TransactItems</span>: <span style="color:#66d9ef">transactItems</span> }));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span> };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ─── removeFriend ───
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">removeFriend</span>(<span style="color:#a6e22e">caller</span>: <span style="color:#66d9ef">CallerIdentity</span>, <span style="color:#a6e22e">friendshipId</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Same as decline — delete both records
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">declineRequest</span>(<span style="color:#a6e22e">caller</span>, <span style="color:#a6e22e">friendshipId</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ─── blockFriend ───
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">blockFriend</span>(<span style="color:#a6e22e">caller</span>: <span style="color:#66d9ef">CallerIdentity</span>, <span style="color:#a6e22e">friendshipId</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">friendshipId</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;friendship_id is required&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">friendshipTable</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">getTableNames</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">record</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getFriendshipById</span>(<span style="color:#a6e22e">friendshipTable</span>, <span style="color:#a6e22e">friendshipId</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">record</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Friendship record not found&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ownerSub</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">record</span>.<span style="color:#a6e22e">owner</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;::&#39;</span>)[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">ownerSub</span> <span style="color:#f92672">!==</span> <span style="color:#a6e22e">caller</span>.<span style="color:#a6e22e">sub</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Unauthorized&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">linkedId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">record</span>.<span style="color:#a6e22e">linked_id</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">now</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">toISOString</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Update caller&#39;s record to blocked, delete the other person&#39;s record
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">transactItems</span>: <span style="color:#66d9ef">any</span>[] <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Update</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">friendshipTable</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Key</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">friendshipId</span> },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">UpdateExpression</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;SET #s = :status, updatedAt = :now&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ExpressionAttributeNames</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;#s&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;status&#39;</span> },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ExpressionAttributeValues</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;:status&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;blocked&#39;</span>, <span style="color:#e6db74">&#39;:now&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">now</span> },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">linkedId</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">transactItems</span>.<span style="color:#a6e22e">push</span>({ <span style="color:#a6e22e">Delete</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">friendshipTable</span>, <span style="color:#a6e22e">Key</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">linkedId</span> } } });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TransactWriteCommand</span>({ <span style="color:#a6e22e">TransactItems</span>: <span style="color:#66d9ef">transactItems</span> }));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span> };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ─── Helpers ───
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">findUserByFriendCode</span>(<span style="color:#a6e22e">tableName</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">friendCode</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueryCommand</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">tableName</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">IndexName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;usersByFriend_code&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">KeyConditionExpression</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;friend_code = :code&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ExpressionAttributeValues</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;:code&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">friendCode</span> },
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Limit</span>: <span style="color:#66d9ef">1</span>,
+</span></span><span style="display:flex;"><span>    }));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">Items</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">Items</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">Items</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getUserById</span>(<span style="color:#a6e22e">tableName</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">userId</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GetCommand</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">tableName</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Key</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">user_id</span>: <span style="color:#66d9ef">userId</span> },
+</span></span><span style="display:flex;"><span>    }));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">Item</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getFriendshipById</span>(<span style="color:#a6e22e">tableName</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">GetCommand</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">tableName</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Key</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">id</span> },
+</span></span><span style="display:flex;"><span>    }));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">Item</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">findExistingFriendship</span>(<span style="color:#a6e22e">tableName</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">callerOwner</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">friendSub</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ScanCommand</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">tableName</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">FilterExpression</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#o = :owner AND friend_id = :fid&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ExpressionAttributeNames</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;#o&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;owner&#39;</span> },
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ExpressionAttributeValues</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;:owner&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">callerOwner</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;:fid&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">friendSub</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    }));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">Items</span><span style="color:#f92672">?</span>.[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">||</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">countPendingRequests</span>(<span style="color:#a6e22e">tableName</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">callerOwner</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ScanCommand</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">tableName</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">FilterExpression</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#o = :owner AND #s = :status AND direction = :dir&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ExpressionAttributeNames</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;#o&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;owner&#39;</span>, <span style="color:#e6db74">&#39;#s&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;status&#39;</span> },
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ExpressionAttributeValues</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;:owner&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">callerOwner</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;:status&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;pending&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;:dir&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;sent&#39;</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Select</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;COUNT&#39;</span>,
+</span></span><span style="display:flex;"><span>    }));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">Count</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
 <p><a href="/5-workshop/5.4-backend/5.4.4-functions/">Back to functions list</a></p>
 
 
@@ -2417,19 +2695,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1776414906"></script>
-    <script src="/js/perfect-scrollbar.min.js?1776414906"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1776414906"></script>
-    <script src="/js/jquery.sticky.js?1776414906"></script>
-    <script src="/js/featherlight.min.js?1776414906"></script>
-    <script src="/js/highlight.pack.js?1776414906"></script>
+    <script src="/js/clipboard.min.js?1776416373"></script>
+    <script src="/js/perfect-scrollbar.min.js?1776416373"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1776416373"></script>
+    <script src="/js/jquery.sticky.js?1776416373"></script>
+    <script src="/js/featherlight.min.js?1776416373"></script>
+    <script src="/js/highlight.pack.js?1776416373"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1776414906"></script>
-    <script src="/js/learn.js?1776414906"></script>
-    <script src="/js/hugo-learn.js?1776414906"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1776416373"></script>
+    <script src="/js/learn.js?1776416373"></script>
+    <script src="/js/hugo-learn.js?1776416373"></script>
 
-    <link href="/mermaid/mermaid.css?1776414906" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1776414906"></script>
+    <link href="/mermaid/mermaid.css?1776416373" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1776416373"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

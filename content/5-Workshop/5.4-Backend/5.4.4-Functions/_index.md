@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5.4.4. </b> "
 ---
 
-# 5.4.4 Logic Functions (Functions) — AWS Lambda
-
 Lambda functions orchestrate business logic and AI integrations. In Amplify Gen 2, each function is defined in its own directory within `amplify/functions/`.
 
 ## Core Project Functions

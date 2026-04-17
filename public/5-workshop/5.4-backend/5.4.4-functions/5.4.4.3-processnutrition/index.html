@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.154.3">
@@ -12,21 +12,21 @@
     <title>Function process-nutrition :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1776414906" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1776414906" rel="stylesheet">
-    <link href="/css/hybrid.css?1776414906" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1776414906" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1776414906" rel="stylesheet">
-    <link href="/css/auto-complete.css?1776414906" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1776414906" rel="stylesheet">
-    <link href="/css/theme.css?1776414906" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1776414906" rel="stylesheet">
+    <link href="/css/nucleus.css?1776416373" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1776416373" rel="stylesheet">
+    <link href="/css/hybrid.css?1776416373" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1776416373" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1776416373" rel="stylesheet">
+    <link href="/css/auto-complete.css?1776416373" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1776416373" rel="stylesheet">
+    <link href="/css/theme.css?1776416373" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1776416373" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1776414906" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1776416373" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1776414906"></script>
+    <script src="/js/jquery-3.3.1.min.js?1776416373"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1776414906"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1776414906"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1776416373"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1776416373"></script>
 <script type="text/javascript">
     
-        var baseurl = "http:\/\/localhost\/";
+        var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1776414906"></script>
+<script type="text/javascript" src="/js/search.js?1776416373"></script>
 
     
   </div>
@@ -844,13 +844,13 @@
 
 
 
-<li data-nav-id="/5-workshop/5.4-backend/5.4.2-data/" title="Data Layer (Data)" class="dd-item 
+<li data-nav-id="/5-workshop/5.4-backend/5.4.2-data/" title="Data Layer" class="dd-item 
         
         
         
         ">
   <a href="/5-workshop/5.4-backend/5.4.2-data/">
-     <b> 5.4.2. </b> Data Layer (Data)
+     <b> 5.4.2. </b> Data Layer
     
     <i class="fas fa-check read-icon"></i>
     
@@ -1383,7 +1383,7 @@
                 
                 
                 
-                <option id="en" value="http://localhost/5-workshop/5.4-backend/5.4.4-functions/5.4.4.3-processnutrition/" selected>English</option>
+                <option id="en" value="http://localhost:1313/5-workshop/5.4-backend/5.4.4-functions/5.4.4.3-processnutrition/" selected>English</option>
                 
                 
                 
@@ -1397,7 +1397,7 @@
                 
                 
                 
-                <option id="vi" value="http://localhost/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.3-processnutrition/">Tiếng Việt
+                <option id="vi" value="http://localhost:1313/vi/5-workshop/5.4-backend/5.4.4-functions/5.4.4.3-processnutrition/">Tiếng Việt
                 </option>
                 
                 
@@ -1535,38 +1535,186 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;process-nutrition&#39;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;./handler.ts&#39;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">runtime</span>: <span style="color:#66d9ef">22</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">memoryMB</span>: <span style="color:#66d9ef">256</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">timeoutSeconds</span>: <span style="color:#66d9ef">10</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">memoryMB</span>: <span style="color:#66d9ef">512</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">timeoutSeconds</span>: <span style="color:#66d9ef">30</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">resourceGroupName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;data&#39;</span>,
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><h3 id="3-handler-logic-handlerts">3. Handler Logic (<code>handler.ts</code>)</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">DynamoDBClient</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/client-dynamodb&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">DynamoDBDocumentClient</span>, <span style="color:#a6e22e">PutCommand</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/lib-dynamodb&#34;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">DynamoDBClient</span>, <span style="color:#a6e22e">ListTablesCommand</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@aws-sdk/client-dynamodb&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">DynamoDBDocumentClient</span>, <span style="color:#a6e22e">QueryCommand</span>, <span style="color:#a6e22e">ScanCommand</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@aws-sdk/lib-dynamodb&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// @ts-ignore
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#66d9ef">type</span> { <span style="color:#a6e22e">Schema</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../data/resource&#39;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">client</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DynamoDBClient</span>({});
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">REGION</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">AWS_REGION</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;ap-southeast-2&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">IS_DEBUG</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DEBUG</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">NODE_ENV</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;development&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">client</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DynamoDBClient</span>({ <span style="color:#a6e22e">region</span>: <span style="color:#66d9ef">REGION</span> });
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">docClient</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">DynamoDBDocumentClient</span>.<span style="color:#66d9ef">from</span>(<span style="color:#a6e22e">client</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handler</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">event</span>: <span style="color:#66d9ef">any</span>) <span style="color:#f92672">=&gt;</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">userId</span>, <span style="color:#a6e22e">foodName</span>, <span style="color:#a6e22e">calories</span>, <span style="color:#a6e22e">protein</span>, <span style="color:#a6e22e">carbs</span>, <span style="color:#a6e22e">fat</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">arguments</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">debug</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">message</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">data?</span>: <span style="color:#66d9ef">any</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">IS_DEBUG</span>) <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`[process-nutrition] </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">message</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>, <span style="color:#a6e22e">data</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">process.env.NUTRITION_TABLE_NAME</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Item</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">userId</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">foodName</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">calories</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">protein</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">carbs</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fat</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">createdAt</span>: <span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">toISOString</span>(),
-</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">cachedTableName</span>: <span style="color:#66d9ef">string</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">discoverTableName</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">string</span>&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cachedTableName</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cachedTableName</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FOOD_TABLE_NAME</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cachedTableName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FOOD_TABLE_NAME</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cachedTableName</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ListTablesCommand</span>({}));
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">foodTable</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">TableNames</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">find</span>((<span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">name</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#e6db74">&#39;Food-&#39;</span>));
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">foodTable</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Food table not found&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">cachedTableName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">foodTable</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cachedTableName</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Chuẩn hóa chuỗi: xóa dấu, viết thường, trim
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">normalize</span>(<span style="color:#a6e22e">text</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">text</span>) <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">text</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">toLowerCase</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">trim</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">normalize</span>(<span style="color:#e6db74">&#39;NFD&#39;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/[\u0300-\u036f]/g</span>, <span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/đ/g</span>, <span style="color:#e6db74">&#39;d&#39;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/Đ/g</span>, <span style="color:#e6db74">&#39;D&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Tìm kiếm món ăn trong DB sử dụng Query (GSI) và Scan (Aliases)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">findFoodInDB</span>(<span style="color:#a6e22e">query</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">tableName</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">any</span> <span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">null</span>&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">query</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">q</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">toLowerCase</span>().<span style="color:#a6e22e">trim</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">`Searching for: &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">q</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;`</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 1. Exact match (name_vi or name_en) - GSI
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">queryVi</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueryCommand</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">tableName</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IndexName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;name_vi&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">KeyConditionExpression</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;name_vi = :name&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ExpressionAttributeValues</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;:name&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">query</span> }
+</span></span><span style="display:flex;"><span>  }));
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">queryVi</span>.<span style="color:#a6e22e">Items</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">length</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">queryVi</span>.<span style="color:#a6e22e">Items</span>[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">queryEn</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">QueryCommand</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">tableName</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IndexName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;name_en&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">KeyConditionExpression</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;name_en = :name&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ExpressionAttributeValues</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;:name&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">query</span> }
+</span></span><span style="display:flex;"><span>  }));
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">queryEn</span>.<span style="color:#a6e22e">Items</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">length</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">queryEn</span>.<span style="color:#a6e22e">Items</span>[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 2. Partial match (contains) - Broad search
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scanAny</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ScanCommand</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">TableName</span>: <span style="color:#66d9ef">tableName</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">FilterExpression</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;contains(name_vi, :q) OR contains(name_en, :q) OR contains(aliases_vi, :q) OR contains(aliases_en, :q)&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ExpressionAttributeValues</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;:q&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">query</span> }
+</span></span><span style="display:flex;"><span>  }));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">scanAny</span>.<span style="color:#a6e22e">Items</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">length</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Return shortest name match first (most likely to be the core item)
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">scanAny</span>.<span style="color:#a6e22e">Items</span>.<span style="color:#a6e22e">sort</span>((<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">name_vi</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">name_vi</span>.<span style="color:#a6e22e">length</span>)[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculateNutrition</span>(<span style="color:#a6e22e">dbFood</span>: <span style="color:#66d9ef">any</span>, <span style="color:#a6e22e">estimatedG</span>: <span style="color:#66d9ef">number</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">macros</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">dbFood</span>.<span style="color:#a6e22e">macros</span> <span style="color:#f92672">||</span> {};
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ratio</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">estimatedG</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">100</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">Math.round</span>((<span style="color:#a6e22e">macros</span>.<span style="color:#a6e22e">calories</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">ratio</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">protein_g</span>: <span style="color:#66d9ef">Math.round</span>((<span style="color:#a6e22e">macros</span>.<span style="color:#a6e22e">protein_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">ratio</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">carbs_g</span>: <span style="color:#66d9ef">Math.round</span>((<span style="color:#a6e22e">macros</span>.<span style="color:#a6e22e">carbs_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">ratio</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fat_g</span>: <span style="color:#66d9ef">Math.round</span>((<span style="color:#a6e22e">macros</span>.<span style="color:#a6e22e">fat_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">ratio</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>,
 </span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// @ts-ignore
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handler</span>: <span style="color:#66d9ef">Schema</span>[<span style="color:#e6db74">&#39;processNutrition&#39;</span>][<span style="color:#e6db74">&#39;functionHandler&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">event</span>: <span style="color:#66d9ef">any</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">payload</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">arguments</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tableName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">discoverTableName</span>();
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">docClient</span>.<span style="color:#a6e22e">send</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PutCommand</span>(<span style="color:#a6e22e">params</span>));
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span> };
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">payload</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// CASE 1: Tìm kiếm trực tiếp (AppSync search)
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">action</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;directSearch&#39;</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">match</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">findFoodInDB</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">query</span>, <span style="color:#a6e22e">tableName</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">match</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">serving</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match</span>.<span style="color:#a6e22e">serving</span> <span style="color:#f92672">||</span> {};
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">defaultG</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">serving</span>.<span style="color:#a6e22e">default_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">100</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">source</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;database&#39;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">food</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            ...<span style="color:#a6e22e">match</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">calculated_nutrition</span>: <span style="color:#66d9ef">match.macros</span> 
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Not found in DB&#39;</span> });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// CASE 2: Xử lý dữ liệu từ AI (Voice/Image) - Recalculate
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aiItems</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">items</span> <span style="color:#f92672">||</span> [<span style="color:#a6e22e">data</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">processedItems</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">aiItem</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">aiItems</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ingredients</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">aiItem</span>.<span style="color:#a6e22e">ingredients</span> <span style="color:#f92672">||</span> [];
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">processedIngredients</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">totalCalories</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">totalProtein</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">totalCarbs</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">totalFat</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ing</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">ingredients</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dbMatch</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">findFoodInDB</span>(<span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">name_vi</span>, <span style="color:#a6e22e">tableName</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">dbMatch</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nutrition</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calculateNutrition</span>(<span style="color:#a6e22e">dbMatch</span>, <span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">weight_g</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">estimated_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">processedIngredients</span>.<span style="color:#a6e22e">push</span>({
+</span></span><span style="display:flex;"><span>            ...<span style="color:#a6e22e">ing</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">food_id</span>: <span style="color:#66d9ef">dbMatch.food_id</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">name_vi_db</span>: <span style="color:#66d9ef">dbMatch.name_vi</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">matched</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">source</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;database&#39;</span>,
+</span></span><span style="display:flex;"><span>            ...<span style="color:#a6e22e">nutrition</span>
+</span></span><span style="display:flex;"><span>          });
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">totalCalories</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">nutrition</span>.<span style="color:#a6e22e">calories</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">totalProtein</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">nutrition</span>.<span style="color:#a6e22e">protein_g</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">totalCarbs</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">nutrition</span>.<span style="color:#a6e22e">carbs_g</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">totalFat</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">nutrition</span>.<span style="color:#a6e22e">fat_g</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">processedIngredients</span>.<span style="color:#a6e22e">push</span>({
+</span></span><span style="display:flex;"><span>            ...<span style="color:#a6e22e">ing</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">matched</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">source</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ai_estimated&#39;</span>
+</span></span><span style="display:flex;"><span>          });
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">totalCalories</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">calories</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">totalProtein</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">protein_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">totalCarbs</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">carbs_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">totalFat</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">ing</span>.<span style="color:#a6e22e">fat_g</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">processedItems</span>.<span style="color:#a6e22e">push</span>({
+</span></span><span style="display:flex;"><span>        ...<span style="color:#a6e22e">aiItem</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">total_calories</span>: <span style="color:#66d9ef">Math.round</span>(<span style="color:#a6e22e">totalCalories</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">total_protein_g</span>: <span style="color:#66d9ef">Math.round</span>(<span style="color:#a6e22e">totalProtein</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">total_carbs_g</span>: <span style="color:#66d9ef">Math.round</span>(<span style="color:#a6e22e">totalCarbs</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">total_fat_g</span>: <span style="color:#66d9ef">Math.round</span>(<span style="color:#a6e22e">totalFat</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ingredients</span>: <span style="color:#66d9ef">processedIngredients</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">db_verified</span>: <span style="color:#66d9ef">processedIngredients.some</span>(<span style="color:#a6e22e">i</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">matched</span>)
+</span></span><span style="display:flex;"><span>      });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">items</span>: <span style="color:#66d9ef">processedItems</span> });
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Database error&#34;</span> };
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">success</span>: <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">error</span>: <span style="color:#66d9ef">String</span>(<span style="color:#a6e22e">error</span>) });
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><hr>
@@ -2349,19 +2497,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1776414906"></script>
-    <script src="/js/perfect-scrollbar.min.js?1776414906"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1776414906"></script>
-    <script src="/js/jquery.sticky.js?1776414906"></script>
-    <script src="/js/featherlight.min.js?1776414906"></script>
-    <script src="/js/highlight.pack.js?1776414906"></script>
+    <script src="/js/clipboard.min.js?1776416373"></script>
+    <script src="/js/perfect-scrollbar.min.js?1776416373"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1776416373"></script>
+    <script src="/js/jquery.sticky.js?1776416373"></script>
+    <script src="/js/featherlight.min.js?1776416373"></script>
+    <script src="/js/highlight.pack.js?1776416373"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1776414906"></script>
-    <script src="/js/learn.js?1776414906"></script>
-    <script src="/js/hugo-learn.js?1776414906"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1776416373"></script>
+    <script src="/js/learn.js?1776416373"></script>
+    <script src="/js/hugo-learn.js?1776416373"></script>
 
-    <link href="/mermaid/mermaid.css?1776414906" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1776414906"></script>
+    <link href="/mermaid/mermaid.css?1776416373" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1776416373"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

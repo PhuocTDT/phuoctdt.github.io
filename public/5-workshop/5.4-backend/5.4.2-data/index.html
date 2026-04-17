@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.154.3">
@@ -9,24 +9,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Data Layer (Data) :: AWS System Manager</title>
+    <title>Data Layer :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1776414906" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1776414906" rel="stylesheet">
-    <link href="/css/hybrid.css?1776414906" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1776414906" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1776414906" rel="stylesheet">
-    <link href="/css/auto-complete.css?1776414906" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1776414906" rel="stylesheet">
-    <link href="/css/theme.css?1776414906" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1776414906" rel="stylesheet">
+    <link href="/css/nucleus.css?1776416320" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1776416320" rel="stylesheet">
+    <link href="/css/hybrid.css?1776416320" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1776416320" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1776416320" rel="stylesheet">
+    <link href="/css/auto-complete.css?1776416320" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1776416320" rel="stylesheet">
+    <link href="/css/theme.css?1776416320" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1776416320" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1776414906" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1776416320" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1776414906"></script>
+    <script src="/js/jquery-3.3.1.min.js?1776416320"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1776414906"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1776414906"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1776416320"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1776416320"></script>
 <script type="text/javascript">
     
-        var baseurl = "http:\/\/localhost\/";
+        var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1776414906"></script>
+<script type="text/javascript" src="/js/search.js?1776416320"></script>
 
     
   </div>
@@ -844,13 +844,13 @@
 
 
 
-<li data-nav-id="/5-workshop/5.4-backend/5.4.2-data/" title="Data Layer (Data)" class="dd-item 
+<li data-nav-id="/5-workshop/5.4-backend/5.4.2-data/" title="Data Layer" class="dd-item 
         
         active
         
         ">
   <a href="/5-workshop/5.4-backend/5.4.2-data/">
-     <b> 5.4.2. </b> Data Layer (Data)
+     <b> 5.4.2. </b> Data Layer
     
     <i class="fas fa-check read-icon"></i>
     
@@ -1383,7 +1383,7 @@
                 
                 
                 
-                <option id="en" value="http://localhost/5-workshop/5.4-backend/5.4.2-data/" selected>English</option>
+                <option id="en" value="http://localhost:1313/5-workshop/5.4-backend/5.4.2-data/" selected>English</option>
                 
                 
                 
@@ -1397,7 +1397,7 @@
                 
                 
                 
-                <option id="vi" value="http://localhost/vi/5-workshop/5.4-backend/5.4.2-data/">Tiếng Việt
+                <option id="vi" value="http://localhost:1313/vi/5-workshop/5.4-backend/5.4.2-data/">Tiếng Việt
                 </option>
                 
                 
@@ -1468,7 +1468,7 @@
             
           
           
-            <a href='/'>AWS System Manager</a> > <a href='/5-workshop/'>Workshop</a> > <a href='/5-workshop/5.4-backend/'>AWS Amplify Gen 2 Setup</a> > Data Layer (Data)
+            <a href='/'>AWS System Manager</a> > <a href='/5-workshop/'>Workshop</a> > <a href='/5-workshop/5.4-backend/'>AWS Amplify Gen 2 Setup</a> > Data Layer
           
         
           
@@ -1503,7 +1503,7 @@
           
             <h1>
               
-              Data Layer (Data)
+              Data Layer
             </h1>
           
 
@@ -1511,34 +1511,298 @@
 
 
 
-	<h1 id="542-data-layer-data--appsync--dynamodb">5.4.2 Data Layer (Data) — AppSync &amp; DynamoDB</h1>
-<p>Defining schema and access rules.</p>
+	<p>Defining schema and access rules.</p>
 <h2 id="dataresourcets"><code>data/resource.ts</code></h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ClientSchema</span>, <span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">defineData</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-amplify/backend&#34;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ClientSchema</span>, <span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">defineData</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@aws-amplify/backend&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">aiEngine</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../ai-engine/resource&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">scanImage</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../scan-image/resource&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">processNutrition</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../process-nutrition/resource&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">friendRequest</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../friend-request/resource&#39;</span>;
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">schema</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">schema</span>({
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Food</span>: <span style="color:#66d9ef">a.model</span>({
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>(),
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">a.float</span>(),
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">protein</span>: <span style="color:#66d9ef">a.float</span>(),
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">carbs</span>: <span style="color:#66d9ef">a.float</span>(),
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fat</span>: <span style="color:#66d9ef">a.float</span>(),
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">category</span>: <span style="color:#66d9ef">a.string</span>(),
-</span></span><span style="display:flex;"><span>  }).<span style="color:#a6e22e">authorization</span>((<span style="color:#a6e22e">allow</span>) <span style="color:#f92672">=&gt;</span> [<span style="color:#a6e22e">allow</span>.<span style="color:#a6e22e">authenticated</span>()]),
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Food Database
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Portions</span>: <span style="color:#66d9ef">a.customType</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">small</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">medium</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">large</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>  }),
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">User</span>: <span style="color:#66d9ef">a.model</span>({
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">height</span>: <span style="color:#66d9ef">a.float</span>(),
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">weight</span>: <span style="color:#66d9ef">a.float</span>(),
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">goalCalories</span>: <span style="color:#66d9ef">a.float</span>(),
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">petLevel</span>: <span style="color:#66d9ef">a.integer</span>(),
-</span></span><span style="display:flex;"><span>  }).<span style="color:#a6e22e">authorization</span>((<span style="color:#a6e22e">allow</span>) <span style="color:#f92672">=&gt;</span> [<span style="color:#a6e22e">allow</span>.<span style="color:#a6e22e">owner</span>()]),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Serving</span>: <span style="color:#66d9ef">a.customType</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">default_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">unit</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">portions</span>: <span style="color:#66d9ef">a.ref</span>(<span style="color:#e6db74">&#39;Portions&#39;</span>),
+</span></span><span style="display:flex;"><span>  }),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Micronutrients</span>: <span style="color:#66d9ef">a.customType</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">calcium_mg</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">iron_mg</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">vitamin_a_ug</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">vitamin_c_mg</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>  }),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Macros</span>: <span style="color:#66d9ef">a.customType</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">protein_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">carbs_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fat_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">saturated_fat_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">polyunsaturated_fat_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">monounsaturated_fat_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fiber_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sugar_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sodium_mg</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cholesterol_mg</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">potassium_mg</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>  }),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Food</span>: <span style="color:#66d9ef">a</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">model</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">food_id</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name_vi</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name_en</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">aliases_vi</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">array</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">aliases_en</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">array</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">macros</span>: <span style="color:#66d9ef">a.ref</span>(<span style="color:#e6db74">&#39;Macros&#39;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">micronutrients</span>: <span style="color:#66d9ef">a.ref</span>(<span style="color:#e6db74">&#39;Micronutrients&#39;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">serving</span>: <span style="color:#66d9ef">a.ref</span>(<span style="color:#e6db74">&#39;Serving&#39;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">verified</span>: <span style="color:#66d9ef">a.boolean</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">source</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">identifier</span>([<span style="color:#e6db74">&#39;food_id&#39;</span>])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">secondaryIndexes</span>((<span style="color:#a6e22e">index</span>) <span style="color:#f92672">=&gt;</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">index</span>(<span style="color:#e6db74">&#39;name_vi&#39;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">index</span>(<span style="color:#e6db74">&#39;name_en&#39;</span>),
+</span></span><span style="display:flex;"><span>    ])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">authorization</span>((<span style="color:#a6e22e">allow</span>) <span style="color:#f92672">=&gt;</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">allow</span>.<span style="color:#a6e22e">guest</span>().<span style="color:#a6e22e">to</span>([<span style="color:#e6db74">&#39;read&#39;</span>]),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">allow</span>.<span style="color:#a6e22e">authenticated</span>().<span style="color:#a6e22e">to</span>([<span style="color:#e6db74">&#39;read&#39;</span>])
+</span></span><span style="display:flex;"><span>    ]),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// User Database
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">biometric</span>: <span style="color:#66d9ef">a.customType</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">age</span>: <span style="color:#66d9ef">a.integer</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">gender</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">height_cm</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">weight_kg</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">active_level</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>  }),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">goal</span>: <span style="color:#66d9ef">a.customType</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">daily_calories</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">daily_carbs_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">daily_protein_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">daily_fat_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">target_weight_kg</span>: <span style="color:#66d9ef">a.float</span>(), 
+</span></span><span style="display:flex;"><span>  }),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">dietary_profile</span>: <span style="color:#66d9ef">a.customType</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">allergies</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">array</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">preferences</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">array</span>(),
+</span></span><span style="display:flex;"><span>  }),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">gamification</span>: <span style="color:#66d9ef">a.customType</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">current_streak</span>: <span style="color:#66d9ef">a.integer</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">longest_streak</span>: <span style="color:#66d9ef">a.integer</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">last_log_date</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">total_points</span>: <span style="color:#66d9ef">a.integer</span>(),
+</span></span><span style="display:flex;"><span>  }),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ai_preferences</span>: <span style="color:#66d9ef">a.customType</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">coach_tone</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>  }),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">a</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">model</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">user_id</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">display_name</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">avatar_url</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">created_at</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">updated_at</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">last_active_at</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">onboarding_status</span>: <span style="color:#66d9ef">a.boolean</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">friend_code</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ai_context_summary</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">biometric</span>: <span style="color:#66d9ef">a.ref</span>(<span style="color:#e6db74">&#39;biometric&#39;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">goal</span>: <span style="color:#66d9ef">a.ref</span>(<span style="color:#e6db74">&#39;goal&#39;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">dietary_profile</span>: <span style="color:#66d9ef">a.ref</span>(<span style="color:#e6db74">&#39;dietary_profile&#39;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">gamification</span>: <span style="color:#66d9ef">a.ref</span>(<span style="color:#e6db74">&#39;gamification&#39;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ai_preferences</span>: <span style="color:#66d9ef">a.ref</span>(<span style="color:#e6db74">&#39;ai_preferences&#39;</span>),
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">identifier</span>([<span style="color:#e6db74">&#39;user_id&#39;</span>])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">secondaryIndexes</span>((<span style="color:#a6e22e">index</span>) <span style="color:#f92672">=&gt;</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">index</span>(<span style="color:#e6db74">&#39;friend_code&#39;</span>),
+</span></span><span style="display:flex;"><span>    ])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">authorization</span>((<span style="color:#a6e22e">allow</span>) <span style="color:#f92672">=&gt;</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">allow</span>.<span style="color:#a6e22e">owner</span>(),
+</span></span><span style="display:flex;"><span>    ]),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Food Logs (Meal History)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">LogMacros</span>: <span style="color:#66d9ef">a.customType</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">protein_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">carbs_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fat_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fiber_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sugar_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sodium_mg</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>  }),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">LogIngredient</span>: <span style="color:#66d9ef">a.customType</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">weight_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>  }),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">FoodLog</span>: <span style="color:#66d9ef">a</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">model</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">date</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">timestamp</span>: <span style="color:#66d9ef">a.datetime</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">food_id</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">food_name</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">meal_type</span>: <span style="color:#66d9ef">a.enum</span>([<span style="color:#e6db74">&#39;breakfast&#39;</span>, <span style="color:#e6db74">&#39;lunch&#39;</span>, <span style="color:#e6db74">&#39;dinner&#39;</span>, <span style="color:#e6db74">&#39;snack&#39;</span>]),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">portion</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">portion_unit</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">additions</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">array</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">ingredients</span>: <span style="color:#66d9ef">a.json</span>().<span style="color:#a6e22e">array</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">macros</span>: <span style="color:#66d9ef">a.ref</span>(<span style="color:#e6db74">&#39;LogMacros&#39;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">micronutrients</span>: <span style="color:#66d9ef">a.ref</span>(<span style="color:#e6db74">&#39;Micronutrients&#39;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">input_method</span>: <span style="color:#66d9ef">a.enum</span>([<span style="color:#e6db74">&#39;voice&#39;</span>, <span style="color:#e6db74">&#39;photo&#39;</span>, <span style="color:#e6db74">&#39;manual&#39;</span>, <span style="color:#e6db74">&#39;barcode&#39;</span>]),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">image_key</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">secondaryIndexes</span>((<span style="color:#a6e22e">index</span>) <span style="color:#f92672">=&gt;</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">index</span>(<span style="color:#e6db74">&#39;date&#39;</span>),
+</span></span><span style="display:flex;"><span>    ])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">authorization</span>((<span style="color:#a6e22e">allow</span>) <span style="color:#f92672">=&gt;</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">allow</span>.<span style="color:#a6e22e">owner</span>(),
+</span></span><span style="display:flex;"><span>    ]),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Fridge Inventory
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">FridgeItem</span>: <span style="color:#66d9ef">a</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">model</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">food_id</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">quantity</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">unit</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">added_date</span>: <span style="color:#66d9ef">a.datetime</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">expiry_date</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">category</span>: <span style="color:#66d9ef">a.enum</span>([<span style="color:#e6db74">&#39;meat&#39;</span>, <span style="color:#e6db74">&#39;vegetable&#39;</span>, <span style="color:#e6db74">&#39;fruit&#39;</span>, <span style="color:#e6db74">&#39;dairy&#39;</span>, <span style="color:#e6db74">&#39;pantry&#39;</span>, <span style="color:#e6db74">&#39;other&#39;</span>]),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">emoji</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">calories</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">protein_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">carbs_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fat_g</span>: <span style="color:#66d9ef">a.float</span>(),
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">authorization</span>((<span style="color:#a6e22e">allow</span>) <span style="color:#f92672">=&gt;</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">allow</span>.<span style="color:#a6e22e">owner</span>(),
+</span></span><span style="display:flex;"><span>    ]),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Friendships
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Friendship</span>: <span style="color:#66d9ef">a</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">model</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">friend_id</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">friend_code</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">friend_name</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">friend_avatar</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">status</span>: <span style="color:#66d9ef">a.enum</span>([<span style="color:#e6db74">&#39;pending&#39;</span>, <span style="color:#e6db74">&#39;accepted&#39;</span>, <span style="color:#e6db74">&#39;blocked&#39;</span>]),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">direction</span>: <span style="color:#66d9ef">a.enum</span>([<span style="color:#e6db74">&#39;sent&#39;</span>, <span style="color:#e6db74">&#39;received&#39;</span>]),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">linked_id</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">secondaryIndexes</span>((<span style="color:#a6e22e">index</span>) <span style="color:#f92672">=&gt;</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">index</span>(<span style="color:#e6db74">&#39;friend_id&#39;</span>),
+</span></span><span style="display:flex;"><span>    ])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">authorization</span>((<span style="color:#a6e22e">allow</span>) <span style="color:#f92672">=&gt;</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">allow</span>.<span style="color:#a6e22e">owner</span>(),
+</span></span><span style="display:flex;"><span>    ]),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// User Public Stats (readable by friends)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">UserPublicStats</span>: <span style="color:#66d9ef">a</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">model</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">user_id</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">display_name</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">avatar_url</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">current_streak</span>: <span style="color:#66d9ef">a.integer</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">longest_streak</span>: <span style="color:#66d9ef">a.integer</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">pet_score</span>: <span style="color:#66d9ef">a.integer</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">pet_level</span>: <span style="color:#66d9ef">a.integer</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">total_log_days</span>: <span style="color:#66d9ef">a.integer</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">last_log_date</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">identifier</span>([<span style="color:#e6db74">&#39;user_id&#39;</span>])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">authorization</span>((<span style="color:#a6e22e">allow</span>) <span style="color:#f92672">=&gt;</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">allow</span>.<span style="color:#a6e22e">owner</span>().<span style="color:#a6e22e">to</span>([<span style="color:#e6db74">&#39;create&#39;</span>, <span style="color:#e6db74">&#39;update&#39;</span>, <span style="color:#e6db74">&#39;delete&#39;</span>, <span style="color:#e6db74">&#39;read&#39;</span>]),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">allow</span>.<span style="color:#a6e22e">authenticated</span>().<span style="color:#a6e22e">to</span>([<span style="color:#e6db74">&#39;read&#39;</span>]),
+</span></span><span style="display:flex;"><span>    ]),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// AI Engine (Bedrock)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">aiEngine</span>: <span style="color:#66d9ef">a</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">query</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">arguments</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">action</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">payload</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">returns</span>(<span style="color:#a6e22e">a</span>.<span style="color:#66d9ef">string</span>())
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">handler</span>(<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">aiEngine</span>))
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">authorization</span>((<span style="color:#a6e22e">allow</span>) <span style="color:#f92672">=&gt;</span> [<span style="color:#a6e22e">allow</span>.<span style="color:#a6e22e">authenticated</span>()]),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Scan Image (proxy to ECS for photo analysis)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">scanImage</span>: <span style="color:#66d9ef">a</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">query</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">arguments</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">action</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">payload</span>: <span style="color:#66d9ef">a.string</span>(),
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">returns</span>(<span style="color:#a6e22e">a</span>.<span style="color:#66d9ef">string</span>())
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">handler</span>(<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">scanImage</span>))
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">authorization</span>((<span style="color:#a6e22e">allow</span>) <span style="color:#f92672">=&gt;</span> [<span style="color:#a6e22e">allow</span>.<span style="color:#a6e22e">authenticated</span>()]),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Process Nutrition (DB verify + AI fallback)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">processNutrition</span>: <span style="color:#66d9ef">a</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">query</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">arguments</span>({ <span style="color:#a6e22e">payload</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>() })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">returns</span>(<span style="color:#a6e22e">a</span>.<span style="color:#66d9ef">string</span>())
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">handler</span>(<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">processNutrition</span>))
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">authorization</span>((<span style="color:#a6e22e">allow</span>) <span style="color:#f92672">=&gt;</span> [<span style="color:#a6e22e">allow</span>.<span style="color:#a6e22e">authenticated</span>()]),
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Friend Request (send/accept/decline/remove/block)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">//========================================
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">friendRequest</span>: <span style="color:#66d9ef">a</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">mutation</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">arguments</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">action</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">payload</span>: <span style="color:#66d9ef">a.string</span>().<span style="color:#a6e22e">required</span>(),
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">returns</span>(<span style="color:#a6e22e">a</span>.<span style="color:#66d9ef">string</span>())
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">handler</span>(<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">friendRequest</span>))
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">authorization</span>((<span style="color:#a6e22e">allow</span>) <span style="color:#f92672">=&gt;</span> [<span style="color:#a6e22e">allow</span>.<span style="color:#a6e22e">authenticated</span>()]),
 </span></span><span style="display:flex;"><span>});
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Schema</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ClientSchema</span>&lt;<span style="color:#f92672">typeof</span> <span style="color:#a6e22e">schema</span>&gt;;
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">defineData</span>({
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">schema</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">authorizationModes</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">defaultAuthorizationMode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;userPool&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">defaultAuthorizationMode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;userPool&#39;</span>,
 </span></span><span style="display:flex;"><span>  },
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><p><img src="/images/appsync-console-schema.png" alt="appsync-console-schema.png">
@@ -2321,19 +2585,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1776414906"></script>
-    <script src="/js/perfect-scrollbar.min.js?1776414906"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1776414906"></script>
-    <script src="/js/jquery.sticky.js?1776414906"></script>
-    <script src="/js/featherlight.min.js?1776414906"></script>
-    <script src="/js/highlight.pack.js?1776414906"></script>
+    <script src="/js/clipboard.min.js?1776416320"></script>
+    <script src="/js/perfect-scrollbar.min.js?1776416320"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1776416320"></script>
+    <script src="/js/jquery.sticky.js?1776416320"></script>
+    <script src="/js/featherlight.min.js?1776416320"></script>
+    <script src="/js/highlight.pack.js?1776416320"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1776414906"></script>
-    <script src="/js/learn.js?1776414906"></script>
-    <script src="/js/hugo-learn.js?1776414906"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1776416320"></script>
+    <script src="/js/learn.js?1776416320"></script>
+    <script src="/js/hugo-learn.js?1776416320"></script>
 
-    <link href="/mermaid/mermaid.css?1776414906" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1776414906"></script>
+    <link href="/mermaid/mermaid.css?1776416320" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1776416320"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

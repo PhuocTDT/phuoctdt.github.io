@@ -6,31 +6,37 @@ chapter: false
 pre: " <b> 5.4.3. </b> "
 ---
 
-# 5.4.3 Storage Layer (Storage) — Amazon S3
-
 Managing images and media assets.
 
 ## `storage/resource.ts`
 
 ```typescript
-import { defineStorage } from "@aws-amplify/backend";
+import { defineStorage } from '@aws-amplify/backend';
 
 export const storage = defineStorage({
-  name: "nutritrack_media",
+  name: 'nutritrack_media_bucket',
   access: (allow) => ({
-    "profile-pictures/{entity_id}/*": [
-      allow.guest.to(["read"]),
-      allow.entity("identity").to(["read", "write", "delete"])
+    // Khu vực hạ cánh (Landing Zone) - User upload trực tiếp vào đây
+    'incoming/{entity_id}/*': [
+      allow.authenticated.to(['read', 'write', 'delete'])
     ],
-    "meal-photos/*": [
-      allow.authenticated.to(["read", "write"])
+    // Voice recordings - tạm lưu để Transcribe xử lý (ephemeral, Lambda xóa sau khi xong)
+    'voice/*': [
+      allow.authenticated.to(['read', 'write', 'delete'])
     ],
-    "voice-notes/*": [
-      allow.authenticated.to(["read", "write"])
+
+    'avatar/{entity_id}/*': [
+      allow.entity('identity').to(['read', 'write', 'delete']),
+      allow.authenticated.to(['read']),
     ],
-  }),
+    // Khu vực lưu trữ vĩnh viễn (Trusted Zone) - Lambda sẽ lưu kết quả tại đây
+    'media/{entity_id}/*': [
+      allow.authenticated.to(['read', 'delete'])
+    ]
+  })
 });
 ```
+
 ![s3-bucket-console.png](/images/s3-bucket-console.png)
 ![s3-prefixes.png](/images/s3-prefixes.png)
 
