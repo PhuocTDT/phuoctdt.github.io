@@ -58,9 +58,9 @@ const IS_DEBUG = process.env.DEBUG === "true" || process.env.NODE_ENV === "devel
 
 // Simple debug logger - respects DEBUG env var
 const debug = (message: string, data?: any) => {
-  if (IS_DEBUG) {
-    console.log(`[ai-engine] ${message}`, data || "");
-  }
+    if (IS_DEBUG) {
+        console.log(`[ai-engine] ${message}`, data || "");
+    }
 };
 
 // ═══════════════════════════════════════════════════════════════
@@ -247,7 +247,7 @@ You are a knowledgeable advisor who is polite, respectful, and evidence-based. A
 
 SCOPE:
 - Nutrition, food, healthy eating, exercise, health stats, wellness.
-- Politely decline off-topic questions (e.g. "Món này không thể tiêu thụ được, quý khách vui lòng chọn món ăn khác nhé!").
+- Politely decline off-topic questions.
 
 TONE:
 - Respectful and warm Vietnamese: dùng "bạn" / "mình", tránh tiếng lóng Gen-Z.
@@ -257,17 +257,22 @@ TONE:
 
 RULES:
 1. LANGUAGE: You MUST match the user's language prefix from the prompt below. This rule is absolute.
-2. MEAL SUGGESTION: Suggest 1-3 meals. Prioritize expiring items from fridge.
-3. CONTEXT RULES: Use USER CONTEXT data ONLY when the user asks about nutrition/meals/health/progress. For casual conversation (greetings, small talk), respond naturally without mentioning stats or numbers.
+2. MEAL SUGGESTION (CRITICAL):
+   - You HAVE direct access to the user's fridge inventory. It is provided in the block labeled "=== USER_INVENTORY ===".
+   - When the user asks "eat what?", "cook what?", "suggest recipe", "fridge", "inventory", or "tủ lạnh", you MUST read the "=== USER_INVENTORY ===" block.
+   - NEVER say "I don't have access to your fridge" or "I don't know what's in your fridge" if the block is provided.
+   - PRIORITIZE URGENT ITEMS: Look for "Hết hạn" or "Còn 0 ngày", "Còn 1 ngày". These items MUST be the main part of your suggestions.
+   - REALISM: Suggest 1-3 recipes that can be made in ≤45 minutes using primarily existing ingredients.
+3. CONTEXT RULES: Use the provided inventory and profile data ONLY when relevant. For casual talk, respond naturally.
 4. CARDS: Use specific delimiters (===FOOD_CARD_START=== etc.) placed at the end.
 5. Reply in natural conversational text. NEVER output raw JSON objects in the message body.
-6. NEVER use markdown code fences (\`\`\`json, \`\`\`, etc.). Write plain text only.
-7. NEVER expose internal data structures, field names, or API responses to the user.
+6. MANDATORY: Do NOT use markdown code fences (\`\`\`json, \`\`\`, etc.). Write plain text only.
+7. NEVER expose internal field names or API structures.
 
 CARD TEMPLATES (Place at the END of response):
 
 ===FOOD_CARD_START===
-{"name": "Tên món", "description": "Lý do chọn", "calories": 450, "protein_g": 30, "carbs_g": 40, "fat_g": 10, "time": "25 phút", "emoji": "🍱", "ingredients": [{"name": "Gạo", "amount": "1 chén"}], "steps": [{"title": "Nấu cơm", "instruction": "Vo gạo nấu"}]}
+{"name": "Tên món", "description": "Lý do chọn (ưu tiên nhắc đến nguyên liệu sắp hết hạn)", "calories": 450, "protein_g": 30, "carbs_g": 40, "fat_g": 10, "time": "25 phút", "emoji": "🍱", "ingredients": [{"name": "Gạo", "amount": "1 chén"}], "steps": [{"title": "Nấu cơm", "instruction": "Vo gạo nấu"}]}
 ===FOOD_CARD_END===
 
 ===EXERCISE_CARD_START===
@@ -379,27 +384,34 @@ export const handler = async (event: any) => {
                 ? 'MANDATORY: Reply ENTIRELY in Vietnamese (professional and polite: nhé, vui lòng). Do NOT use casual slang or Gen-Z particles like "ê", "nha", "nè", "á".'
                 : 'MANDATORY: Reply ENTIRELY in English. Do NOT use any Vietnamese words, even in food names.';
 
+            const finalSystemPrompt = `${AI_COACH_SYSTEM_PROMPT}
+
+[USER DATA & LIVE INVENTORY]
+(This is your ONLY source of truth for the user's current situation. If an item is NOT listed here, it does NOT exist in their house).
+${contextString || 'User hasn\'t provided any fridge data yet.'}
+
+[ANTI-HALLUCINATION RULE]
+- You MUST verify every ingredient you suggest against the [USER DATA & LIVE INVENTORY] list above.
+- If you suggest a dish, ensure the main ingredients are AVAILABLE. 
+- NEVER suggest things like Salmon, Shrimp, or premium meats unless they appear in the inventory list.
+- If the inventory is empty or insufficient, politely ask the user to add items to their fridge first.
+
+[LANGUAGE & TONE]
+${langInstruction}`;
+
             const messages: any[] = [
-                { role: "system", content: AI_COACH_SYSTEM_PROMPT },
+                { role: "system", content: finalSystemPrompt },
             ];
+
+            // Add Chat history
             for (const msg of chatHistory) {
                 messages.push({
                     role: msg.role === 'user' ? 'user' : 'assistant',
                     content: msg.parts[0].text
                 });
             }
-            // Context as system message so food names don't skew language detection.
-            if (contextString) {
-                messages.push({
-                    role: "system",
-                    content: `USER CONTEXT (background data only):\n${contextString}`
-                });
-            }
-            // Explicit language instruction as final system message — overrides everything.
-            messages.push({
-                role: "system",
-                content: langInstruction
-            });
+
+            // Final user message
             messages.push({
                 role: "user",
                 content: userMessage
@@ -442,10 +454,10 @@ export const handler = async (event: any) => {
             // Map file extension → AWS Transcribe MediaFormat enum
             const ext = s3Key.split('.').pop()?.toLowerCase() || 'm4a';
             const mediaFormat = ext === 'webm' ? 'webm'
-                : ext === 'mp3'  ? 'mp3'
-                : ext === 'wav'  ? 'wav'
-                : ext === 'flac' ? 'flac'
-                : 'mp4'; // m4a, mp4 → 'mp4'
+                : ext === 'mp3' ? 'mp3'
+                    : ext === 'wav' ? 'wav'
+                        : ext === 'flac' ? 'flac'
+                            : 'mp4'; // m4a, mp4 → 'mp4'
 
             const s3Uri = `s3://${STORAGE_BUCKET}/${s3Key}`;
             await transcribeClient.send(new StartTranscriptionJobCommand({
@@ -484,7 +496,7 @@ export const handler = async (event: any) => {
                     const foodData = aiResponse.food_data;
                     const ingredients = foodData.ingredients || [];
                     const tableName = await discoverTableName();
-                    
+
                     let totalCalories = 0, totalProtein = 0, totalCarbs = 0, totalFat = 0;
                     const processedIngredients = [];
 
@@ -534,11 +546,11 @@ export const handler = async (event: any) => {
                     }
                     aiResponse.food_data.ingredients = processedIngredients;
                     aiResponse.db_verified = processedIngredients.some(i => i.matched);
-                    
-                    return JSON.stringify({ 
-                        success: true, 
-                        transcript, 
-                        text: JSON.stringify(aiResponse) 
+
+                    return JSON.stringify({
+                        success: true,
+                        transcript,
+                        text: JSON.stringify(aiResponse)
                     });
                 }
             } catch (calcError) {
@@ -607,9 +619,17 @@ export const handler = async (event: any) => {
         // ── Ollie Coach Tip (quick nudge) ──
         if (action === 'ollieCoachTip') {
             const { promptTemplate, context } = data;
+            const finalPrompt = `[OLLIE PERSONALITY & RULES]
+${OLLIE_COACH_SYSTEM_PROMPT}
+
+[CURRENT USER DATA]
+${context || 'No specific context provided.'}
+
+[TASK]
+${promptTemplate || 'Provide a helpful daily health tip.'}`;
+
             const text = await callQwen([
-                { role: "system", content: OLLIE_COACH_SYSTEM_PROMPT },
-                { role: "user", content: promptTemplate || context },
+                { role: "system", content: finalPrompt },
             ]);
             return JSON.stringify({ success: true, text });
         }
@@ -617,9 +637,21 @@ export const handler = async (event: any) => {
         // ── Recipe Generator ──
         if (action === 'generateRecipe') {
             const { inventoryText, expiringText, nutritionGoal, servings } = data;
+            
+            const recipeContextPrompt = `${RECIPE_SYSTEM_PROMPT}
+
+[USER INVENTORY - SOURCE OF TRUTH]
+Inventory: ${inventoryText}
+Expiring Soon (MUST USE): ${expiringText}
+
+[STRICT RULE]
+- You MUST ONLY use ingredients listed in the [USER INVENTORY] above.
+- NEVER suggest ingredients the user does not have.
+- If inventory is empty, return the error JSON.`;
+
             const text = await callQwen([
-                { role: "system", content: RECIPE_SYSTEM_PROMPT },
-                { role: "user", content: `User's fridge inventory:\n${inventoryText}\n\nExpiring soon (MUST USE):\n${expiringText}\n\nNutrition goal: ${nutritionGoal}\nNumber of servings: ${servings}\n\nSuggest 1-3 recipes. Return JSON only.` },
+                { role: "system", content: recipeContextPrompt },
+                { role: "user", content: `Goal: ${nutritionGoal}. Servings: ${servings}. Generate 1-3 recipes in JSON format.` },
             ]);
             return JSON.stringify({ success: true, text });
         }
@@ -634,7 +666,7 @@ export const handler = async (event: any) => {
             return JSON.stringify({ success: true, text });
         }
 
-// ── Weekly Insight ──
+        // ── Weekly Insight ──
         if (action === 'weeklyInsight') {
             const { userProfileJson, weeklySummaryJson, notablePatterns } = data;
             const text = await callQwen([
